@@ -9,7 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class SplashScrern extends Activity {
+public class SplashScrern extends AppCompatActivity {
 
     TextView tvMovimiento;
 
@@ -17,6 +17,8 @@ public class SplashScrern extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_scrern);
+
+        getSupportActionBar().hide();
 
         View tvMovimiento = findViewById(R.id.tvMovimiento);
 
