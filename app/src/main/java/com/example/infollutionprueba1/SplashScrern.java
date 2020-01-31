@@ -11,14 +11,23 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class SplashScrern extends Activity {
+public class SplashScrern extends AppCompatActivity {
 
+    TextView tvMovimiento;
     ImageView ivFoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_scrern);
+
+        getSupportActionBar().hide();
+
+        View tvMovimiento = findViewById(R.id.tvMovimiento);
+
+        Animation translate = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
+
+        tvMovimiento.startAnimation(translate);
 
         ImageView ivFoto = findViewById(R.id.ivLogo_SS);
 
@@ -27,8 +36,6 @@ public class SplashScrern extends Activity {
         ivFoto.startAnimation(translate);
 
         openApp(true);
-
-
     }
 
     private void openApp(boolean locationPermission) {
@@ -42,9 +49,4 @@ public class SplashScrern extends Activity {
                 finish();
             }
         }, 5000);
-
-
-    }
-
-
 }
