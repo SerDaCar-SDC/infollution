@@ -27,6 +27,7 @@ public class SplashScrern extends Activity {
 
         ivFoto.startAnimation(translate);
 
+
         openApp(true);
     }
 
@@ -41,5 +42,7 @@ public class SplashScrern extends Activity {
                 finish();
             }
         }, 5000);
+
+
     }
 }
