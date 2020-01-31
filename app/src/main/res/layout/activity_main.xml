@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlancoNuestro"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo_AM"
+        android:layout_width="136dp"
+        android:layout_height="136dp"
+        android:background="@drawable/logo1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="150dp"/>
+
+    <LinearLayout
+        android:id="@+id/llLogin_AM"
+        android:layout_width="300dp"
+        android:layout_height="140dp"
+        android:background="@drawable/esquinas_redondeadas"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo_AM"
+        android:layout_marginTop="50dp">
+
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:fontFamily="@font/robotolight"
+            android:hint="@string/hintUser"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorAzulOscuro"
+            android:textColorHint="@color/colorAzulOscuro"
+            android:textSize="@dimen/letrasNormales" />
+        //robotolight para las letras
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:fontFamily="@font/robotolight"
+            android:hint="@string/hintPassword"
+            android:inputType="textPassword"
+            android:textColor="@color/colorAzulOscuro"
+            android:textColorHint="@color/colorAzulOscuro"
+            android:textSize="@dimen/letrasNormales" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivBtn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/next"
+        app:layout_constraintBottom_toBottomOf="@+id/llLogin_AM"
+        app:layout_constraintEnd_toEndOf="@+id/llLogin_AM"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/llLogin_AM"
+        app:layout_constraintTop_toTopOf="@+id/llLogin_AM"
+        android:onClick="irA_SplashScreen"/>
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/esquinas_redondeadas"
+        android:fontFamily="@font/robotomedium"
+        android:onClick="irA_ActivityRegistro"
+        android:text="@string/txt_btnRegistrar"
+        android:textColor="@color/colorRojo"
+        android:textSize="@dimen/letrasBotones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llLogin_AM" />
+    //robotomedium para los botones
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
