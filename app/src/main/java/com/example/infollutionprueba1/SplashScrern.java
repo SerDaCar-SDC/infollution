@@ -7,9 +7,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashScrern extends AppCompatActivity {
 
@@ -25,15 +27,15 @@ public class SplashScrern extends AppCompatActivity {
 
         View tvMovimiento = findViewById(R.id.tvMovimiento);
 
-        Animation translate = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
+        Animation translate1 = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
 
-        tvMovimiento.startAnimation(translate);
+        tvMovimiento.startAnimation(translate1);
 
         ImageView ivFoto = findViewById(R.id.ivLogo_SS);
 
-        Animation translate = AnimationUtils.loadAnimation(this, R.anim.leftin);
+        Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.leftin);
 
-        ivFoto.startAnimation(translate);
+        ivFoto.startAnimation(translate2);
 
         openApp(true);
     }
@@ -49,4 +51,5 @@ public class SplashScrern extends AppCompatActivity {
                 finish();
             }
         }, 5000);
+    }
 }
