@@ -1,4 +1,4 @@
-package com.example.infollutionprueba1;
+package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
 

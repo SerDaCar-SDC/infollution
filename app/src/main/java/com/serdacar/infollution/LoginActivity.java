@@ -1,4 +1,4 @@
-package com.example.infollutionprueba1;
+package com.serdacar.infollution;
 
 import android.content.Intent;
 import android.os.Bundle;
