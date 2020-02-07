@@ -1,9 +1,7 @@
 package com.example.infollutionprueba1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SplashScrern extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     TextView tvMovimiento;
     ImageView ivFoto;
@@ -21,7 +19,7 @@ public class SplashScrern extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_scrern);
+        setContentView(R.layout.activity_splash_screen);
 
         getSupportActionBar().hide();
 
@@ -31,7 +29,7 @@ public class SplashScrern extends AppCompatActivity {
 
         tvMovimiento.startAnimation(translate1);
 
-        ImageView ivFoto = findViewById(R.id.ivLogo_SS);
+        ImageView ivFoto = findViewById(R.id.ivLogoSS);
 
         Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.leftin);
 
@@ -45,8 +43,8 @@ public class SplashScrern extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScrern
-                        .this, MainActivity.class);
+                Intent intent = new Intent(SplashScreenActivity
+                        .this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }

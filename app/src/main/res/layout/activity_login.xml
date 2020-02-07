@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlancoNuestro"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/ivLogo_AM"
@@ -18,7 +18,7 @@
         android:layout_marginTop="150dp"/>
 
     <LinearLayout
-        android:id="@+id/llLogin_AM"
+        android:id="@+id/llLogin"
         android:layout_width="300dp"
         android:layout_height="140dp"
         android:background="@drawable/esquinas_redondeadas"
@@ -29,7 +29,7 @@
 
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etUser"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -44,7 +44,7 @@
         //robotolight para las letras
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/etPassword"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -61,30 +61,30 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ivBtn_next"
+        android:id="@+id/ivSiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/next"
-        app:layout_constraintBottom_toBottomOf="@+id/llLogin_AM"
-        app:layout_constraintEnd_toEndOf="@+id/llLogin_AM"
+        app:layout_constraintBottom_toBottomOf="@+id/llLogin"
+        app:layout_constraintEnd_toEndOf="@+id/llLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/llLogin_AM"
-        app:layout_constraintTop_toTopOf="@+id/llLogin_AM"
-        android:onClick="irA_SplashScreen"/>
+        app:layout_constraintStart_toEndOf="@+id/llLogin"
+        app:layout_constraintTop_toTopOf="@+id/llLogin"
+        android:onClick="accesoFirstActivity"/>
 
     <Button
-        android:id="@+id/btnRegistrar"
+        android:id="@+id/btnAtrasRegistro"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/esquinas_redondeadas"
         android:fontFamily="@font/robotomedium"
-        android:onClick="irA_ActivityRegistro"
+        android:onClick="accesoRegisterActivity"
         android:text="@string/txt_btnRegistrar"
         android:textColor="@color/colorRojo"
         android:textSize="@dimen/letrasBotones"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llLogin_AM" />
+        app:layout_constraintTop_toBottomOf="@+id/llLogin" />
     //robotomedium para los botones
 
 

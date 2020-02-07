@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityRegistro"
+    tools:context=".RegisterActivity"
     android:background="@color/colorBlancoNuestro">
 
     <TextView
-        android:id="@+id/tvRegister_AR"
+        android:id="@+id/tvRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="@string/txt_titRegister"
+        android:text="@string/tv_registro"
         android:textSize="@dimen/letrasTitulosGrandes"
         android:textColor="@color/colorRojo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,25 +21,25 @@
         android:fontFamily="@font/robotomedium"/>
 
     <LinearLayout
-        android:id="@+id/llLogin_AM"
+        android:id="@+id/llLogin"
         android:layout_width="300dp"
         android:layout_height="195dp"
         android:layout_marginTop="110dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/esquinas_redondeadas"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegister_AR">
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistro">
 
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/etUser"
             android:layout_width="200dp"
             android:layout_marginLeft="15dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_marginTop="15dp"
             android:textSize="@dimen/letrasNormales"
-            android:hint="@string/hintUser"
+            android:hint="@string/hint_user"
             android:inputType="textPersonName"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
@@ -47,14 +47,14 @@
             />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/etPassword"
             android:layout_width="200dp"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:ems="10"
             android:textSize="@dimen/letrasNormales"
-            android:hint="@string/hintPassword"
+            android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
@@ -62,14 +62,14 @@
             />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/etEmail"
             android:layout_width="200dp"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_marginTop="15dp"
             android:textSize="@dimen/letrasNormales"
-            android:hint="@string/hintCorreo"
+            android:hint="@string/hint_correo"
             android:inputType="textPersonName"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
@@ -79,29 +79,29 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ivBtn_next"
+        android:id="@+id/ivSiguiente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/next"
-        app:layout_constraintBottom_toBottomOf="@+id/llLogin_AM"
-        app:layout_constraintEnd_toEndOf="@+id/llLogin_AM"
+        app:layout_constraintBottom_toBottomOf="@+id/llLogin"
+        app:layout_constraintEnd_toEndOf="@+id/llLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/llLogin_AM"
-        app:layout_constraintTop_toTopOf="@+id/llLogin_AM"
-        android:onClick="irA_ActivityMain"/>
+        app:layout_constraintStart_toEndOf="@+id/llLogin"
+        app:layout_constraintTop_toTopOf="@+id/llLogin"
+        android:onClick="accesoLoginActivity"/>
 
     <Button
-        android:id="@+id/btnRegistrar"
+        android:id="@+id/btnAtrasRegistro"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/esquinas_izquierdas_redondeadas"
-        android:onClick="irA_ActivityMain"
-        android:text="@string/txt_btnAtras"
+        android:onClick="accesoLoginActivity"
+        android:text="@string/btn_atras_registro"
         android:textColor="@color/colorRojo"
         android:textSize="@dimen/letrasBotones"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llLogin_AM"
+        app:layout_constraintTop_toBottomOf="@+id/llLogin"
         android:fontFamily="@font/robotomedium"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
