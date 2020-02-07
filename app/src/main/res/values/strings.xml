@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InfollutionPrueba1</string>
+    <string name="app_name">Infollution</string>
     <string name="hint_user">usuario</string>
     <string name="hint_password">contraseña</string>
     <string name="btn_registrar">Regístrate</string>
