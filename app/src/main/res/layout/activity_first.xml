@@ -8,5 +8,37 @@
     android:background="@color/colorBlancoNuestro">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorBlancoNuestro"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorBlancoNuestro"
+            app:srcCompat="@drawable/ic_newsfeed"/>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+            android:layout_weight="1"
+            android:background="@color/colorBlancoNuestro"
+            app:srcCompat="@drawable/logo1"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorBlancoNuestro"
+            app:srcCompat="@drawable/ic_pin"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
