@@ -91,7 +91,7 @@
         android:onClick="accesoLoginActivity"/>
 
     <Button
-        android:id="@+id/btnAtrasRegistro"
+        android:id="@+id/btnAtrasLogin"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginTop="50dp"
