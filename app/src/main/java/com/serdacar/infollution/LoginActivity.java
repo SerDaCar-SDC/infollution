@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void accesoFirstActivity(View view) {
-        Intent i = new Intent(this, MapActivity.class);
+        Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
     }
 }
