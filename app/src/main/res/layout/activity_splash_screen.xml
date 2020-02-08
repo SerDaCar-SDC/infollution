@@ -11,7 +11,7 @@
         android:id="@+id/tvMovimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tv_transicion_infollution_"
+        android:text="@string/tv_transicion_infollution"
         android:textSize="42sp"
         android:fontFamily="@font/bromelloregular"
         android:textColor="@color/colorAzulOscuro"
