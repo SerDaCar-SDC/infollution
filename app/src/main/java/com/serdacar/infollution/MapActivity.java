@@ -77,7 +77,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         // POSICIÓN DE CÁMARA
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 15));
 
-        // TIPO DE VISUALIZACIÓN DE MAPA
+        // TIPO DE VISUALIZACIÓN DE MAPA 
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
