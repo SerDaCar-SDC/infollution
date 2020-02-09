@@ -24,15 +24,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         View tvMovimiento = findViewById(R.id.tvMovimiento);
-
-        Animation translate1 = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
-
-        tvMovimiento.startAnimation(translate1);
-
         ImageView ivFoto = findViewById(R.id.ivLogoSS);
 
-        Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.leftin);
+        Animation translate1 = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
+        tvMovimiento.startAnimation(translate1);
 
+        Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.leftin);
         ivFoto.startAnimation(translate2);
 
         openApp(true);
@@ -46,6 +43,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashScreenActivity
                         .this, LoginActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 finish();
             }
         }, 3500);
