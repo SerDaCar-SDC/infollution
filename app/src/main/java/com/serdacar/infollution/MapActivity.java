@@ -33,7 +33,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Location miLoc;
     private LocationManager locManager;
 
-    private static final int PETICION_PERMISO_LOCALIZACION = 101;
+    private static final int PETICION_PERMISO_LOCALIZACION =101;
 
     // LAYOUT
     private Button btnSatelite;
