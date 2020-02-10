@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -28,13 +29,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private FusedLocationProviderClient flClient;
+    //private FusedLocationProviderClient flClient;
     private Location miLoc;
     private LocationManager locManager;
 
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
 
-    // LAYOUT 
+    // LAYOUT
     private Button btnSatelite;
     private Button btnTerrain;
     private Button btnNormal;
@@ -53,7 +54,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         btnNormal = findViewById(R.id.btnTipoMapaNormal);
         btnHybrid = findViewById(R.id.btnTipoMapaHybrid);
 
-        flClient = LocationServices.getFusedLocationProviderClient(this);
+        //flClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -90,13 +91,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng uem = null;
+        LatLng ubicacion = new LatLng(miLoc.getLatitude(), miLoc.getAltitude());
 
-        if (miLoc == null) {
+        /*if (miLoc == null) {
             uem = new LatLng(40.5351, -3.6165);
         } else {
             uem = new LatLng(miLoc.getLatitude(), miLoc.getLongitude());
-        }
+        }*/
         // COORDENADAS
         LatLng llMadrid = new LatLng(40.4165001, -3.7025599);
         LatLng llNorte = new LatLng(40.6590900, -3.7676200);
@@ -105,10 +106,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         LatLng llSur = new LatLng(40.3223381 , -3.86496);
         LatLng llSureste = new LatLng(40.3007600, -3.4372200);
         LatLng llNordeste = new LatLng(40.4820500, -3.3599600);
+        LatLng uem = new LatLng(40.5351, -3.6165);
 
         // MARCADORES EN COORDENADAS
-        // mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea de Alcobendas"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(uem));
+        mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
         mMap.addMarker(new MarkerOptions().position(llMadrid).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNorte).title("Marcador en Colmenar Viejo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNoroeste).title("Marcador en Collado Villalba").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
@@ -116,12 +117,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(llSur).title("Marcador en Móstoles").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llSureste).title("Marcador en Arganda del Rey").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNordeste).title("Marcador en Alcalá de Henares").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
+        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         // POSICIÓN DE CÁMARA
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 20));
-
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacion));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 20));
         // TIPO DE VISUALIZACIÓN DE MAPA 
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         // VISUALIZACIÓN DE BOTONES (colores)
         btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzul));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
