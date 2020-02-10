@@ -1,10 +1,16 @@
 package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -24,6 +30,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private FusedLocationProviderClient flClient;
     private Location miLoc;
+    private LocationManager locManager;
+
+    private static final int PETICION_PERMISO_LOCALIZACION = 101;
 
     // LAYOUT
     private Button btnSatelite;
@@ -36,6 +45,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        getSupportActionBar().hide();
+
         // LAYOUT
         btnSatelite = findViewById(R.id.btnTipoMapaSatelite);
         btnTerrain = findViewById(R.id.btnTipoMapaTerrain);
@@ -44,14 +55,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         flClient = LocationServices.getFusedLocationProviderClient(this);
 
-        flClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    miLoc = location;
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION},
+                    PETICION_PERMISO_LOCALIZACION);
+        } else {
+            Log.i("LOC", "con permisos");
+            /*flClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    Log.i("LOC", "onSuccess de location");
+                    if (location != null) {
+                        miLoc = location;
+                    }
                 }
-            }
-        });
+            });*/
+
+            locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            miLoc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
 
         // METER GOOGLE MAPS
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -88,9 +116,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(llSur).title("Marcador en Móstoles").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llSureste).title("Marcador en Arganda del Rey").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNordeste).title("Marcador en Alcalá de Henares").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-
+        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         // POSICIÓN DE CÁMARA
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(llMadrid, 20));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 20));
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
@@ -114,13 +142,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         .position(latLng)
                         .title("New POSITION")
                         .snippet("Latitud: " + latLng.latitude + " Longitud: " + latLng.longitude)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo2))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3))
                 );
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-
-
             }
         });
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
         // mMap.setMapType();
     }
 
