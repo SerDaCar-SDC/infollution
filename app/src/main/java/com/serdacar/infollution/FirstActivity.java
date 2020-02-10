@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -50,4 +51,8 @@ public class FirstActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void accesoMapa(View view) {
+        startActivity(new Intent(this, MapActivity.class));
+        overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
 }

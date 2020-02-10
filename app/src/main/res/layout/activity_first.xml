@@ -50,7 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/colorBlancoNuestro"
-        app:srcCompat="@drawable/ic_pin"/>
+        app:srcCompat="@drawable/ic_pin"
+        android:onClick="accesoMapa"/>
 
 </LinearLayout>
     [15:12, 8/2/2020] ~dani~: Lo tngo amigo!
