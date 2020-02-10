@@ -34,7 +34,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
 
-    // LAYOUT
+    // LAYOUT 
     private Button btnSatelite;
     private Button btnTerrain;
     private Button btnNormal;
