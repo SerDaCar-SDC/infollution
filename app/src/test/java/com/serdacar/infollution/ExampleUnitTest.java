@@ -1,4 +1,4 @@
-package com.example.infollutionprueba1;
+package com.serdacar.infollution;
 
 import org.junit.Test;
 

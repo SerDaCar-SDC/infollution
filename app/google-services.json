@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "992022980423",
+    "firebase_url": "https://infollutionscd.firebaseio.com",
+    "project_id": "infollutionscd",
+    "storage_bucket": "infollutionscd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992022980423:android:7422c29b486b3425508e62",
+        "android_client_info": {
+          "package_name": "com.serdacar.infollution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992022980423-h3tm86qosc8kun4imgeae3ce7clkbv7k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.serdacar.infollution",
+            "certificate_hash": "18a3dcb8261ee7e2ed27a43fec448530f80dff15"
+          }
+        },
+        {
+          "client_id": "992022980423-cvk0r3g46bmh3jo980rfc5c905gol5c3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2FdCiqROOfo17PCgd1CpOdpePeRxfLic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992022980423-cvk0r3g46bmh3jo980rfc5c905gol5c3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
