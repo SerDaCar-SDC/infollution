@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstActivity"
-    android:background="@color/colorBlancoNuestro"
-    android:padding="@dimen/padding_layout">
+    android:background="@color/colorBlancoNuestro">
 
     <TextView
         android:id="@+id/tvBienvenida"
@@ -20,40 +19,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    [14:20, 8/2/2020] Carlos Uem: <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/colorBlancoNuestro"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
-
-
-    <ImageButton
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorBlancoNuestro"
-        app:srcCompat="@drawable/ic_newsfeed"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <include layout="@layout/menu_navigation"/>
+    </FrameLayout>
 
-    <ImageButton
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerInside"
-        android:layout_weight="1"
-        android:background="@color/colorBlancoNuestro"
-        app:srcCompat="@drawable/logo1"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/colorBlancoNuestro"
-        app:srcCompat="@drawable/ic_pin"
-        android:onClick="accesoMapa"/>
-
-</LinearLayout>
+    [14:20, 8/2/2020] Carlos Uem:
     [15:12, 8/2/2020] ~dani~: Lo tngo amigo!
     [15:12, 8/2/2020] ~dani~: Voy a añadir lo tuyo
     [15:12, 8/2/2020] ~dani~: Y subirlo

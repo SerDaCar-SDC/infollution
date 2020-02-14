@@ -23,6 +23,8 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
+        getSupportActionBar().hide();
+
         tv = findViewById(R.id.tvBienvenida);
 
         email = getIntent().getStringExtra(RegisterActivity.CLAVE_EMAIL);

@@ -123,13 +123,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         // VISUALIZACIÓN DE BOTONES (colores)
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzul));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
 
         mMap.getUiSettings().setZoomControlsEnabled(false);
@@ -155,54 +155,54 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     // TIPOS DE MAPAS CON BOTONES DE COLORES
     public void onClickTipoSatelite(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorAzul));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
 
     }
 
     public void onClickTipoTerrain(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorAzul));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
     }
 
     public void onClickTipoNormal(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorAzul));
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnNormal.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
     }
 
     public void onClickTipoHybrid(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzul));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorVerde));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
     }
 
