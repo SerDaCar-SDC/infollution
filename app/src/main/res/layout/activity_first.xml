@@ -7,6 +7,17 @@
     tools:context=".FirstActivity"
     android:background="@color/colorBlancoNuestro">
 
+    <ImageButton
+        android:id="@+id/imTurnoff"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/colorBlancoNuestro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_turnoff_foreground"
+        android:layout_margin="16dp"
+        android:onClick="desconectar"/>
+
     <TextView
         android:id="@+id/tvBienvenida"
         android:layout_width="match_parent"

@@ -24,7 +24,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        //getSupportActionBar().hide();
+        getSupportActionBar().hide();
         getSupportActionBar().setBackgroundDrawable(
                 new ColorDrawable(getResources().getColor(R.color.colorAzulOscuro)));
 
@@ -36,7 +36,8 @@ public class FirstActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
     }
 
-    @Override
+    //MENU CON EL ITEM DESCONECTAR
+    /*@Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.itm_desconectar) {
             fbAuth.signOut();
@@ -54,10 +55,18 @@ public class FirstActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_first_activity, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
+
+    public void desconectar(View view) {
+        fbAuth.signOut();
+        Intent i = new Intent(this, LoginActivity.class);
+        i.putExtra(CLAVE_EMAIL, email);
+        startActivity(i);
+        finish();
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);    }
 }
