@@ -22,9 +22,20 @@
             app:srcCompat="@drawable/ic_newsfeed" />
 
         <ImageButton
+            android:id="@+id/ivMenuChat"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:onClick="accederChat"
+            android:background="@color/colorBlancoNuestro"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <ImageButton
             android:id="@+id/ivMenuLogo"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:onClick="accesoFirst"
             android:background="@color/colorBlancoNuestro"
@@ -39,6 +50,8 @@
             android:onClick="accesoMapa"
             android:background="@color/colorBlancoNuestro"
             app:srcCompat="@drawable/ic_pin" />
+
+
 
     </LinearLayout>
 

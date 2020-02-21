@@ -45,6 +45,11 @@ public class FirstActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
+    public void accederChat(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
     public void desconectar() {
         fbAuth.signOut();
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
