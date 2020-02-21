@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -13,6 +14,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -26,14 +29,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
-
+    private static final int PETICION_PERMISO_LOCALIZACION = 101;
     private GoogleMap mMap;
     private FusedLocationProviderClient flClient;
     private Location miLoc;
     private LocationManager locManager;
 
-    private static final int PETICION_PERMISO_LOCALIZACION = 101;
-
+    ImageView ivMapa;
+    EditText etEmail;
     // LAYOUT
     private Button btnSatelite;
     private Button btnTerrain;
@@ -46,6 +49,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         getSupportActionBar().hide();
+
+        ivMapa = findViewById(R.id.ivMenuMapa);
+        ivMapa.setEnabled(false);
+
+        //etEmail = findViewById(R.id.etEmailLogin);
+        //String emailRegister = getIntent().getStringExtra(RegisterActivity.CLAVE_EMAIL);
+        //etEmail.setText(emailRegister);
 
         // LAYOUT
         btnSatelite = findViewById(R.id.btnTipoMapaSatelite);
@@ -147,8 +157,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             }
         });
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setCompassEnabled(true);
+        //mMap.getUiSettings().setZoomControlsEnabled(true);
+        //mMap.getUiSettings().setCompassEnabled(true);
         // mMap.setMapType();
     }
 
@@ -204,6 +214,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
         btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+    }
+
+    public void accesoFirst(View v) {
+        startActivity(new Intent(this, FirstActivity.class));
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
 }

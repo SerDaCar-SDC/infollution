@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_turnoff_foreground"
         android:layout_margin="16dp"
-        android:onClick="desconectar"/>
+        android:onClick="createSimpleDialog"/>
 
     <TextView
         android:id="@+id/tvBienvenida"
@@ -39,10 +39,5 @@
         app:layout_constraintStart_toStartOf="parent">
         <include layout="@layout/menu_navigation"/>
     </FrameLayout>
-
-    [14:20, 8/2/2020] Carlos Uem:
-    [15:12, 8/2/2020] ~dani~: Lo tngo amigo!
-    [15:12, 8/2/2020] ~dani~: Voy a añadir lo tuyo
-    [15:12, 8/2/2020] ~dani~: Y subirlo
 
 </androidx.constraintlayout.widget.ConstraintLayout>
