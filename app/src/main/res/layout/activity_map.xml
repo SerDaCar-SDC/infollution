@@ -9,6 +9,7 @@
     <fragment
         android:id="@+id/fragmentMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         map:uiZoomControls="true"
@@ -19,7 +20,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/btnTipoMapaSatelite"
@@ -27,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickTipoSatelite"
-            android:text="Satélite" />
+            android:text="Satélite"/>
 
         <Button
             android:id="@+id/btnTipoMapaHybrid"
@@ -42,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onClickTipoNormal"
+            android:layout_weight="1"
             android:text="Normal" />
 
         <Button
@@ -54,8 +59,6 @@
 
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

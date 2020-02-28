@@ -32,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        getSupportActionBar().hide();
+
         etUser = findViewById(R.id.etUserRegistro);
         etEmail = findViewById(R.id.etEmailRegistro);
         etPass = findViewById(R.id.etPasswordRegistro);
