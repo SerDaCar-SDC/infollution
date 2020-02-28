@@ -96,8 +96,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
 
-
-        // METER EXPANDABLE SWIPECARD
+        // METER SWYPE CARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
@@ -141,10 +140,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         // POSICIÓN DE CÁMARA
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 20));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacion));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 20));
-        // TIPO DE VISUALIZACIÓN DE MAPA 
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        // TIPO DE VISUALIZACIÓN DE MAPA
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         // VISUALIZACIÓN DE BOTONES (colores)
         btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));

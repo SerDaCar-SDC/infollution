@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -19,63 +19,88 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/fragmentMap"
-        map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent">
+        map:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp">
 
-        <Button
-            android:id="@+id/btnTipoMapaSatelite"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoSatelite"
-            android:text="Satélite"/>
+            android:orientation="horizontal"
+            android:layout_below="@id/fragmentMap"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnTipoMapaHybrid"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnTipoMapaSatelite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickTipoSatelite"
+                android:text="Satélite"/>
+
+            <Button
+                android:id="@+id/btnTipoMapaHybrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickTipoHybrid"
+                android:text="Híbrido" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoHybrid"
-            android:text="Híbrido" />
+            android:orientation="horizontal"
+            android:layout_below="@id/fragmentMap"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnTipoMapaNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickTipoNormal"
-            android:layout_weight="1"
-            android:text="Normal" />
+            <Button
+                android:id="@+id/btnTipoMapaNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickTipoNormal"
+                android:layout_weight="1"
+                android:text="Normal" />
 
-        <Button
-            android:id="@+id/btnTipoMapaTerrain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoTerrain"
-            android:text="Terreno" />
+            <Button
+                android:id="@+id/btnTipoMapaTerrain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="onClickTipoTerrain"
+                android:text="Terreno" />
 
+        </LinearLayout>
 
     </LinearLayout>
 
+
     <!-- EXOANDABLE CARD VIEW -->
     <com.alespero.expandablecardview.ExpandableCardView
-        android:layout_marginBottom="300dp"
-        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="60dp"
+
+        android:background="@color/colorBlancoNuestro"
         android:id="@+id/swipecard"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:title="Passengers"
+        app:title="Expandable Card View"
         app:icon="@drawable/abc_vector_test"
         app:inner_view="@layout/cardview_information"
         app:expandOnClick="true"
         app:animationDuration="300"
-        app:startExpanded="false"
-         />
+        app:startExpanded="false" />
 
 
     <FrameLayout
@@ -93,4 +118,4 @@
 
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

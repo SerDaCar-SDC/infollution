@@ -41,6 +41,7 @@ public class FirstActivity extends AppCompatActivity {
 
         fbAuth = FirebaseAuth.getInstance();
 
+        /*
         // METER EXPANDABLE SWIPECARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
@@ -48,7 +49,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onExpandChanged(View v, boolean isExpanded) {
                 Toast.makeText(FirstActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     public void accesoMapa(View view) {
