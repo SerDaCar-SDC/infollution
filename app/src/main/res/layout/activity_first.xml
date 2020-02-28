@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstActivity"
-    android:background="@color/colorBlancoNuestro">
+    android:background="@color/colorBlanco">
 
     <ImageButton
         android:id="@+id/imTurnoff"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@color/colorBlancoNuestro"
+        android:background="@color/colorBlanco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_turnoff_foreground"
         android:layout_margin="16dp"
-        android:onClick="desconectar"/>
+        android:onClick="createSimpleDialog"/>
 
     <TextView
         android:id="@+id/tvBienvenida"
@@ -41,16 +40,4 @@
         <include layout="@layout/menu_navigation"/>
     </FrameLayout>
 
-    <com.alespero.expandablecardview.ExpandableCardView
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
-        android:id="@+id/swipecard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:title="Passengers"
-        app:icon="@drawable/abc_vector_test"
-        app:inner_view="@layout/cardview_information"
-        app:expandOnClick="true"
-        app:animationDuration="300"
-        app:startExpanded="false" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,38 +3,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="@color/colorBlancoNuestro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@color/colorBlancoNuestro"
-            app:srcCompat="@drawable/ic_newsfeed" />
-
-        <ImageButton
-            android:layout_width="50dp"
+        <LinearLayout
+            android:id="@+id/llIzquierda"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/colorBlancoNuestro"
+            android:background="@drawable/esquinas_redondeadas_arriba_derecha">
+
+            <ImageButton
+                android:id="@+id/ivMenuNews"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorBlancoNuestro"
+                app:srcCompat="@drawable/ic_info_foreground" />
+
+            <ImageButton
+                android:id="@+id/ivMenuChat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorBlancoNuestro"
+                android:onClick="accederChat"
+                app:srcCompat="@drawable/ic_chat_foreground" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ivMenuLogo"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/scrim"
+            android:onClick="accesoFirst"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/logo1" />
 
+
+    <LinearLayout
+        android:id="@+id/llDerecha"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/esquinas_redondeadas_arriba_izquierda"
+        android:layout_weight="1">
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:id="@+id/ivMenuNosotros"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:onClick="accesoMapa"
             android:background="@color/colorBlancoNuestro"
+            app:srcCompat="@drawable/ic_people_foreground" />
+
+        <ImageButton
+            android:id="@+id/ivMenuMapa"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBlancoNuestro"
+            android:onClick="accesoMapa"
             app:srcCompat="@drawable/ic_pin" />
+
+    </LinearLayout>
+
+
+
+
 
     </LinearLayout>
 
