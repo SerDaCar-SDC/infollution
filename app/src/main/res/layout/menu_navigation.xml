@@ -36,19 +36,15 @@
                 android:background="@color/colorBlancoNuestro"
                 android:onClick="accederChat"
                 app:srcCompat="@drawable/ic_chat_foreground" />
-
-
         </LinearLayout>
-
-
 
         <ImageButton
             android:id="@+id/ivMenuLogo"
             android:layout_width="40dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/scrim"
             android:onClick="accesoFirst"
-            android:background="@null"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/logo1" />
 
@@ -72,10 +68,10 @@
         <ImageButton
             android:id="@+id/ivMenuMapa"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="accesoMapa"
             android:background="@color/colorBlancoNuestro"
+            android:onClick="accesoMapa"
             app:srcCompat="@drawable/ic_pin" />
 
     </LinearLayout>

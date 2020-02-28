@@ -51,7 +51,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         getSupportActionBar().hide();
 
         ivMapa = findViewById(R.id.ivMenuMapa);
-        //ivMapa.setImageResource(R.drawable.ic_pin_rojo);
+        ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
 
         //etEmail = findViewById(R.id.etEmailLogin);
@@ -221,12 +221,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));
-        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accederChat(View view) {
         startActivity(new Intent(this, ChatActivity.class));
-        overridePendingTransition(R.anim.right_in, R.anim.right_out);
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
 }
