@@ -2,7 +2,6 @@ package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
@@ -13,22 +12,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private FusedLocationProviderClient flClient;
+    //private FusedLocationProviderClient flClient;
     private Location miLoc;
     private LocationManager locManager;
 
@@ -53,7 +52,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         btnNormal = findViewById(R.id.btnTipoMapaNormal);
         btnHybrid = findViewById(R.id.btnTipoMapaHybrid);
 
-        flClient = LocationServices.getFusedLocationProviderClient(this);
+        //flClient = LocationServices.getFusedLocationProviderClient(this);
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -85,30 +84,40 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
+
+
+        // METER EXPANDABLE SWIPECARD
+        ExpandableCardView card = findViewById(R.id.swipecard);
+        card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
+            @Override
+            public void onExpandChanged(View v, boolean isExpanded) {
+                Toast.makeText(MapActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng uem = null;
+        LatLng ubicacion = new LatLng(miLoc.getLatitude(), miLoc.getAltitude());
 
-        if (miLoc == null) {
+        /*if (miLoc == null) {
             uem = new LatLng(40.5351, -3.6165);
         } else {
             uem = new LatLng(miLoc.getLatitude(), miLoc.getLongitude());
-        }
+        }*/
         // COORDENADAS
         LatLng llMadrid = new LatLng(40.4165001, -3.7025599);
         LatLng llNorte = new LatLng(40.6590900, -3.7676200);
         LatLng llNoroeste = new LatLng(40.6350600, -4.0048600);
         LatLng llSuroeste = new LatLng(40.4500600, -3.9834400);
-        LatLng llSur = new LatLng(40.3223381 , -3.86496);
+        LatLng llSur = new LatLng(40.3223381, -3.86496);
         LatLng llSureste = new LatLng(40.3007600, -3.4372200);
         LatLng llNordeste = new LatLng(40.4820500, -3.3599600);
+        LatLng uem = new LatLng(40.5351, -3.6165);
 
         // MARCADORES EN COORDENADAS
-        // mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea de Alcobendas"));
-        // mMap.moveCamera(CameraUpdateFactory.newLatLng(uem));
+        // Marker markerMadrid = mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
         mMap.addMarker(new MarkerOptions().position(llMadrid).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNorte).title("Marcador en Colmenar Viejo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNoroeste).title("Marcador en Collado Villalba").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
@@ -116,12 +125,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(llSur).title("Marcador en Móstoles").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llSureste).title("Marcador en Arganda del Rey").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(llNordeste).title("Marcador en Alcalá de Henares").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
+        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         // POSICIÓN DE CÁMARA
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 20));
-
-        // TIPO DE VISUALIZACIÓN DE MAPA
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacion));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 20));
+        // TIPO DE VISUALIZACIÓN DE MAPA 
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         // VISUALIZACIÓN DE BOTONES (colores)
         btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
@@ -135,6 +145,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
 
+        // EVENTO PARA EL MAPA
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -150,7 +161,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
         // mMap.setMapType();
+
+        //EVENTO PARA LOS MARCADORES
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                Toast.makeText(MapActivity.this, "Has hecho clic en marker: " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+
+                /*
+                Intent i = new Intent(MapActivity.this, MapActivity.class);
+                startActivity(i);
+                finish();
+                */
+
+                return false; // si ponemos true no se muestra el bocadillo
+
+            }
+        });
     }
+
 
     // TIPOS DE MAPAS CON BOTONES DE COLORES
     public void onClickTipoSatelite(View view) {

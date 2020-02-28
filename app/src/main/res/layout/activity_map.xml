@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,6 @@
     <fragment
         android:id="@+id/fragmentMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         map:uiZoomControls="true"
@@ -17,10 +17,12 @@
         tools:context=".MapActivity"
         tools:layout="@layout/activity_map" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@id/fragmentMap"
         map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toTopOf="parent">
@@ -58,6 +60,22 @@
 
     </LinearLayout>
 
+    <!-- EXOANDABLE CARD VIEW -->
+    <com.alespero.expandablecardview.ExpandableCardView
+        android:layout_marginBottom="300dp"
+        android:background="@color/colorAccent"
+        android:id="@+id/swipecard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="Passengers"
+        app:icon="@drawable/abc_vector_test"
+        app:inner_view="@layout/cardview_information"
+        app:expandOnClick="true"
+        app:animationDuration="300"
+        app:startExpanded="false"
+         />
+
+
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="match_parent"
@@ -70,4 +88,7 @@
     </FrameLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>
