@@ -35,21 +35,25 @@
             map:layout_constraintStart_toStartOf="parent"
             map:layout_constraintTop_toTopOf="parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnTipoMapaSatelite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:onClick="onClickTipoSatelite"
-                android:text="Satélite"/>
+                android:text="Satélite"
+                android:src="@drawable/btn_satellite_32"
+                android:scaleType="fitXY"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnTipoMapaHybrid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:onClick="onClickTipoHybrid"
-                android:text="Híbrido" />
+                android:text="Híbrido"
+                android:src="@drawable/btn_hybrid_32"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
@@ -63,21 +67,25 @@
             map:layout_constraintStart_toStartOf="parent"
             map:layout_constraintTop_toTopOf="parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnTipoMapaNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:onClick="onClickTipoNormal"
                 android:layout_weight="1"
-                android:text="Normal" />
+                android:text="Normal"
+                android:src="@drawable/btn_normal_32"
+                android:scaleType="fitXY"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnTipoMapaTerrain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:onClick="onClickTipoTerrain"
-                android:text="Terreno" />
+                android:text="Terreno"
+                android:src="@drawable/btn_terrain_32"
+                android:scaleType="fitXY"/>
 
         </LinearLayout>
 
@@ -101,7 +109,7 @@
         app:expandOnClick="true"
         app:animationDuration="300"
         app:startExpanded="false" />
-
+    <!-- *-*-*-*-*-*-*-*-*-*-*-* -->
 
     <FrameLayout
         android:id="@+id/fl"
@@ -113,9 +121,5 @@
 
         <include layout="@layout/menu_navigation" />
     </FrameLayout>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,11 +37,11 @@
             android:ems="10"
             android:fontFamily="@font/robotolight"
             android:hint="@string/hint_correo"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
             android:textSize="@dimen/letrasNormales" />
-        //robotolight para las letras
+        <!-- robotolight para las letras -->
 
         <EditText
             android:id="@+id/etPasswordLogin"

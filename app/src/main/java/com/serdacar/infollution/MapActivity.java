@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -37,10 +38,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     ImageView ivMapa;
     EditText etEmail;
     // LAYOUT
-    private Button btnSatelite;
-    private Button btnTerrain;
-    private Button btnNormal;
-    private Button btnHybrid;
+    private ImageButton btnSatelite;
+    private ImageButton btnTerrain;
+    private ImageButton btnNormal;
+    private ImageButton btnHybrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,20 +144,24 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+       // pulsado(false, true, false, false);
+
         // VISUALIZACIÓN DE BOTONES (colores)
+        /*
         btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
         btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
         btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        //btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
         btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro)); */
 
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
 
         // EVENTO PARA EL MAPA
+        /*
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -169,6 +174,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
             }
         });
+        */
+
         //mMap.getUiSettings().setZoomControlsEnabled(true);
         //mMap.getUiSettings().setCompassEnabled(true);
         // mMap.setMapType();
@@ -196,55 +203,30 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     // TIPOS DE MAPAS CON BOTONES DE COLORES
     public void onClickTipoSatelite(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        pulsado(true, false, false, false);
 
     }
 
     public void onClickTipoTerrain(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnTerrain.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        pulsado(false, false, false, true);
+
     }
 
     public void onClickTipoNormal(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnHybrid.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        pulsado(false, false, true, false);
+
     }
 
     public void onClickTipoHybrid(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnHybrid.setTextColor(getResources().getColor(R.color.colorBlancoNuestro));
 
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnTerrain.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnNormal.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnSatelite.setTextColor(getResources().getColor(R.color.colorAzulOscuro));
+        pulsado(false, true, false, false);
+
     }
 
     public void accesoFirst(View v) {
@@ -255,6 +237,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void accederChat(View view) {
         startActivity(new Intent(this, ChatActivity.class));
         //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
+    private void pulsado(boolean btnS, boolean btnH, boolean btnN, boolean btnT){
+
+        if (btnS){
+            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
+
+            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+
+        } else if (btnH){
+            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
+
+            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+
+        } else if (btnN){
+            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
+
+            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+
+        } else if (btnT){
+            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
+
+            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+        }
+
     }
 
 }
