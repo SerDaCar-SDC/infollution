@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,6 @@
     <fragment
         android:id="@+id/fragmentMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         map:uiZoomControls="true"
@@ -17,48 +17,99 @@
         tools:context=".MapActivity"
         tools:layout="@layout/activity_map" />
 
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent">
+        map:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp">
 
-        <Button
-            android:id="@+id/btnTipoMapaSatelite"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoSatelite"
-            android:text="Satélite"/>
+            android:orientation="horizontal"
+            android:layout_below="@id/fragmentMap"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnTipoMapaHybrid"
-            android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/btnTipoMapaSatelite"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:onClick="onClickTipoSatelite"
+                android:text="Satélite"
+                android:src="@drawable/btn_satellite_32"
+                android:scaleType="fitXY"/>
+
+            <ImageButton
+                android:id="@+id/btnTipoMapaHybrid"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:onClick="onClickTipoHybrid"
+                android:text="Híbrido"
+                android:src="@drawable/btn_hybrid_32"
+                android:scaleType="fitXY"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoHybrid"
-            android:text="Híbrido" />
+            android:orientation="horizontal"
+            android:layout_below="@id/fragmentMap"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/btnTipoMapaNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickTipoNormal"
-            android:layout_weight="1"
-            android:text="Normal" />
+            <ImageButton
+                android:id="@+id/btnTipoMapaNormal"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="onClickTipoNormal"
+                android:layout_weight="1"
+                android:text="Normal"
+                android:src="@drawable/btn_normal_32"
+                android:scaleType="fitXY"/>
 
-        <Button
-            android:id="@+id/btnTipoMapaTerrain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onClickTipoTerrain"
-            android:text="Terreno" />
+            <ImageButton
+                android:id="@+id/btnTipoMapaTerrain"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:onClick="onClickTipoTerrain"
+                android:text="Terreno"
+                android:src="@drawable/btn_terrain_32"
+                android:scaleType="fitXY"/>
 
+        </LinearLayout>
 
     </LinearLayout>
+
+
+    <!-- EXOANDABLE CARD VIEW -->
+    <com.alespero.expandablecardview.ExpandableCardView
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="60dp"
+
+        android:background="@color/colorBlancoNuestro"
+        android:id="@+id/swipecard"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        app:title="Expandable Card View"
+        app:icon="@drawable/abc_vector_test"
+        app:inner_view="@layout/cardview_information"
+        app:expandOnClick="true"
+        app:animationDuration="300"
+        app:startExpanded="false" />
+    <!-- *-*-*-*-*-*-*-*-*-*-*-* -->
 
     <FrameLayout
         android:id="@+id/fl"
@@ -70,6 +121,5 @@
 
         <include layout="@layout/menu_navigation" />
     </FrameLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class FirstActivity extends AppCompatActivity {
@@ -38,6 +40,16 @@ public class FirstActivity extends AppCompatActivity {
         tv.setText(String.format(getString(R.string.tv_bienvenida_first), email));
 
         fbAuth = FirebaseAuth.getInstance();
+
+        /*
+        // METER EXPANDABLE SWIPECARD
+        ExpandableCardView card = findViewById(R.id.swipecard);
+        card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
+            @Override
+            public void onExpandChanged(View v, boolean isExpanded) {
+                Toast.makeText(FirstActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+            }
+        });*/
     }
 
     public void accesoMapa(View view) {
