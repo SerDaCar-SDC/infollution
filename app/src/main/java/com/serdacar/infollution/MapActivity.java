@@ -107,8 +107,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -120,6 +118,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             uem = new LatLng(miLoc.getLatitude(), miLoc.getLongitude());
         }*/
         // COORDENADAS
+
         LatLng llMadrid = new LatLng(40.4165001, -3.7025599);
         LatLng llNorte = new LatLng(40.6590900, -3.7676200);
         LatLng llNoroeste = new LatLng(40.6350600, -4.0048600);

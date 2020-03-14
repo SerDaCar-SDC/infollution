@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.serdacar.infollution.database.EstacionDataSource;
 
 public class FirstActivity extends AppCompatActivity {
     static final String CLAVE_EMAIL = "EMAIL";
@@ -22,6 +23,7 @@ public class FirstActivity extends AppCompatActivity {
     TextView tv;
     ImageView ivLogo;
     String email;
+    EstacionDataSource persistencia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class FirstActivity extends AppCompatActivity {
                 Toast.makeText(FirstActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
             }
         });*/
+        persistencia = new EstacionDataSource(this);
     }
 
     public void accesoMapa(View view) {
