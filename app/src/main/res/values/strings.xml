@@ -13,4 +13,5 @@
     <string name="toast_error_acceso">Datos no válidos</string>
     <string name="toast_msj_no_datos">Debes introducir los datos</string>
     <string name="tv_bienvenida_first">¡Bienvenido a Infollution %1$s!</string>
+    <string name="titulo_expandable">Touch me!</string>
 </resources>

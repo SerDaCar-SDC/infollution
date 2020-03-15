@@ -91,19 +91,17 @@
 
     </LinearLayout>
 
-
     <!-- EXOANDABLE CARD VIEW -->
     <com.alespero.expandablecardview.ExpandableCardView
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="60dp"
-
         android:background="@color/colorBlancoNuestro"
         android:id="@+id/swipecard"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:title="Expandable Card View"
+        app:title="@string/titulo_expandable"
         app:icon="@drawable/abc_vector_test"
         app:inner_view="@layout/cardview_information"
         app:expandOnClick="true"

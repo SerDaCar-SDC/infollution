@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +28,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.serdacar.infollution.database.EstacionDataSource;
+import com.serdacar.infollution.model.Estacion;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
@@ -43,6 +46,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private ImageButton btnNormal;
     private ImageButton btnHybrid;
 
+    EstacionDataSource persistencia;
+    TextView tvNombreEstacion;
+    TextView tvDireccionEstacion;
+    TextView tvLatitudEstacion;
+    TextView tvLongitudEstacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +62,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
+
+        tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
+        tvDireccionEstacion = findViewById(R.id.tvDireccionEstacion);
+        tvLatitudEstacion = findViewById(R.id.tvLatitudEstacion);
+        tvLongitudEstacion = findViewById(R.id.tvLongitudEstacion);
 
         //etEmail = findViewById(R.id.etEmailLogin);
         //String emailRegister = getIntent().getStringExtra(RegisterActivity.CLAVE_EMAIL);
@@ -105,6 +119,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Toast.makeText(MapActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //-------Métodos para consultar la baes de datos--------//
+        persistencia = new EstacionDataSource(this);
+
+        leerEstacion();
+    }
+
+    private void leerEstacion() {
+        Estacion est = persistencia.leerEstacion(4);
+        tvNombreEstacion.setText(est.getNombre());
+        tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
+        tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
+        tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+
     }
 
     @Override
