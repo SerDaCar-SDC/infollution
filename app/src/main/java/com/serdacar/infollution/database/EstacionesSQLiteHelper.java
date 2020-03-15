@@ -11,15 +11,15 @@ import java.util.ArrayList;
 
 public class EstacionesSQLiteHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "Estaciones";
-    static final int VERSION_DB = 2;
+    static final int VERSION_DB = 4;
 
     static final String CREATE_TABLE_ESTACIONES =
             "CREATE TABLE " + EstacionContract.EstacionEntry.TABLE_NAME
-                    + "( " + EstacionContract.EstacionEntry.COLUMN_ID  + " INTEGER PRIMARY KEY,"
-                    + EstacionContract.EstacionEntry.COLUMN_NOMBRE + " TEXT UNIQUE,"
-                    + EstacionContract.EstacionEntry.COLUMN_DIRECCION + " TEXT NOT NULL,"
-                    + EstacionContract.EstacionEntry.COLUMN_LATITUD + " REAL NOT NULL,"
-                    + EstacionContract.EstacionEntry.COLUMN_LONGITUD + " REAL NOT NULL);";
+                    + "( " + EstacionContract.EstacionEntry.COLUMN_ID  + " INTEGER PRIMARY KEY, "
+                    + EstacionContract.EstacionEntry.COLUMN_NOMBRE + " TEXT UNIQUE, "
+                    + EstacionContract.EstacionEntry.COLUMN_DIRECCION + " TEXT NOT NULL, "
+                    + EstacionContract.EstacionEntry.COLUMN_LATITUD + " INTEGER NOT NULL, "
+                    + EstacionContract.EstacionEntry.COLUMN_LONGITUD + " INTEGER NOT NULL);";
 
     public EstacionesSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, VERSION_DB);
@@ -33,6 +33,7 @@ public class EstacionesSQLiteHelper extends SQLiteOpenHelper {
     }
 
     private void cargaInicial(SQLiteDatabase db) {
+
         ArrayList<Estacion> listaEstaciones = new ArrayList<Estacion>();
 
         listaEstaciones.add(new Estacion(4, "Pza. de España", "Plaza de España", 404238823, -37122567));
@@ -76,6 +77,9 @@ public class EstacionesSQLiteHelper extends SQLiteOpenHelper {
         }
         db.setTransactionSuccessful();
         db.endTransaction();
+
+
+
     }
 
     @Override
