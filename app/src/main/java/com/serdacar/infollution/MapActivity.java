@@ -256,7 +256,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                 if (marker.getTitle().equals("Pza. de España")){
                     swipe.setTitle(marker.getTitle());
-                    swipe.expand();
 
                     leerEstacion(4);
 
@@ -375,6 +374,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                     leerEstacion(60);
 
+                } else {
+                    // TODO: VER QUE HACEMOS
                 }
 
 
