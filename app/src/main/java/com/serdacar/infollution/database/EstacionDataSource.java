@@ -80,10 +80,6 @@ public class EstacionDataSource {
 
         String query = "SELECT "
                 + EstacionContract.EstacionEntry.COLUMN_ID
-                //+ ", " + EstacionContract.EstacionEntry.COLUMN_NOMBRE
-                //+ ", " + EstacionContract.EstacionEntry.COLUMN_DIRECCION
-                //+ ", " + EstacionContract.EstacionEntry.COLUMN_LATITUD
-                //+ ", " + EstacionContract.EstacionEntry.COLUMN_LONGITUD
                 + " FROM " + EstacionContract.EstacionEntry.TABLE_NAME
                 + " WHERE "
                 + EstacionContract.EstacionEntry.COLUMN_NOMBRE + " = ?";
