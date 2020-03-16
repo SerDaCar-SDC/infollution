@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.serdacar.infollution.model.Estacion;
 
+import java.util.ArrayList;
+
 public class EstacionDataSource {
     private Context contexto;
     private EstacionesSQLiteHelper estacionHelper;
@@ -71,4 +73,30 @@ public class EstacionDataSource {
 
         return estacion;
     }
+
+    public int estacionPornombre(String nombre) {
+        int idEstacion = 0;
+        SQLiteDatabase database = openReadable();
+
+        String query = "SELECT "
+                + EstacionContract.EstacionEntry.COLUMN_ID
+                + " FROM " + EstacionContract.EstacionEntry.TABLE_NAME
+                + " WHERE "
+                + EstacionContract.EstacionEntry.COLUMN_NOMBRE + " = ?";
+
+        String [] whereArgs = {String.valueOf(nombre)};
+
+        Cursor cursor = database.rawQuery(query, whereArgs);
+
+        if (cursor.moveToFirst()) {
+            idEstacion = cursor.getInt(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_ID));
+        }
+
+        cursor.close();
+        close(database);
+
+        return idEstacion;
+    }
+
 }

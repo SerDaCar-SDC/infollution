@@ -18,6 +18,26 @@ public class Estacion implements Serializable {
         this.longitud = longitud;
     }
 
+    public void setCodigoCorto(int codigoCorto) {
+        this.codigoCorto = codigoCorto;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
     public int getCodigoCorto() {
         return codigoCorto;
     }
