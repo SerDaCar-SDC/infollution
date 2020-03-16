@@ -34,11 +34,7 @@ import com.serdacar.infollution.model.Estacion;
 import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
-    private static final int PETICION_PERMISO_LOCALIZACION = 101;
     private GoogleMap mMap;
-    //private FusedLocationProviderClient flClient;
-    private Location miLoc;
-    private LocationManager locManager;
 
     ImageView ivMapa;
     EditText etEmail;
@@ -83,24 +79,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         swipe = findViewById(R.id.swipecard);
 
-        //flClient = LocationServices.getFusedLocationProviderClient(this);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION},
-                    PETICION_PERMISO_LOCALIZACION);
-        } else {
-            Log.i("LOC", "con permisos");
-
-            locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            miLoc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-
         // METER GOOGLE MAPS
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentMap);
@@ -115,11 +93,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
-        //-------Métodos para consultar la baes de datos--------//
         persistencia = new EstacionDataSource(this);
-
-        /* * * * * * * * * * * * * * * * * * * * * */
-        // TODO: leerEstacion();
     }
 
     private void leerEstacion(int id) {
@@ -128,34 +102,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
         tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
         tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // LOCALIZACION EN TIEMPO REAL
         mMap.setMyLocationEnabled(true);
-        LatLng ubicacion = new LatLng(miLoc.getLatitude(), miLoc.getAltitude());
 
-        /*if (miLoc == null) {
-            uem = new LatLng(40.5351, -3.6165);
-        } else {
-            uem = new LatLng(miLoc.getLatitude(), miLoc.getLongitude());
-        }*/
         // COORDENADAS
-
-        LatLng llMadrid = new LatLng(40.4165001, -3.7025599);
-        LatLng llNorte = new LatLng(40.6590900, -3.7676200);
-        LatLng llNoroeste = new LatLng(40.6350600, -4.0048600);
-        LatLng llSuroeste = new LatLng(40.4500600, -3.9834400);
-        LatLng llSur = new LatLng(40.3223381, -3.86496);
-        LatLng llSureste = new LatLng(40.3007600, -3.4372200);
-        LatLng llNordeste = new LatLng(40.4820500, -3.3599600);
-        LatLng uem = new LatLng(40.5351, -3.6165);
-
-        final LatLng est4 = new LatLng(40.4238823, -3.7122567);
+        LatLng est4 = new LatLng(40.4238823, -3.7122567);
         LatLng est8 = new LatLng(40.4215533, -3.6823158);
         LatLng est11 = new LatLng(40.4514734, -3.6773491);
         LatLng est16 = new LatLng(40.4400457, -3.6392422);
@@ -207,21 +163,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(est59).title("Juan Carlos I").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
         mMap.addMarker(new MarkerOptions().position(est60).title("Tres Olivos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
 
-        /*
-        mMap.addMarker(new MarkerOptions().position(llMadrid).title("Marcador en Madrid capital").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llNorte).title("Marcador en Colmenar Viejo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llNoroeste).title("Marcador en Collado Villalba").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llSuroeste).title("Marcador en Villanueva de la Cañada").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llSur).title("Marcador en Móstoles").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llSureste).title("Marcador en Arganda del Rey").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(llNordeste).title("Marcador en Alcalá de Henares").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(uem).title("Marcador en Universidad Europea").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-         */
-
-
-
         // POSICIÓN DE CÁMARA
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(uem, 20));
+        // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(est4, 20));
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
@@ -229,199 +172,39 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
 
-        // EVENTO PARA EL MAPA
-        /*
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                mMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title("New POSITION")
-                        .snippet("Latitud: " + latLng.latitude + " Longitud: " + latLng.longitude)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3))
-                );
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-            }
-        });
-        */
-
-        //mMap.getUiSettings().setZoomControlsEnabled(true);
-        //mMap.getUiSettings().setCompassEnabled(true);
-        // mMap.setMapType();
-
         //EVENTO PARA LOS MARCADORES
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
-                if (marker.getTitle().equals("Pza. de España")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(4);
-
-                } else if (marker.getTitle().equals("Escuelas Aguirre")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(8);
-
-                } else if (marker.getTitle().equals("Avda. Ramón y Cajal")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(11);
-
-                } else if (marker.getTitle().equals("Arturo Soria")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(16);
-
-                } else if (marker.getTitle().equals("Villaverde")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(17);
-
-                } else if (marker.getTitle().equals("Farolillo")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(18);
-
-                } else if (marker.getTitle().equals("Casa de Campo")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(24);
-
-                } else if (marker.getTitle().equals("Barajas Pueblo")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(27);
-
-                } else if (marker.getTitle().equals("Pza. del Carmen")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(35);
-
-                } else if (marker.getTitle().equals("Moratalaz")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(36);
-
-                } else if (marker.getTitle().equals("Cuatro Caminos")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(38);
-
-                } else if (marker.getTitle().equals("Barrio del Pilar")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(39);
-
-                } else if (marker.getTitle().equals("Vallecas")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(40);
-
-                } else if (marker.getTitle().equals("Mendez Alvaro")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(47);
-
-                } else if (marker.getTitle().equals("Castellana")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(48);
-
-                } else if (marker.getTitle().equals("Parque del Retiro")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(49);
-
-                } else if (marker.getTitle().equals("Plaza Castilla")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(50);
-
-                } else if (marker.getTitle().equals("Ensanche de Vallecas")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(54);
-
-                } else if (marker.getTitle().equals("Urb. Embajada")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(55);
-
-                } else if (marker.getTitle().equals("Pza. Elíptica")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(56);
-
-                } else if (marker.getTitle().equals("Sanchinarro")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(57);
-
-                } else if (marker.getTitle().equals("El Pardo")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(58);
-
-                } else if (marker.getTitle().equals("Juan Carlos I")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(59);
-
-                } else if (marker.getTitle().equals("Tres Olivos")){
-                    swipe.setTitle(marker.getTitle());
-
-                    leerEstacion(60);
-
-                } else {
-                    // TODO: VER QUE HACEMOS
-                }
-
-
-
-                /*
-                Intent i = new Intent(MapActivity.this, MapActivity.class);
-                startActivity(i);
-                finish();
-                */
+                swipe.setTitle(marker.getTitle());
+                String tituloMarcador = marker.getTitle();
+                int id = persistencia.estacionPornombre(tituloMarcador);
+                leerEstacion(id);
 
                 return false; // si ponemos true no se muestra el bocadillo
-
             }
         });
-
-
     }
-
 
     // TIPOS DE MAPAS CON BOTONES DE COLORES
     public void onClickTipoSatelite(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-
         pulsado(true, false, false, false);
-
     }
 
     public void onClickTipoTerrain(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-
         pulsado(false, false, false, true);
-
     }
 
     public void onClickTipoNormal(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
         pulsado(false, false, true, false);
-
     }
 
     public void onClickTipoHybrid(View view) {
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
         pulsado(false, true, false, false);
-
     }
 
     public void accesoFirst(View v) {
