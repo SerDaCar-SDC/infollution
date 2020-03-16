@@ -15,6 +15,12 @@
         app:srcCompat="@drawable/logo3"
          />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/plaza_espana"
+        android:scaleType="fitStart"/>
+
     <TextView
         android:id="@+id/tvNombreEstacion"
         android:layout_width="wrap_content"

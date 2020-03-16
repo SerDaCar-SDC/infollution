@@ -118,11 +118,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //-------Métodos para consultar la baes de datos--------//
         persistencia = new EstacionDataSource(this);
 
-        leerEstacion();
+        /* * * * * * * * * * * * * ** * * * * * **/
+        // TODO: leerEstacion();
     }
 
-    private void leerEstacion() {
-        Estacion est = persistencia.leerEstacion(4);
+    private void leerEstacion(int id) {
+        Estacion est = persistencia.leerEstacion(id);
         tvNombreEstacion.setText(est.getNombre());
         tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
         tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
@@ -277,18 +278,126 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             public boolean onMarkerClick(Marker marker) {
 
                 if (marker.getTitle().equals("Pza. de España")){
-                    Toast.makeText(MapActivity.this, "Has hecho clic en marker: " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+                    swipe.setTitle(marker.getTitle());
+                    swipe.expand();
 
+                    leerEstacion(4);
 
-                    // Estacion estacionId = new Estacion();
-                    listaEstaciones = persistencia.leerEstacionesPorTitulo(marker.getTitle());
-
-
-                    // tvTextoLargoJava.setText(String.format(getString(R.string.tv_Texto_Largo), usuario));
-
+                } else if (marker.getTitle().equals("Escuelas Aguirre")){
                     swipe.setTitle(marker.getTitle());
 
-                    // tvNombreEstacion.setText(listaEstaciones.getNombre());
+                    leerEstacion(8);
+
+                } else if (marker.getTitle().equals("Avda. Ramón y Cajal")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(11);
+
+                } else if (marker.getTitle().equals("Arturo Soria")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(16);
+
+                } else if (marker.getTitle().equals("Villaverde")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(17);
+
+                } else if (marker.getTitle().equals("Farolillo")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(18);
+
+                } else if (marker.getTitle().equals("Casa de Campo")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(24);
+
+                } else if (marker.getTitle().equals("Barajas Pueblo")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(27);
+
+                } else if (marker.getTitle().equals("Pza. del Carmen")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(35);
+
+                } else if (marker.getTitle().equals("Moratalaz")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(36);
+
+                } else if (marker.getTitle().equals("Cuatro Caminos")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(38);
+
+                } else if (marker.getTitle().equals("Barrio del Pilar")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(39);
+
+                } else if (marker.getTitle().equals("Vallecas")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(40);
+
+                } else if (marker.getTitle().equals("Mendez Alvaro")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(47);
+
+                } else if (marker.getTitle().equals("Castellana")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(48);
+
+                } else if (marker.getTitle().equals("Parque del Retiro")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(49);
+
+                } else if (marker.getTitle().equals("Plaza Castilla")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(50);
+
+                } else if (marker.getTitle().equals("Ensanche de Vallecas")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(54);
+
+                } else if (marker.getTitle().equals("Urb. Embajada")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(55);
+
+                } else if (marker.getTitle().equals("Pza. Elíptica")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(56);
+
+                } else if (marker.getTitle().equals("Sanchinarro")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(57);
+
+                } else if (marker.getTitle().equals("El Pardo")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(58);
+
+                } else if (marker.getTitle().equals("Juan Carlos I")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(59);
+
+                } else if (marker.getTitle().equals("Tres Olivos")){
+                    swipe.setTitle(marker.getTitle());
+
+                    leerEstacion(60);
+
                 }
 
 
@@ -303,6 +412,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
+
+
     }
 
 
