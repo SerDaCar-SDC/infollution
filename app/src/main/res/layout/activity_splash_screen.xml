@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/tv_transicion_infollution_"
         android:textSize="42sp"
-        android:fontFamily="@font/bromelloregular"
+        android:fontFamily="@font/robotolight"
         android:textColor="@color/colorAzulOscuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="170dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
