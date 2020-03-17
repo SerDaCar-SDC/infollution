@@ -37,7 +37,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     ImageView ivMapa;
-    EditText etEmail;
+    //EditText etEmail;
     // LAYOUT
     private ImageButton btnSatelite;
     private ImageButton btnTerrain;
@@ -46,13 +46,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
-    TextView tvNombreEstacion;
+    //TextView tvNombreEstacion;
     TextView tvDireccionEstacion;
     TextView tvLatitudEstacion;
     TextView tvLongitudEstacion;
 
     ExpandableCardView swipe;
     ArrayList<Estacion> listaEstaciones;
+
+    ImageView ivLugar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         getSupportActionBar().hide();
 
+        ivLugar = findViewById(R.id.ivLugar);
+
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
 
-        tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
+        //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
         tvDireccionEstacion = findViewById(R.id.tvDireccionEstacion);
         tvLatitudEstacion = findViewById(R.id.tvLatitudEstacion);
         tvLongitudEstacion = findViewById(R.id.tvLongitudEstacion);
@@ -98,10 +102,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void leerEstacion(int id) {
         Estacion est = persistencia.leerEstacion(id);
-        tvNombreEstacion.setText(est.getNombre());
+        //tvNombreEstacion.setText(est.getNombre());
+        //ivLugar.setImageResource();
         tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
         tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
         tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+
     }
 
     @Override
