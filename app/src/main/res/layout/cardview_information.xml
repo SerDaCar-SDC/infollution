@@ -5,51 +5,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="350dp"
-    android:layout_height="wrap_content">
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo3"
-         />
+    android:layout_height="wrap_content"
+    android:background="@color/colorBlancoNuestro">
 
     <ImageView
+        android:id="@+id/ivLugar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="110dp"
         android:src="@drawable/plaza_espana"
-        android:scaleType="fitStart"/>
+        android:layout_margin="10dp"/>
 
-    <TextView
-        android:id="@+id/tvNombreEstacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textAlignment="textStart"
-        android:layout_marginLeft="10dp"></TextView>
-    <TextView
-        android:id="@+id/tvDireccionEstacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textAlignment="textEnd"
-        android:layout_marginLeft="10dp"></TextView>
-    <TextView
-        android:id="@+id/tvLatitudEstacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textAlignment="textEnd"
-        android:layout_marginLeft="10dp"></TextView>
-    <TextView
-        android:id="@+id/tvLongitudEstacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textAlignment="textEnd"
-        android:layout_marginLeft="10dp"></TextView>
+    <LinearLayout
+        android:id="@+id/LLInfo"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/tvDireccionEstacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"></TextView>
+        <TextView
+            android:id="@+id/tvLatitudEstacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"></TextView>
+        <TextView
+            android:id="@+id/tvLongitudEstacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"></TextView>
+    </LinearLayout>
+
+
 
 
 
