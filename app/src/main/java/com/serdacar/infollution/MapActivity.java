@@ -33,6 +33,8 @@ import com.serdacar.infollution.model.Estacion;
 
 import java.util.ArrayList;
 
+import static com.serdacar.infollution.R.drawable.plaza_espania;
+
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
 
@@ -107,6 +109,56 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
         tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
         tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+
+        if (id == 4){
+            ivLugar.setImageResource(R.drawable.plaza_espania);
+        } else if (id == 8){
+            ivLugar.setImageResource(R.drawable.escuelas_aguirre);
+        } else if (id == 11){
+            ivLugar.setImageResource(R.drawable.ramon_cajal);
+        }else if (id == 16){
+            ivLugar.setImageResource(R.drawable.arturo_soria);
+        }else if (id == 17){
+            ivLugar.setImageResource(R.drawable.villaverde);
+        }else if (id == 18){
+            ivLugar.setImageResource(R.drawable.farolillo);
+        }else if (id == 24){
+            ivLugar.setImageResource(R.drawable.casa_campo);
+        }else if (id == 27){
+            ivLugar.setImageResource(R.drawable.barajas_pueblo);
+        }else if (id == 35){
+            ivLugar.setImageResource(R.drawable.plaza_carmen);
+        }else if (id == 36){
+            ivLugar.setImageResource(R.drawable.moratalaz);
+        }else if (id == 38){
+            ivLugar.setImageResource(R.drawable.cuatro_caminos);
+        }else if (id == 39){
+            ivLugar.setImageResource(R.drawable.barrio_pilar);
+        }else if (id == 40){
+            ivLugar.setImageResource(R.drawable.vallecas);
+        }else if (id == 47){
+            ivLugar.setImageResource(R.drawable.mendez_alvaro);
+        }else if (id == 48){
+            ivLugar.setImageResource(R.drawable.castellana);
+        }else if (id == 49){
+            ivLugar.setImageResource(R.drawable.parque_retiro);
+        }else if (id == 50){
+            ivLugar.setImageResource(R.drawable.castilla);
+        }else if (id == 54){
+            ivLugar.setImageResource(R.drawable.ensanche_vallecas);
+        }else if (id == 55){
+            ivLugar.setImageResource(R.drawable.embajada);
+        }else if (id == 56){
+            ivLugar.setImageResource(R.drawable.plaza_eliptica);
+        }else if (id == 57){
+            ivLugar.setImageResource(R.drawable.sanchinarro);
+        }else if (id == 58){
+            ivLugar.setImageResource(R.drawable.pardo);
+        }else if (id == 59){
+            ivLugar.setImageResource(R.drawable.juancarlosi);
+        }else if (id == 60){
+            ivLugar.setImageResource(R.drawable.tres_olivos);
+        }
 
     }
 
