@@ -243,7 +243,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
                 int id = persistencia.estacionPornombre(tituloMarcador);
-                //leerEstacion(id);
+                leerEstacion(id);
 
                 Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
                 APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
