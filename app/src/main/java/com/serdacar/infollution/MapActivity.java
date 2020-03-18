@@ -50,7 +50,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     //TextView tvNombreEstacion;
     TextView tvDioxidoAzufre;
     TextView tvMonoxidoCarbono;
-    TextView tvLongitudEstacion;
+    TextView tvMonoxidoNitrogeno;
     TextView tvDioxidoNitrogeno;
 
     ExpandableCardView swipe;
@@ -74,7 +74,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
         tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
         tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
-        tvLongitudEstacion = findViewById(R.id.tvMonoxidoNitrogeno);
+        tvMonoxidoNitrogeno = findViewById(R.id.tvMonoxidoNitrogeno);
         tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
 
 
@@ -114,7 +114,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //ivLugar.setImageResource();
         //tvDioxidoAzufre.setText("Dirección: " + est.getDireccion());
         //tvMonoxidoCarbono.setText("Latitud: " + String.valueOf(est.getLatitud()));
-        //tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+        //tvMonoxidoNitrogeno.setText("Longitud: " + String.valueOf(est.getLongitud()));
 
         if (id == 4){
             ivLugar.setImageResource(R.drawable.plaza_espania);
@@ -259,7 +259,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                             for(int i = 0; i < listaEstaciones.size(); i++) {
                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getEstacion());
-                                tvLongitudEstacion.setText(listaEstaciones.get(i).getH01());
+                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
                             }
