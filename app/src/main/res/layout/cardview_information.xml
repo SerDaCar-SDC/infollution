@@ -11,8 +11,8 @@
     <ImageView
         android:id="@+id/ivLugar"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:src="@drawable/plaza_espana"
+        android:layout_height="150dp"
+        android:src="@drawable/plaza_espania"
         android:layout_margin="10dp"/>
 
     <LinearLayout
@@ -27,19 +27,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"></TextView>
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tvLatitudEstacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"></TextView>
+            android:layout_marginLeft="10dp"/>
         <TextView
             android:id="@+id/tvLongitudEstacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"></TextView>
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
 
