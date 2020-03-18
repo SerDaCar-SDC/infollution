@@ -14,4 +14,6 @@
     <string name="toast_msj_no_datos">Debes introducir los datos</string>
     <string name="tv_bienvenida_first">¡Bienvenido a Infollution %1$s!</string>
     <string name="titulo_expandable">Touch me!</string>
+    <string name="tv_dioxido_carbono">Dióxido de Azufre SO2:</string>
+    <string name="tv_monoxido_carbono">Monóxido de carbono CO:</string>
 </resources>

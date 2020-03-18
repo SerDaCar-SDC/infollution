@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -20,8 +21,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.serdacar.infollution.database.EstacionDataSource;
 import com.serdacar.infollution.model.Estacion;
+import com.serdacar.infollution.retrofit.RetrofitClient;
+import com.serdacar.infollution.retrofit.model.APIEstaciones;
+import com.serdacar.infollution.retrofit.model.DatoHorario;
+import com.serdacar.infollution.retrofit.model.Datos;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -37,9 +48,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
     //TextView tvNombreEstacion;
-    TextView tvDireccionEstacion;
-    TextView tvLatitudEstacion;
+    TextView tvDioxidoAzufre;
+    TextView tvMonoxidoCarbono;
     TextView tvLongitudEstacion;
+    TextView tvDioxidoNitrogeno;
 
     ExpandableCardView swipe;
     ArrayList<Estacion> listaEstaciones;
@@ -60,9 +72,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ivMapa.setEnabled(false);
 
         //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
-        tvDireccionEstacion = findViewById(R.id.tvDireccionEstacion);
-        tvLatitudEstacion = findViewById(R.id.tvLatitudEstacion);
-        tvLongitudEstacion = findViewById(R.id.tvLongitudEstacion);
+        tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
+        tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
+        tvLongitudEstacion = findViewById(R.id.tvMonoxidoNitrogeno);
+        tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
 
 
         // LAYOUT
@@ -99,9 +112,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Estacion est = persistencia.leerEstacion(id);
         //tvNombreEstacion.setText(est.getNombre());
         //ivLugar.setImageResource();
-        tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
-        tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
-        tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+        //tvDioxidoAzufre.setText("Dirección: " + est.getDireccion());
+        //tvMonoxidoCarbono.setText("Latitud: " + String.valueOf(est.getLatitud()));
+        //tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
 
         if (id == 4){
             ivLugar.setImageResource(R.drawable.plaza_espania);
@@ -230,7 +243,40 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
                 int id = persistencia.estacionPornombre(tituloMarcador);
-                leerEstacion(id);
+                //leerEstacion(id);
+
+                Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
+                APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
+                Call<Datos> call  = apiEstaciones.obtenerDatos();
+
+                call.enqueue(new Callback<Datos>() {
+                    @Override
+                    public void onResponse(Call<Datos> call, Response<Datos> response) {
+                        if(response.isSuccessful()) {
+                            Datos d = response.body();
+                            List<DatoHorario> listaEstaciones = d.getDatoHorario();
+                            //configurarRecyclerView(listaMonumentos);
+
+                            for(int i = 0; i < listaEstaciones.size(); i++) {
+                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getEstacion());
+                                tvLongitudEstacion.setText(listaEstaciones.get(i).getH01());
+                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
+                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                            }
+
+
+                        } else {
+                            Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Datos> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                        Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
+                    }
+                });
+
 
                 return false; // si ponemos true no se muestra el bocadillo
             }
