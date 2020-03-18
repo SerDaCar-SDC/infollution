@@ -243,7 +243,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
                 int id = persistencia.estacionPornombre(tituloMarcador);
-                //leerEstacion(id);
+
+                leerEstacion(id);
 
                 Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
                 APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
@@ -255,7 +256,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         if(response.isSuccessful()) {
                             Datos d = response.body();
                             List<DatoHorario> listaEstaciones = d.getDatoHorario();
-                            //configurarRecyclerView(listaMonumentos);
 
                             for(int i = 0; i < listaEstaciones.size(); i++) {
                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getEstacion());
