@@ -26,10 +26,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         View tvMovimiento = findViewById(R.id.tvMovimiento);
         ImageView ivFoto = findViewById(R.id.ivLogoSS);
 
-        Animation translate1 = AnimationUtils.loadAnimation(this, R.anim.grow_disappear);
+        Animation translate1 = AnimationUtils.loadAnimation(this, R.anim.slideup);
         tvMovimiento.startAnimation(translate1);
 
-        Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.leftin);
+        Animation translate2 = AnimationUtils.loadAnimation(this, R.anim.slidedown);
         ivFoto.startAnimation(translate2);
 
         openApp(true);
