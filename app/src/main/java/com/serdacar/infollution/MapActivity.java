@@ -199,6 +199,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         LatLng est58 = new LatLng(40.4942012, -3.6605173);
         LatLng est59 = new LatLng(40.4607255, -3.6163407);
         LatLng est60 = new LatLng(40.5005477, -3.6897308);
+        
 
         // MARCADORES EN COORDENADAS
         // Marker markerMadrid = mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
