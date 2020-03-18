@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/ivLugar"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
         android:layout_height="150dp"
-        android:src="@drawable/plaza_espania"
+        android:scaleType="centerCrop"
+        android:src="@drawable/plaza_espana"
         android:layout_margin="10dp"/>
 
     <LinearLayout
@@ -23,19 +24,25 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:id="@+id/tvDireccionEstacion"
+            android:id="@+id/tvDioxidoAzufre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"/>
         <TextView
-            android:id="@+id/tvLatitudEstacion"
+            android:id="@+id/tvMonoxidoCarbono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"/>
         <TextView
-            android:id="@+id/tvLongitudEstacion"
+            android:id="@+id/tvMonoxidoNitrogeno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"></TextView>
+        <TextView
+            android:id="@+id/tvDioxidoNitrogeno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

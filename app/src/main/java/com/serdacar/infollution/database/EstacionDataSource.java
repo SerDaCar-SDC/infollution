@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.serdacar.infollution.model.Estacion;
 
-import java.util.ArrayList;
-
 public class EstacionDataSource {
     private Context contexto;
     private EstacionesSQLiteHelper estacionHelper;
@@ -72,7 +70,7 @@ public class EstacionDataSource {
         close(database);
 
         return estacion;
-    }
+    } 
 
     public int estacionPornombre(String nombre) {
         int idEstacion = 0;

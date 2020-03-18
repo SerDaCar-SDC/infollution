@@ -1,26 +1,17 @@
 package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.alespero.expandablecardview.ExpandableCardView;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -30,10 +21,18 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.serdacar.infollution.database.EstacionDataSource;
 import com.serdacar.infollution.model.Estacion;
+import com.serdacar.infollution.retrofit.RetrofitClient;
+import com.serdacar.infollution.retrofit.model.APIEstaciones;
+import com.serdacar.infollution.retrofit.model.DatoHorario;
+import com.serdacar.infollution.retrofit.model.Datos;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.serdacar.infollution.R.drawable.plaza_espania;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
@@ -49,9 +48,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
     //TextView tvNombreEstacion;
-    TextView tvDireccionEstacion;
-    TextView tvLatitudEstacion;
+    TextView tvDioxidoAzufre;
+    TextView tvMonoxidoCarbono;
     TextView tvLongitudEstacion;
+    TextView tvDioxidoNitrogeno;
 
     ExpandableCardView swipe;
     ArrayList<Estacion> listaEstaciones;
@@ -66,15 +66,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         getSupportActionBar().hide();
 
         ivLugar = findViewById(R.id.ivLugar);
-
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
 
         //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
-        tvDireccionEstacion = findViewById(R.id.tvDireccionEstacion);
-        tvLatitudEstacion = findViewById(R.id.tvLatitudEstacion);
-        tvLongitudEstacion = findViewById(R.id.tvLongitudEstacion);
+        tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
+        tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
+        tvLongitudEstacion = findViewById(R.id.tvMonoxidoNitrogeno);
+        tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
 
 
         // LAYOUT
@@ -100,15 +100,20 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
         persistencia = new EstacionDataSource(this);
+
+        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
     }
 
     private void leerEstacion(int id) {
         Estacion est = persistencia.leerEstacion(id);
         //tvNombreEstacion.setText(est.getNombre());
         //ivLugar.setImageResource();
-        tvDireccionEstacion.setText("Dirección: " + est.getDireccion());
-        tvLatitudEstacion.setText("Latitud: " + String.valueOf(est.getLatitud()));
-        tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
+        //tvDioxidoAzufre.setText("Dirección: " + est.getDireccion());
+        //tvMonoxidoCarbono.setText("Latitud: " + String.valueOf(est.getLatitud()));
+        //tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
 
         if (id == 4){
             ivLugar.setImageResource(R.drawable.plaza_espania);
@@ -196,30 +201,30 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // MARCADORES EN COORDENADAS
         // Marker markerMadrid = mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
-        mMap.addMarker(new MarkerOptions().position(est4).title("Pza. de España").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est8).title("Escuelas Aguirre").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est11).title("Avda. Ramón y Cajal").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est16).title("Arturo Soria").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est17).title("Villaverde").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est18).title("Farolillo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est24).title("Casa de Campo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est27).title("Barajas Pueblo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est35).title("Pza. del Carmen").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est36).title("Moratalaz").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est38).title("Cuatro Caminos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est39).title("Barrio del Pilar").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est40).title("Vallecas").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est47).title("Mendez Alvaro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est48).title("Castellana").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est49).title("Parque del Retiro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est50).title("Plaza Castilla").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est54).title("Ensanche de Vallecas").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est55).title("Urb. Embajada").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est56).title("Pza. Elíptica").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est57).title("Sanchinarro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est58).title("El Pardo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est59).title("Juan Carlos I").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
-        mMap.addMarker(new MarkerOptions().position(est60).title("Tres Olivos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo3)));
+        mMap.addMarker(new MarkerOptions().position(est4).title("Pza. de España").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est8).title("Escuelas Aguirre").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est11).title("Avda. Ramón y Cajal").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est16).title("Arturo Soria").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est17).title("Villaverde").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est18).title("Farolillo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est24).title("Casa de Campo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est27).title("Barajas Pueblo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est35).title("Pza. del Carmen").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est36).title("Moratalaz").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est38).title("Cuatro Caminos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est39).title("Barrio del Pilar").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est40).title("Vallecas").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est47).title("Mendez Alvaro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est48).title("Castellana").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est49).title("Parque del Retiro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est50).title("Plaza Castilla").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est54).title("Ensanche de Vallecas").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est55).title("Urb. Embajada").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est56).title("Pza. Elíptica").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est57).title("Sanchinarro").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est58).title("El Pardo").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est59).title("Juan Carlos I").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        mMap.addMarker(new MarkerOptions().position(est60).title("Tres Olivos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
 
         // POSICIÓN DE CÁMARA
         // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(est4, 20));
@@ -237,7 +242,40 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
                 int id = persistencia.estacionPornombre(tituloMarcador);
-                leerEstacion(id);
+                //leerEstacion(id);
+
+                Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
+                APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
+                Call<Datos> call  = apiEstaciones.obtenerDatos();
+
+                call.enqueue(new Callback<Datos>() {
+                    @Override
+                    public void onResponse(Call<Datos> call, Response<Datos> response) {
+                        if(response.isSuccessful()) {
+                            Datos d = response.body();
+                            List<DatoHorario> listaEstaciones = d.getDatoHorario();
+                            //configurarRecyclerView(listaMonumentos);
+
+                            for(int i = 0; i < listaEstaciones.size(); i++) {
+                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getEstacion());
+                                tvLongitudEstacion.setText(listaEstaciones.get(i).getH01());
+                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
+                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                            }
+
+
+                        } else {
+                            Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Datos> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                        Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
+                    }
+                });
+
 
                 return false; // si ponemos true no se muestra el bocadillo
             }
