@@ -38,6 +38,10 @@ public class ChatActivity extends AppCompatActivity {
                 new ColorDrawable(getResources().getColor(R.color.colorAzulOscuro)));
     }
 
+    public void accederNoticias(View view) {
+        startActivity(new Intent(this, NewsActivity.class));
+    }
+
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));
         //overridePendingTransition(R.anim.left_in, R.anim.left_out);

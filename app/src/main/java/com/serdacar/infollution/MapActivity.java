@@ -265,6 +265,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         pulsado(false, true, false, false);
     }
 
+    public void accederNoticias(View view) {
+        startActivity(new Intent(this, NewsActivity.class));
+    }
+
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));
     }

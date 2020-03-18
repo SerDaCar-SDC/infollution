@@ -55,6 +55,10 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
+    public void accederNoticias(View view) {
+        startActivity(new Intent(this, NewsActivity.class));
+    }
+
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
         //overridePendingTransition(R.anim.left_in, R.anim.left_out);
@@ -98,4 +102,6 @@ public class FirstActivity extends AppCompatActivity {
         dialog = builder.create();
         dialog.show();
     }
+
+
 }

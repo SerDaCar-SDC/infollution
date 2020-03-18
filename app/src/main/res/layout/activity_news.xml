@@ -6,4 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNoticias"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints" />
+
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rvNoticias"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <include layout="@layout/menu_navigation"/>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
