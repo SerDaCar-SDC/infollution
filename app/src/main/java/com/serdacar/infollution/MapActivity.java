@@ -40,7 +40,6 @@ import retrofit2.Retrofit;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-
     ImageView ivMapa;
 
     // CARDVIEW INFORMATION
