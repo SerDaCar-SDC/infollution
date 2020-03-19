@@ -3,6 +3,7 @@ package com.serdacar.infollution;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +28,10 @@ import com.serdacar.infollution.retrofit.model.DatoHorario;
 import com.serdacar.infollution.retrofit.model.Datos;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +61,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     ArrayList<Estacion> listaEstaciones;
 
     ImageView ivLugar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +111,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
         btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
+
     }
+
+
+
 
     private void leerEstacion(int id) {
         Estacion est = persistencia.leerEstacion(id);

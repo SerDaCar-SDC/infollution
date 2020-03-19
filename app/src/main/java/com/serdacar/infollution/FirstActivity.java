@@ -1,36 +1,36 @@
 package com.serdacar.infollution;
 
+import android.Manifest;
 import android.app.AlertDialog;
-import android.app.usage.UsageEvents;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
-import com.anychart.chart.common.dataentry.SingleValueDataSet;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.chart.common.listener.Event;
 import com.anychart.chart.common.listener.ListenersInterface;
-import com.anychart.charts.CircularGauge;
 import com.anychart.charts.Pie;
-import com.anychart.core.axes.Circular;
-import com.anychart.core.gauge.pointers.Bar;
 import com.anychart.enums.Align;
-import com.anychart.enums.Anchor;
-import com.anychart.enums.HAlign;
 import com.anychart.enums.LegendLayout;
-import com.anychart.graphics.vector.Fill;
-import com.anychart.graphics.vector.SolidFill;
 import com.google.firebase.auth.FirebaseAuth;
+import com.serdacar.infollution.database.EstacionDataSource;
+import com.serdacar.infollution.model.Estacion;
 import com.serdacar.infollution.retrofit.RetrofitClient;
 import com.serdacar.infollution.retrofit.model.APIEstaciones;
 import com.serdacar.infollution.retrofit.model.DatoHorario;
@@ -59,6 +59,14 @@ public class FirstActivity extends AppCompatActivity {
     String mc;
     String dn;
 
+
+    private LocationManager miLocalizacion;
+    private Location loc;
+
+    private double miLatitud;
+    private double miLongitud;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +87,35 @@ public class FirstActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
 
 
+        /* * * *  ENCONTRAR UBICACION * * * * * * * * * * * * * * * * * */
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            Toast.makeText(this, "Es necesario que active su GPS", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+
+            miLocalizacion = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            loc = miLocalizacion.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
+
+
+        miLatitud = loc.getLatitude();
+        miLongitud = loc.getLongitude();
+
+        Toast.makeText(this, miLatitud + " " + miLongitud, Toast.LENGTH_LONG).show();
+
+
+        EstacionDataSource eds = new EstacionDataSource(this);
+
+        ArrayList<Estacion> listaEstaciones = eds.leerEstacionLista();
+        Estacion estacionCerca = encontrarEstMasCerca(listaEstaciones, miLatitud, miLongitud);
+
+        estacionCerca.getLatitud();
+        estacionCerca.getLongitud();
+        Toast.makeText(this, estacionCerca.getNombre(), Toast.LENGTH_LONG).show();
+
+        /* * * * * * * * * * * * * * * * * * * * * */
 
 
         Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
@@ -97,10 +133,10 @@ public class FirstActivity extends AppCompatActivity {
 
                     // for(int i = 0; i < listaEstaciones.size(); i++) {
 
-                        da = listaEstaciones.get(1).getH01();
-                        le = listaEstaciones.get(1).getH02();
-                        mc = listaEstaciones.get(1).getH03();
-                        dn = listaEstaciones.get(1).getH04();
+                        da = listaEstaciones.get(0).getH01();
+                        le = listaEstaciones.get(0).getH02();
+                        mc = listaEstaciones.get(0).getH03();
+                        dn = listaEstaciones.get(0).getH04();
 
                     // }
 
@@ -116,6 +152,8 @@ public class FirstActivity extends AppCompatActivity {
                 Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
             }
         });
+
+        // TODO: Toast.makeText(this, "DA: " + da + ", LE: " + le + ", MC: " + mc + ", DN: " + dn, Toast.LENGTH_LONG).show();
 
 
        /* * * * * * * * * * * * * * * * ** * * * * * * * * * ** * * * * * * * * * **
@@ -247,7 +285,7 @@ public class FirstActivity extends AppCompatActivity {
 
         pie.data(data);
 
-        pie.title("Nivel de contaminación").margin(50d, 50d, 50d, 50d);
+        pie.title("Estacion mas cerca" + estacionCerca.getNombre()).margin(50d, 50d, 50d, 50d);
 
         pie.labels().position("outside");
 
@@ -328,6 +366,29 @@ public class FirstActivity extends AppCompatActivity {
 
 
     }
+
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * ** * */
+
+    // lat = x \\
+    // long = y   \\
+    public Estacion encontrarEstMasCerca(ArrayList<Estacion> lista, double posiX, double posiY) {
+        Estacion resMenosdistante = null;
+
+        double distancia;
+        double distanciaMenor = 9999999.99;
+
+        for (Estacion estacion : lista) {
+            distancia = Math.sqrt(Math.pow(posiX - estacion.getLatitud(), 2) + Math.pow(posiY - estacion.getLongitud(), 2));
+            if (distancia < distanciaMenor) {
+                distanciaMenor = distancia;
+                resMenosdistante = estacion;
+            }
+        }
+        return resMenosdistante;
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * ** * */
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));

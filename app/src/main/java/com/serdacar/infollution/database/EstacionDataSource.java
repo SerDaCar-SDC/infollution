@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.serdacar.infollution.model.Estacion;
 
+import java.util.ArrayList;
+
 public class EstacionDataSource {
     private Context contexto;
     private EstacionesSQLiteHelper estacionHelper;
@@ -14,6 +16,7 @@ public class EstacionDataSource {
         this.contexto = contexto;
         estacionHelper = new EstacionesSQLiteHelper(contexto);
     }
+
 
     public SQLiteDatabase openReadable() {
         return estacionHelper.getReadableDatabase();
@@ -95,6 +98,53 @@ public class EstacionDataSource {
         close(database);
 
         return idEstacion;
+    }
+
+
+    public ArrayList<Estacion> leerEstacionLista() {
+        ArrayList<Estacion> listaEstaciones = new ArrayList<Estacion>();
+        SQLiteDatabase database = openReadable();
+
+        String query = "SELECT "
+                + EstacionContract.EstacionEntry.COLUMN_ID
+                + ", " + EstacionContract.EstacionEntry.COLUMN_NOMBRE
+                + ", " + EstacionContract.EstacionEntry.COLUMN_DIRECCION
+                + ", " + EstacionContract.EstacionEntry.COLUMN_LATITUD
+                + ", " + EstacionContract.EstacionEntry.COLUMN_LONGITUD
+                + " FROM " + EstacionContract.EstacionEntry.TABLE_NAME;
+
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        Estacion station = null;
+
+        int id;
+        String nombre;
+        String direccion;
+        double latitud;
+        double longitud;
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                id = cursor.getInt(cursor.getColumnIndex(EstacionContract.EstacionEntry.COLUMN_ID));
+                nombre = cursor.getString(cursor.getColumnIndex(EstacionContract.EstacionEntry.COLUMN_NOMBRE));
+                direccion = cursor.getString(cursor.getColumnIndex(EstacionContract.EstacionEntry.COLUMN_DIRECCION));
+                latitud = cursor.getDouble(cursor.getColumnIndex(EstacionContract.EstacionEntry.COLUMN_LATITUD));
+                longitud = cursor.getDouble(cursor.getColumnIndex(EstacionContract.EstacionEntry.COLUMN_LONGITUD));
+
+                station = new Estacion(id, nombre, direccion, latitud, longitud);
+
+                listaEstaciones.add(station);
+
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        close(database);
+
+        return listaEstaciones;
     }
 
 }
