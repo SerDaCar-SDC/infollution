@@ -15,6 +15,12 @@ import android.widget.Toast;
 import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.serdacar.infollution.database.EstacionDataSource;
+import com.serdacar.infollution.model.Estacion;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class FirstActivity extends AppCompatActivity {
     static final String CLAVE_EMAIL = "EMAIL";

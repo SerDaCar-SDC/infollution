@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.serdacar.infollution.model.Estacion;
 
+import java.util.ArrayList;
+
 public class EstacionDataSource {
     private Context contexto;
     private EstacionesSQLiteHelper estacionHelper;
@@ -95,6 +97,48 @@ public class EstacionDataSource {
         close(database);
 
         return idEstacion;
+    }
+    public ArrayList<Estacion> leerTodasEstaciones() {
+        ArrayList<Estacion> listaEstaciones = new ArrayList<Estacion>();
+        SQLiteDatabase database = openReadable();
+
+        String query = "SELECT "
+                + EstacionContract.EstacionEntry.COLUMN_ID
+                + ", " + EstacionContract.EstacionEntry.COLUMN_NOMBRE
+                + ", " + EstacionContract.EstacionEntry.COLUMN_DIRECCION
+                + ", " + EstacionContract.EstacionEntry.COLUMN_LATITUD
+                + ", " + EstacionContract.EstacionEntry.COLUMN_LONGITUD
+                + " FROM " + EstacionContract.EstacionEntry.TABLE_NAME;
+
+
+        Cursor cursor = database.rawQuery(query, null);
+
+        Estacion estacion = null;
+        int id;
+        String nombre;
+        String direccion;
+        double latitud;
+        double longitud;
+
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_ID));
+            nombre = cursor.getString(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_NOMBRE));
+            direccion = cursor.getString(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_DIRECCION));
+            latitud = cursor.getDouble(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_LATITUD));
+            longitud = cursor.getDouble(cursor.getColumnIndex(
+                    EstacionContract.EstacionEntry.COLUMN_LONGITUD));
+
+
+            estacion = new Estacion(id, nombre, direccion, latitud, longitud);
+            listaEstaciones.add(estacion);
+        }
+
+        close(database);
+        return listaEstaciones;
     }
 
 }
