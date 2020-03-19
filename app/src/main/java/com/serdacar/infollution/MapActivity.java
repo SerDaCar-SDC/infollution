@@ -41,7 +41,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     ImageView ivMapa;
-    //EditText etEmail;
+
     // LAYOUT
     private ImageButton btnSatelite;
     private ImageButton btnTerrain;
@@ -275,7 +275,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                 if (codigoEstacion.substring(0, 1).equals("0")) {
                                     codigoRecuperado = codigoEstacion.substring(1, 3);
 
-                                    numeroEstacion = Integer.parseInt(codigoEstacion);
+                                    numeroEstacion = Integer.parseInt(codigoRecuperado);
                                     if (estacionSeleccionada.getCodigoCorto() == numeroEstacion) {
                                         if (listaEstaciones.get(i).getMagnitud().equals("1")) {
                                             if (horaActual == 1) {
@@ -482,27 +482,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                                             }
 
                                         }
-                                        //tvDioxidoAzufre.setText(listaEstaciones.get(i).getH05());
                                     }
-                                    //est = persistencia.leerEstacion(numeroEstacion);
-
-                                    /*if (est != null) {
-
-
-                                    }*/
-
-
                                 }
-                                /*tvDioxidoAzufre.setText(listaEstaciones.get(i).getEstacion());
-                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
-                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
-                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());*/
-
                             }
-
-
-
-
 
                         } else {
                             Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
