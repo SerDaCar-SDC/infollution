@@ -546,6 +546,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(new Intent(this, ChatActivity.class));
     }
 
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
     private void pulsado(boolean btnS, boolean btnH, boolean btnN, boolean btnT){
 
         if (btnS){

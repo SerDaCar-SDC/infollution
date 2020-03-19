@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.serdacar.infollution.model.Article;
 import com.serdacar.infollution.model.Headlines;
@@ -28,6 +29,8 @@ public class NewsActivity extends AppCompatActivity {
     NewsAdapter na;
     LinearLayoutManager llm;
 
+    ImageView ivLogoNoticias;
+
     String pais = "US";
     static final String API_KEY = "45dde31099fb4edfb5fb6b622b80bff2";
 
@@ -38,12 +41,38 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        getSupportActionBar().hide();
+
         rv = findViewById(R.id.rvNoticias);
+        ivLogoNoticias = findViewById(R.id.ivMenuNews);
 
         // pais = getCountry();
 
         cosumirWS();
 
+        ivLogoNoticias.setImageResource(R.drawable.ic_info_foreground_rojo);
+        ivLogoNoticias.setEnabled(false);
+
+    }
+
+    public void accesoFirst(View v) {
+        startActivity(new Intent(this, FirstActivity.class));
+        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
+
+    public void accesoMapa(View view) {
+        startActivity(new Intent(this, MapActivity.class));
+        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
+
+    public void accederChat(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     private void cosumirWS() {
