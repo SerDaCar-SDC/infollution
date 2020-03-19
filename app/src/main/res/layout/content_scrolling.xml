@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ScrollingActivity"
     tools:showIn="@layout/activity_scrolling"
@@ -11,67 +11,185 @@
 
     //Aquí van los gases
 
-
     <LinearLayout
-        android:id="@+id/LLGas1Primero"
+        android:id="@+id/llTodoDioxidoAzufre"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
         <LinearLayout
-            android:id="@+id/LLgas1Completo"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview">
+            android:orientation="vertical"
+            android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
+            android:layout_margin="10dp">
 
-            <ImageView
-                android:id="@+id/ivGas1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_molecule_foreground_rojo"/>
-
-            <LinearLayout
-                android:id="@+id/LLgas1Info"
-                android:orientation="vertical"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:text="Dióxido de Azufre (SO2)"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlancoNuestro"
+                android:textSize="24sp"
+                android:layout_margin="10dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview_claro">
 
                 <TextView
-                    android:id="@+id/tvFormaTituloGas1"
+                    android:id="@+id/LeerMasDioxidoAzufre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejemplo: NO2"
-                    android:textColor="@color/colorBlancoNuestro"
-                    android:textAlignment="center"/>
-
-                <TextView
-                    android:id="@+id/tvTituloGas1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Titulo Gas1"
-                    android:textColor="@color/colorBlancoNuestro"
-                    android:textAlignment="center"/>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:text="Leer más..."
                     android:layout_margin="10dp"
-                    android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview_claro">
+                    android:textColor="@color/colorBlancoNuestro"
+                    android:onClick="leerMasDioxidoAzufre"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/large_text"
-                        android:layout_margin="10dp"
-                        android:textColor="@color/colorBlancoNuestro"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
+            </FrameLayout>
 
         </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monóxido de Carbono (CO)"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlancoNuestro"
+                android:textSize="24sp"
+                android:layout_margin="10dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview_claro">
+
+                <TextView
+                    android:id="@+id/LeerMasMonoxidoCarbono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Leer más..."
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorBlancoNuestro"
+                    android:onClick="leerMasMonoxidoCarbono"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monóxido de Nitrógeno (NO)"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlancoNuestro"
+                android:textSize="24sp"
+                android:layout_margin="10dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview_claro">
+
+                <TextView
+                    android:id="@+id/LeerMasMonoxidoNitrogeno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Leer más..."
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorBlancoNuestro"
+                    android:onClick="leerMasMonoxidoNitrogeno"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dióxido de Nitrógeno (NO2)"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlancoNuestro"
+                android:textSize="24sp"
+                android:layout_margin="10dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview_claro">
+
+                <TextView
+                    android:id="@+id/LeerMasDioxidoNitrogeno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Leer más..."
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorBlancoNuestro"
+                    android:onClick="leerMasDioxidoNitrogeno"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
