@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void accesoRegisterActivity(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
+        finish();
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
@@ -70,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent i = new Intent(LoginActivity.this, FirstActivity.class);
                                 i.putExtra(CLAVE_EMAIL, fbUser.getEmail());
                                 startActivity(i);
+                                finish();
                                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                             } else {

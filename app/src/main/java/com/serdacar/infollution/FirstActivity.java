@@ -1,6 +1,7 @@
 package com.serdacar.infollution;
 
-import android.Manifest;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,6 +29,8 @@ import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
+
+import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.serdacar.infollution.database.EstacionDataSource;
 import com.serdacar.infollution.model.Estacion;
@@ -43,12 +46,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import com.serdacar.infollution.model.Estacion;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class FirstActivity extends AppCompatActivity {
     static final String CLAVE_EMAIL = "EMAIL";
     FirebaseAuth fbAuth;
 
-    // TextView tv;
+    TextView tv;
     ImageView ivLogo;
     String email;
 
@@ -76,13 +85,10 @@ public class FirstActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(
                 new ColorDrawable(getResources().getColor(R.color.colorAzulOscuro)));
 
-        // tv = findViewById(R.id.tvBienvenida);
         ivLogo = findViewById(R.id.ivMenuLogo);
         ivLogo.setEnabled(false);
 
-
         email = getIntent().getStringExtra(RegisterActivity.CLAVE_EMAIL);
-        // tv.setText(String.format(getString(R.string.tv_bienvenida_first), email));
 
         fbAuth = FirebaseAuth.getInstance();
 
@@ -392,6 +398,7 @@ public class FirstActivity extends AppCompatActivity {
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accesoMapa(View view) {
@@ -401,7 +408,10 @@ public class FirstActivity extends AppCompatActivity {
 
     public void accederChat(View view) {
         startActivity(new Intent(this, ChatActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
     }
 
     public void desconectar() {

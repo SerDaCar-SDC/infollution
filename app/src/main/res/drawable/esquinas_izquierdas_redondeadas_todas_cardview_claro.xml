@@ -6,7 +6,7 @@
 
     <!-- Color de fondo de la vista -->
     <solid
-        android:color="@color/colorAzulOscuro" >
+        android:color="@color/colorAzul" >
     </solid>
 
     <!-- Aquí indicamos el radio a aplicar a las esquinas -->

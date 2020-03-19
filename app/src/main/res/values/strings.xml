@@ -16,4 +16,156 @@
     <string name="titulo_expandable">Touch me!</string>
     <string name="tv_dioxido_carbono">Dióxido de Azufre SO2:</string>
     <string name="tv_monoxido_carbono">Monóxido de carbono CO:</string>
+    <string name="tv_azufre_titulo">Dióxido de Azufre</string>
+    <string name="medida_gas">µg/m3</string>
+    <string name="tv_carbono_titulo">Monóxido de Carbono</string>
+    <string name="tv_mnitro_titulo">Monóxido de Nitrógeno</string>
+    <string name="tv_dnitro_titulo">Dióxido de Nitrógeno</string>
+    <string name="title_activity_scrolling_gases">ScrollingGases</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scrolling">Gases nocivos</string>
+    <string name="nombre_dioxidoAzufre">Dióxido de Azufre</string>
+
+    <string name="dioxidoazufre_info">El Dióxido de azufre es un gas incoloro, irritante, con un olor penetrante que se comienza a percibir con 0,3 a 1,4 ppm y es perfectamente distinguible a partir de 3 ppm -partes por millón-. Su densidad es el doble que la del aire. No es un gas inflamable, ni explosivo y tiene mucha estabilidad, es muy soluble en agua y en contacto con ella se convierte en ácido sulfúrico. Consiste en un átomo de azufre y dos de oxígeno.\n \n
+
+        La principal fuente de emisión de dióxido de azufre a la atmósfera es la combustión de productos petrolíferos y la quema de carbón en centrales eléctricas y calefacciones centrales. Existen también algunas fuentes naturales, como es el caso de los volcanes.\n\n
+
+        La contaminación del aire por SO2 causa los siguientes efectos:\n \n  - Dificultad para respirar\n \n - Inflamación de las vías respiratorias\n \n - Irritación ocular por formación de ácido sulfuroso sobre las mucosas húmedas\n \n - Alteraciones psíquicas\n \n - Edema pulmonar\n\n  - Paro cardíaco\n\n  - Colapso circulatorio\n\n  - Queratitis</string>
+
+
+
+    <string name="monoxidocarbono_info">
+
+        El monóxido de carbono, cuya fórmula química es CO, es un gas inodoro, incoloro, inflamable y altamente tóxico. Puede causar la muerte cuando se respira en niveles elevados. Se produce cuando se queman materiales combustibles como gas, gasolina, keroseno, carbón, petróleo, tabaco o madera en ambientes de poco oxígeno.\n\n
+        Las chimeneas, las calderas, los calentadores de agua y los aparatos domésticos que queman combustible, como las estufas, también pueden producirlo si no están funcionando correctamente. Los vehículos parados con el motor encendido también lo despiden.\n\n
+        El monóxido de carbono disminuye la cantidad de oxígeno disponible para las células, lo cual dificulta la función celular.\n\n
+        Efectos en la salud:\n\n
+        - Dolor de cabeza, mareo, sensación de desvanecimiento y cansancio.\n\n
+        - A niveles más altos la exposición al monóxido de carbono puede causar somnolencia, alucinaciones, convulsiones y pérdida de conocimiento.\n\n
+        - La exposición extremadamente alta al monóxido de carbono puede causar la formación de carboxihemoglobina, que reduce la capacidad de la sangre para transportar oxígeno y puede causar un color rojo brillante en la piel y las membranas mucosas, dificultad respiratoria, colapso, convulsiones, coma y la muerte.\n\n
+
+    </string>
+
+    <string name="monoxidonitrogeno_info">
+
+        Todas las personas están expuestas a pequeñas cantidades de óxidos de nitrógeno en el aire. La exposición a niveles más altos puede producirse en las proximidades de las cocinas de gas, al quemar madera o combustibles o si se fuma.\n
+
+        No es inflamable y es incoloro a pardo en apariencia a temperatura ambiente y tiene un fuerte olor desagradable. Es un líquido a temperatura ambiente, pero se transforma en un gas pardo-rojizo a temperaturas sobre 21ºC.\n\n
+
+        La población en general está expuesta a los óxidos de nitrógeno principalmente al respirarlos en el aire. La gente que vive cerca de fuentes de combustión (plantas de generación de energía, o de áreas donde hay intenso uso de vehículos motorizados) puede estar expuesta a niveles de óxidos de nitrógeno más elevados.\n\n
+
+        En las viviendas en las que se quema madera o que usan calentadores y cocinas de gas tienden a tener niveles de óxidos de nitrógeno más altos en su interior comparadas a viviendas que no usan estos combustibles.\n
+
+        El monóxido de nitrógeno y el dióxido de nitrógeno están presentes en el humo de tabaco, por lo tanto, la gente que fuma o que es fumador pasivo puede estar expuesta a los óxidos de nitrógeno.\n\n
+
+        Los efectos del NO2 en la salud humana se centran sobre todo en el aparato respiratorio, habiéndose observado que cuando se supera una concentración media de NO2 de 190 µg/Nm3 (0,1 ppm) en el 40% de los días, aumenta la frecuencia de las infecciones de las vías respiratorias.\n\n
+    </string>
+
+
+
+    <string name="dioxidonitrogeno_info">
+
+        El dióxido de nitrógeno (NO2) es un contaminante atmosférico cuyas fuentes fundamentales son el tráfico rodado así como las emisiones de determinadas industrias y de calefacciones de carbón (en desuso actualmente).\n\n
+
+        Sus niveles en la atmósfera están aumentando en los últimos años por la mayor utilización de gasolina diésel. Su presencia en el aire contribuye a la formación y modificación de otros contaminantes atmosféricos tales como el ozono y las partículas en suspensión (PM10 y PM 2,5).\n\n
+
+        Son más sensibles a los efectos de este contaminante personas con asma y otras enfermedades respiratorias crónicas (Enfisema pulmonar, EPOC…) cardiovasculares y/o trastornos inmunológicos, como pacientes oncológicos, consumidores de drogas y alcohol, embarazadas, así como menores de 6 años y mayores de 65 años.\n\n
+        Síntomas:\n\n
+        Tos y flema
+        - Irritación de ojos y garganta\n\n
+        - Molestias al respirar\n\n
+        - Sensación de falta de aire\n\n
+        - Cansancio o fatiga inusuales\n\n
+
+
+    </string>
 </resources>

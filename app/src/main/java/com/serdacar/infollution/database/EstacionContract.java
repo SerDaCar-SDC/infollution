@@ -5,7 +5,6 @@ import android.provider.BaseColumns;
 public class EstacionContract {
 
     public static abstract class EstacionEntry implements BaseColumns {
-
         public static final String COLUMN_ID = BaseColumns._ID;
         public static final String COLUMN_NOMBRE = "NOMBRE";
         public static final String COLUMN_DIRECCION = "DIRECCION";
