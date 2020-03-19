@@ -6,15 +6,15 @@
 
     <!-- Color de fondo de la vista -->
     <solid
-        android:color="#FFFFFF" >
+        android:color="@color/colorAzulOscuro" >
     </solid>
 
     <!-- Aquí indicamos el radio a aplicar a las esquinas -->
     <corners
-        android:topLeftRadius="300dp"
-        android:bottomLeftRadius="300dp"
-        android:topRightRadius="300dp"
-        android:bottomRightRadius="300dp">
+        android:topLeftRadius="30dp"
+        android:bottomLeftRadius="30dp"
+        android:topRightRadius="30dp"
+        android:bottomRightRadius="30dp">
     </corners>
 
 </shape>

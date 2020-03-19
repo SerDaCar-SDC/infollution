@@ -16,4 +16,9 @@
     <string name="titulo_expandable">Touch me!</string>
     <string name="tv_dioxido_carbono">Dióxido de Azufre SO2:</string>
     <string name="tv_monoxido_carbono">Monóxido de carbono CO:</string>
+    <string name="tv_azufre_titulo">Dióxido de Azufre</string>
+    <string name="medida_gas">µg/m3</string>
+    <string name="tv_carbono_titulo">Monónido de Carbono</string>
+    <string name="tv_mnitro_titulo">Monóxido de Nitrógeno</string>
+    <string name="tv_dnitro_titulo">Dióxido de Nitrógeno</string>
 </resources>

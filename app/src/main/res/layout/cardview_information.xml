@@ -8,46 +8,268 @@
     android:layout_height="wrap_content"
     android:background="@color/colorBlancoNuestro">
 
-    <ImageView
-        android:id="@+id/ivLugar"
-        android:layout_width="380dp"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/plaza_espana"
-        android:layout_margin="10dp"/>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLugar"
+            android:layout_width="380dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plaza_espana"
+            android:layout_margin="10dp"/>
+
+    </FrameLayout>
+
+
 
     <LinearLayout
-        android:id="@+id/LLInfo"
-        android:orientation="vertical"
+        android:id="@+id/llAzufreCarbono"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp">
 
-        <TextView
-            android:id="@+id/tvDioxidoAzufre"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llAzufre"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:id="@+id/tvMonoxidoCarbono"
-            android:layout_width="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvAzufreTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAzulOscuro"
+                android:text="@string/tv_azufre_titulo"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotobold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SO2"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotoitalic"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/tvDioxidoAzufre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/medida_gas"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCarbono"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:id="@+id/tvMonoxidoNitrogeno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"></TextView>
-        <TextView
-            android:id="@+id/tvDioxidoNitrogeno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvCarbonoTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAzulOscuro"
+                android:text="@string/tv_carbono_titulo"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotobold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CO"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotoitalic"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/tvMonoxidoCarbono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/medida_gas"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/llMNitroDNitro"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp">
+
+        <LinearLayout
+            android:id="@+id/llMNitro"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvMNitroTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAzulOscuro"
+                android:text="@string/tv_mnitro_titulo"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotobold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NO"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotoitalic"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/tvMonoxidoNitrogeno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/medida_gas"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDNitro"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvDNitroTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAzulOscuro"
+                android:textSize="15sp"
+                android:text="@string/tv_dnitro_titulo"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotobold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NO2"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/robotoitalic"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/tvDioxidoNitrogeno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:text="@string/medida_gas"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 
 
