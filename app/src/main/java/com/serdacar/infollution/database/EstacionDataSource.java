@@ -109,8 +109,7 @@ public class EstacionDataSource {
                 + ", " + EstacionContract.EstacionEntry.COLUMN_LATITUD
                 + ", " + EstacionContract.EstacionEntry.COLUMN_LONGITUD
                 + " FROM " + EstacionContract.EstacionEntry.TABLE_NAME;
-
-
+        
         Cursor cursor = database.rawQuery(query, null);
 
         Estacion estacion = null;
