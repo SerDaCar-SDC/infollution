@@ -57,22 +57,18 @@ public class NewsActivity extends AppCompatActivity {
 
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void accederChat(View view) {
         startActivity(new Intent(this, ChatActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accederScrolling(View view) {
         startActivity(new Intent(this, ScrollingActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     private void cosumirWS() {

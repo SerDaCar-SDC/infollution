@@ -63,21 +63,19 @@ public class FirstActivity extends AppCompatActivity {
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
+        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void accederChat(View view) {
         startActivity(new Intent(this, ChatActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accederScrolling(View view) {
         startActivity(new Intent(this, ScrollingActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void desconectar() {
@@ -85,8 +83,6 @@ public class FirstActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         i.putExtra(CLAVE_EMAIL, email);
         startActivity(i);
-        finish();
-        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void createSimpleDialog(View v) {

@@ -1,9 +1,11 @@
 package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -26,7 +28,6 @@ import com.serdacar.infollution.retrofit.model.APIEstaciones;
 import com.serdacar.infollution.retrofit.model.DatoHorario;
 import com.serdacar.infollution.retrofit.model.Datos;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -42,15 +43,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     ImageView ivMapa;
 
-    // LAYOUT
-    private ImageButton btnSatelite;
-    private ImageButton btnTerrain;
-    private ImageButton btnNormal;
-    private ImageButton btnHybrid;
-
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
-    //TextView tvNombreEstacion;
     TextView tvDioxidoAzufre;
     TextView tvMonoxidoCarbono;
     TextView tvMonoxidoNitrogeno;
@@ -65,25 +59,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         getSupportActionBar().hide();
-
         
         ivLugar = findViewById(R.id.ivLugar);
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
 
-        //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
         tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
         tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
         tvMonoxidoNitrogeno = findViewById(R.id.tvMonoxidoNitrogeno);
         tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
-
-
-        // LAYOUT
-        btnSatelite = findViewById(R.id.btnTipoMapaSatelite);
-        btnTerrain = findViewById(R.id.btnTipoMapaTerrain);
-        btnNormal = findViewById(R.id.btnTipoMapaNormal);
-        btnHybrid = findViewById(R.id.btnTipoMapaHybrid);
 
         swipe = findViewById(R.id.swipecard);
 
@@ -92,7 +77,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
 
-        // METER SWYPE CARD
+        // METER EXPANDABLE CARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
@@ -103,20 +88,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         persistencia = new EstacionDataSource(this);
 
-        btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
     }
 
-    private void leerEstacion(int id) {
-        Estacion est = persistencia.leerEstacion(id);
-        //tvNombreEstacion.setText(est.getNombre());
-        //ivLugar.setImageResource();
-        //tvDioxidoAzufre.setText("Dirección: " + est.getDireccion());
-        //tvMonoxidoCarbono.setText("Latitud: " + String.valueOf(est.getLatitud()));
-        //tvLongitudEstacion.setText("Longitud: " + String.valueOf(est.getLongitud()));
-
+    private void seleccionarFoto(int id) {
         if (id == 4){
             ivLugar.setImageResource(R.drawable.plaza_espania);
         } else if (id == 8){
@@ -233,7 +207,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
 
@@ -241,11 +214,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                swipe.setEnabled(true);
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
                 int id = persistencia.estacionPornombre(tituloMarcador);
                 final Estacion estacionSeleccionada = persistencia.leerEstacion(id);
-                leerEstacion(id);
+                seleccionarFoto(id);
 
                 tvDioxidoAzufre.setText("");
                 tvMonoxidoCarbono.setText("");
@@ -269,223 +243,457 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
                             int horaActual = comprobarHora();
 
-                            for(int i = 0; i < listaEstaciones.size(); i++) {
-                                codigoEstacion = listaEstaciones.get(i).getEstacion();
+                             for(int i = 0; i < listaEstaciones.size(); i++) {
+                                 codigoEstacion = listaEstaciones.get(i).getEstacion();
 
-                                if (codigoEstacion.substring(0, 1).equals("0")) {
-                                    codigoRecuperado = codigoEstacion.substring(1, 3);
+                                 if (codigoEstacion.substring(0, 1).equals("0")
+                                         && estacionSeleccionada.getCodigoCorto() == Integer.parseInt(listaEstaciones.get(i).getEstacion())) {
+                                     codigoRecuperado = codigoEstacion.substring(1, 3);
+                                     numeroEstacion = Integer.parseInt(codigoRecuperado);
 
-                                    numeroEstacion = Integer.parseInt(codigoRecuperado);
-                                    if (estacionSeleccionada.getCodigoCorto() == numeroEstacion) {
-                                        if (listaEstaciones.get(i).getMagnitud().equals("1")) {
-                                            if (horaActual == 1) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 2) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 3) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH02());
-                                            }else if (horaActual == 4) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH03());
-                                            }else if (horaActual == 5) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH04());
-                                            }else if (horaActual == 6) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH05());
-                                            }else if (horaActual == 7) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH06());
-                                            }else if (horaActual == 8) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH07());
-                                            }else if (horaActual == 9) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH08());
-                                            }else if (horaActual == 10) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH09());
-                                            }else if (horaActual == 11) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH10());
-                                            }else if (horaActual == 12) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH11());
-                                            }else if (horaActual == 13) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH12());
-                                            }else if (horaActual == 14) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH13());
-                                            }else if (horaActual == 15) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH14());
-                                            }else if (horaActual == 16) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH15());
-                                            }else if (horaActual == 17) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH16());
-                                            }else if (horaActual == 18) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH17());
-                                            }else if (horaActual == 19) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH18());
-                                            }else if (horaActual == 20) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH19());
-                                            }else if (horaActual == 21) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH20());
-                                            }else if (horaActual == 22) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH21());
-                                            }else if (horaActual == 23) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH22());
-                                            }else if (horaActual == 0) {
-                                                tvDioxidoAzufre.setText(listaEstaciones.get(i).getH23());
-                                            }
+                                      if (estacionSeleccionada.getCodigoCorto() == numeroEstacion) {
+                                          if (listaEstaciones.get(i).getMagnitud().equals("1")) {
+                                              if (horaActual == 1) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 2) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 3) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH02());
+                                              } else if (horaActual == 4) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH03());
+                                              } else if (horaActual == 5) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH04());
+                                              } else if (horaActual == 6) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH05());
+                                              } else if (horaActual == 7) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH06());
+                                              } else if (horaActual == 8) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH07());
+                                              } else if (horaActual == 9) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH08());
+                                              } else if (horaActual == 10) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH09());
+                                              } else if (horaActual == 11) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH10());
+                                              } else if (horaActual == 12) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH11());
+                                              } else if (horaActual == 13) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH12());
+                                              } else if (horaActual == 14) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH13());
+                                              } else if (horaActual == 15) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH14());
+                                              } else if (horaActual == 16) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH15());
+                                              } else if (horaActual == 17) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH16());
+                                              } else if (horaActual == 18) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH17());
+                                              } else if (horaActual == 19) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH18());
+                                              } else if (horaActual == 20) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH19());
+                                              } else if (horaActual == 21) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH20());
+                                              } else if (horaActual == 22) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH21());
+                                              } else if (horaActual == 23) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH22());
+                                              } else if (horaActual == 0) {
+                                                  tvDioxidoAzufre.setText(listaEstaciones.get(i).getH23());
+                                              }
 
-                                        }else if (listaEstaciones.get(i).getMagnitud().equals("6")) {
-                                            if (horaActual == 1) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 2) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 3) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
-                                            }else if (horaActual == 4) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH03());
-                                            }else if (horaActual == 5) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH04());
-                                            }else if (horaActual == 6) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH05());
-                                            }else if (horaActual == 7) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH06());
-                                            }else if (horaActual == 8) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH07());
-                                            }else if (horaActual == 9) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH08());
-                                            }else if (horaActual == 10) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH09());
-                                            }else if (horaActual == 11) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH10());
-                                            }else if (horaActual == 12) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH11());
-                                            }else if (horaActual == 13) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH12());
-                                            }else if (horaActual == 14) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH13());
-                                            }else if (horaActual == 15) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH14());
-                                            }else if (horaActual == 16) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH15());
-                                            }else if (horaActual == 17) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH16());
-                                            }else if (horaActual == 18) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH17());
-                                            }else if (horaActual == 19) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH18());
-                                            }else if (horaActual == 20) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH19());
-                                            }else if (horaActual == 21) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH20());
-                                            }else if (horaActual == 22) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH21());
-                                            }else if (horaActual == 23) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH22());
-                                            }else if (horaActual == 0) {
-                                                tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH23());
-                                            }
+                                          }
+                                          if (listaEstaciones.get(i).getMagnitud().equals("6")) {
+                                              if (horaActual == 1) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 2) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 3) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
+                                              } else if (horaActual == 4) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH03());
+                                              } else if (horaActual == 5) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH04());
+                                              } else if (horaActual == 6) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH05());
+                                              } else if (horaActual == 7) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH06());
+                                              } else if (horaActual == 8) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH07());
+                                              } else if (horaActual == 9) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH08());
+                                              } else if (horaActual == 10) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH09());
+                                              } else if (horaActual == 11) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH10());
+                                              } else if (horaActual == 12) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH11());
+                                              } else if (horaActual == 13) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH12());
+                                              } else if (horaActual == 14) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH13());
+                                              } else if (horaActual == 15) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH14());
+                                              } else if (horaActual == 16) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH15());
+                                              } else if (horaActual == 17) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH16());
+                                              } else if (horaActual == 18) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH17());
+                                              } else if (horaActual == 19) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH18());
+                                              } else if (horaActual == 20) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH19());
+                                              } else if (horaActual == 21) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH20());
+                                              } else if (horaActual == 22) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH21());
+                                              } else if (horaActual == 23) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH22());
+                                              } else if (horaActual == 0) {
+                                                  tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH23());
+                                              }
 
-                                        }else if (listaEstaciones.get(i).getMagnitud().equals("7")) {
-                                            if (horaActual == 1) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 2) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 3) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
-                                            }else if (horaActual == 4) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
-                                            }else if (horaActual == 5) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
-                                            }else if (horaActual == 6) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
-                                            }else if (horaActual == 7) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
-                                            }else if (horaActual == 8) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
-                                            }else if (horaActual == 9) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
-                                            }else if (horaActual == 10) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
-                                            }else if (horaActual == 11) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
-                                            }else if (horaActual == 12) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
-                                            }else if (horaActual == 13) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
-                                            }else if (horaActual == 14) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
-                                            }else if (horaActual == 15) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
-                                            }else if (horaActual == 16) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
-                                            }else if (horaActual == 17) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
-                                            }else if (horaActual == 18) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
-                                            }else if (horaActual == 19) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
-                                            }else if (horaActual == 20) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
-                                            }else if (horaActual == 21) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
-                                            }else if (horaActual == 22) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
-                                            }else if (horaActual == 23) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
-                                            }else if (horaActual == 0) {
-                                                tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
-                                            }
+                                          }
+                                          if (listaEstaciones.get(i).getMagnitud().equals("7")) {
+                                              if (horaActual == 1) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 2) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 3) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
+                                              } else if (horaActual == 4) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                                              } else if (horaActual == 5) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
+                                              } else if (horaActual == 6) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
+                                              } else if (horaActual == 7) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
+                                              } else if (horaActual == 8) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
+                                              } else if (horaActual == 9) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
+                                              } else if (horaActual == 10) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
+                                              } else if (horaActual == 11) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
+                                              } else if (horaActual == 12) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
+                                              } else if (horaActual == 13) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
+                                              } else if (horaActual == 14) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
+                                              } else if (horaActual == 15) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
+                                              } else if (horaActual == 16) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
+                                              } else if (horaActual == 17) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
+                                              } else if (horaActual == 18) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
+                                              } else if (horaActual == 19) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
+                                              } else if (horaActual == 20) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
+                                              } else if (horaActual == 21) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
+                                              } else if (horaActual == 22) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
+                                              } else if (horaActual == 23) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
+                                              } else if (horaActual == 0) {
+                                                  tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
+                                              }
 
-                                        }else if (listaEstaciones.get(i).getMagnitud().equals("8")) {
-                                            if (horaActual == 1) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 2) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
-                                            }else if (horaActual == 3) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
-                                            }else if (horaActual == 4) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
-                                            }else if (horaActual == 5) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
-                                            }else if (horaActual == 6) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
-                                            }else if (horaActual == 7) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
-                                            }else if (horaActual == 8) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
-                                            }else if (horaActual == 9) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
-                                            }else if (horaActual == 10) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
-                                            }else if (horaActual == 11) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
-                                            }else if (horaActual == 12) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
-                                            }else if (horaActual == 13) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
-                                            }else if (horaActual == 14) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
-                                            }else if (horaActual == 15) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
-                                            }else if (horaActual == 16) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
-                                            }else if (horaActual == 17) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
-                                            }else if (horaActual == 18) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
-                                            }else if (horaActual == 19) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
-                                            }else if (horaActual == 20) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
-                                            }else if (horaActual == 21) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
-                                            }else if (horaActual == 22) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
-                                            }else if (horaActual == 23) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
-                                            }else if (horaActual == 0) {
-                                                tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
-                                            }
+                                          }
+                                          if (listaEstaciones.get(i).getMagnitud().equals("8")) {
+                                              if (horaActual == 1) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 2) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                              } else if (horaActual == 3) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
+                                              } else if (horaActual == 4) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                                              } else if (horaActual == 5) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
+                                              } else if (horaActual == 6) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
+                                              } else if (horaActual == 7) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
+                                              } else if (horaActual == 8) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
+                                              } else if (horaActual == 9) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
+                                              } else if (horaActual == 10) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
+                                              } else if (horaActual == 11) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
+                                              } else if (horaActual == 12) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
+                                              } else if (horaActual == 13) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
+                                              } else if (horaActual == 14) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
+                                              } else if (horaActual == 15) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
+                                              } else if (horaActual == 16) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
+                                              } else if (horaActual == 17) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
+                                              } else if (horaActual == 18) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
+                                              } else if (horaActual == 19) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
+                                              } else if (horaActual == 20) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
+                                              } else if (horaActual == 21) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
+                                              } else if (horaActual == 22) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
+                                              } else if (horaActual == 23) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
+                                              } else if (horaActual == 0) {
+                                                  tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
+                                              }
+                                          }
+                                          if (tvDioxidoAzufre.getText().toString().equals("")) {
+                                              tvDioxidoAzufre.setText("0");
+                                          }else if (tvMonoxidoCarbono.getText().toString().equals("")) {
+                                              tvMonoxidoCarbono.setText("0");
+                                          }else if (tvMonoxidoNitrogeno.getText().toString().equals("")) {
+                                              tvMonoxidoNitrogeno.setText("0");
+                                          }else if (tvDioxidoNitrogeno.getText().toString().equals("")) {
+                                              tvDioxidoNitrogeno.setText("0");
+                                          }
+                                      }
+                                 } else if (codigoEstacion.substring(0,2).equals("00")
+                                         && estacionSeleccionada.getCodigoCorto() == Integer.parseInt(listaEstaciones.get(i).getEstacion())){
+                                     codigoRecuperado = codigoEstacion.substring(2, 3);
+                                     numeroEstacion = Integer.parseInt(codigoRecuperado);
 
-                                        }
-                                    }
-                                }
+                                     if (estacionSeleccionada.getCodigoCorto() == numeroEstacion) {
+                                         if (listaEstaciones.get(i).getMagnitud().equals("1")) {
+                                             if (horaActual == 1) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 2) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 3) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH02());
+                                             } else if (horaActual == 4) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH03());
+                                             } else if (horaActual == 5) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH04());
+                                             } else if (horaActual == 6) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH05());
+                                             } else if (horaActual == 7) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH06());
+                                             } else if (horaActual == 8) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH07());
+                                             } else if (horaActual == 9) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH08());
+                                             } else if (horaActual == 10) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH09());
+                                             } else if (horaActual == 11) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH10());
+                                             } else if (horaActual == 12) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH11());
+                                             } else if (horaActual == 13) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH12());
+                                             } else if (horaActual == 14) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH13());
+                                             } else if (horaActual == 15) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH14());
+                                             } else if (horaActual == 16) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH15());
+                                             } else if (horaActual == 17) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH16());
+                                             } else if (horaActual == 18) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH17());
+                                             } else if (horaActual == 19) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH18());
+                                             } else if (horaActual == 20) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH19());
+                                             } else if (horaActual == 21) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH20());
+                                             } else if (horaActual == 22) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH21());
+                                             } else if (horaActual == 23) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH22());
+                                             } else if (horaActual == 0) {
+                                                 tvDioxidoAzufre.setText(listaEstaciones.get(i).getH23());
+                                             }
+
+                                         }
+                                         if (listaEstaciones.get(i).getMagnitud().equals("6")) {
+                                             if (horaActual == 1) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 2) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 3) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH02());
+                                             } else if (horaActual == 4) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH03());
+                                             } else if (horaActual == 5) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH04());
+                                             } else if (horaActual == 6) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH05());
+                                             } else if (horaActual == 7) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH06());
+                                             } else if (horaActual == 8) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH07());
+                                             } else if (horaActual == 9) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH08());
+                                             } else if (horaActual == 10) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH09());
+                                             } else if (horaActual == 11) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH10());
+                                             } else if (horaActual == 12) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH11());
+                                             } else if (horaActual == 13) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH12());
+                                             } else if (horaActual == 14) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH13());
+                                             } else if (horaActual == 15) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH14());
+                                             } else if (horaActual == 16) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH15());
+                                             } else if (horaActual == 17) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH16());
+                                             } else if (horaActual == 18) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH17());
+                                             } else if (horaActual == 19) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH18());
+                                             } else if (horaActual == 20) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH19());
+                                             } else if (horaActual == 21) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH20());
+                                             } else if (horaActual == 22) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH21());
+                                             } else if (horaActual == 23) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH22());
+                                             } else if (horaActual == 0) {
+                                                 tvMonoxidoCarbono.setText(listaEstaciones.get(i).getH23());
+                                             }
+
+                                         }
+                                         if (listaEstaciones.get(i).getMagnitud().equals("7")) {
+                                             if (horaActual == 1) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 2) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 3) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
+                                             } else if (horaActual == 4) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                                             } else if (horaActual == 5) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
+                                             } else if (horaActual == 6) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
+                                             } else if (horaActual == 7) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
+                                             } else if (horaActual == 8) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
+                                             } else if (horaActual == 9) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
+                                             } else if (horaActual == 10) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
+                                             } else if (horaActual == 11) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
+                                             } else if (horaActual == 12) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
+                                             } else if (horaActual == 13) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
+                                             } else if (horaActual == 14) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
+                                             } else if (horaActual == 15) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
+                                             } else if (horaActual == 16) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
+                                             } else if (horaActual == 17) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
+                                             } else if (horaActual == 18) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
+                                             } else if (horaActual == 19) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
+                                             } else if (horaActual == 20) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
+                                             } else if (horaActual == 21) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
+                                             } else if (horaActual == 22) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
+                                             } else if (horaActual == 23) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
+                                             } else if (horaActual == 0) {
+                                                 tvMonoxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
+                                             }
+                                         }
+                                         if (listaEstaciones.get(i).getMagnitud().equals("8")) {
+                                             if (horaActual == 1) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 2) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH01());
+                                             } else if (horaActual == 3) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH02());
+                                             } else if (horaActual == 4) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH03());
+                                             } else if (horaActual == 5) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH04());
+                                             } else if (horaActual == 6) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH05());
+                                             } else if (horaActual == 7) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH06());
+                                             } else if (horaActual == 8) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH07());
+                                             } else if (horaActual == 9) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH08());
+                                             } else if (horaActual == 10) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH09());
+                                             } else if (horaActual == 11) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH10());
+                                             } else if (horaActual == 12) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH11());
+                                             } else if (horaActual == 13) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH12());
+                                             } else if (horaActual == 14) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH13());
+                                             } else if (horaActual == 15) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH14());
+                                             } else if (horaActual == 16) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH15());
+                                             } else if (horaActual == 17) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH16());
+                                             } else if (horaActual == 18) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH17());
+                                             } else if (horaActual == 19) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH18());
+                                             } else if (horaActual == 20) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH19());
+                                             } else if (horaActual == 21) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH20());
+                                             } else if (horaActual == 22) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH21());
+                                             } else if (horaActual == 23) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH22());
+                                             } else if (horaActual == 0) {
+                                                 tvDioxidoNitrogeno.setText(listaEstaciones.get(i).getH23());
+                                             }
+
+                                         }
+                                     }
+                                     if (tvDioxidoAzufre.getText().toString().equals("")) {
+                                         tvDioxidoAzufre.setText("0");
+                                     }else if (tvMonoxidoCarbono.getText().toString().equals("")) {
+                                         tvMonoxidoCarbono.setText("0");
+                                     }else if (tvMonoxidoNitrogeno.getText().toString().equals("")) {
+                                         tvMonoxidoNitrogeno.setText("0");
+                                     }else if (tvDioxidoNitrogeno.getText().toString().equals("")) {
+                                         tvDioxidoNitrogeno.setText("0");
+                                     }
+                                 }
                             }
-
                         } else {
                             Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
                         }
@@ -508,31 +716,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 });
 
 
+
+
                 return false; // si ponemos true no se muestra el bocadillo
             }
         });
     }
 
-    // TIPOS DE MAPAS CON BOTONES DE COLORES
-    public void onClickTipoSatelite(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        pulsado(true, false, false, false);
-    }
 
-    public void onClickTipoTerrain(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        pulsado(false, false, false, true);
-    }
-
-    public void onClickTipoNormal(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        pulsado(false, false, true, false);
-    }
-
-    public void onClickTipoHybrid(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        pulsado(false, true, false, false);
-    }
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
@@ -548,40 +739,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     public void accederScrolling(View view) {
         startActivity(new Intent(this, ScrollingActivity.class));
-        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
-    private void pulsado(boolean btnS, boolean btnH, boolean btnN, boolean btnT){
-
-        if (btnS){
-            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-
-            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-
-        } else if (btnH){
-            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-
-            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-
-        } else if (btnN){
-            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-
-            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-
-        } else if (btnT){
-            btnTerrain.setBackgroundColor(getResources().getColor(R.color.colorAzulOscuro));
-
-            btnSatelite.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnNormal.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-            btnHybrid.setBackgroundColor(getResources().getColor(R.color.colorBlancoNuestro));
-        }
-
-    }
 
 }

@@ -92,6 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
         Intent i = new Intent(this, LoginActivity.class);
         i.putExtra(CLAVE_EMAIL, email);
         startActivity(i);
+        finish();
         overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 }
