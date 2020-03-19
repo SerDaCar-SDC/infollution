@@ -70,6 +70,11 @@ public class NewsActivity extends AppCompatActivity {
         //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
     private void cosumirWS() {
 
         Retrofit r = RetrofitClient.getClient(APINews.BASE_URL);

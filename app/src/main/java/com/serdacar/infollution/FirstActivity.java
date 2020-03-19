@@ -69,6 +69,11 @@ public class FirstActivity extends AppCompatActivity {
         //overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
+
     public void desconectar() {
         fbAuth.signOut();
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);

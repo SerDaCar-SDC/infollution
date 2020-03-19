@@ -51,4 +51,9 @@ public class ChatActivity extends AppCompatActivity {
         startActivity(new Intent(this, MapActivity.class));
         //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+        //overridePendingTransition(R.anim.right_in, R.anim.right_out);
+    }
 }

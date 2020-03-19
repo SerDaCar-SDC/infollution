@@ -50,13 +50,14 @@
                 app:srcCompat="@drawable/logo1" />
 
             <ImageButton
-                android:id="@+id/ivMenuNosotros"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
+                android:id="@+id/ivGas"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:onClick="accederScrolling"
                 android:background="@color/colorBlancoNuestro"
-                app:srcCompat="@drawable/ic_people_foreground" />
+                app:srcCompat="@drawable/ic_molecule_foreground" />
 
             <ImageButton
                 android:id="@+id/ivMenuMapa"
