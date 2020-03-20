@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/llLogin"
         android:layout_width="300dp"
-        android:layout_height="195dp"
+        android:layout_height="210dp"
         android:layout_marginTop="110dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +38,14 @@
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textSize="@dimen/letrasNormales"
             android:hint="@string/hint_user"
             android:inputType="textPersonName"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
             android:fontFamily="@font/robotolight"
+            android:drawableRight="@drawable/ic_people_foreground"
             />
 
         <EditText
@@ -52,7 +53,7 @@
             android:layout_width="200dp"
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:ems="10"
             android:textSize="@dimen/letrasNormales"
             android:hint="@string/hint_password"
@@ -60,6 +61,7 @@
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
             android:fontFamily="@font/robotolight"
+            android:drawableRight="@drawable/ic_candado_foreground"
             />
 
         <EditText
@@ -68,13 +70,14 @@
             android:layout_marginLeft="20dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:textSize="@dimen/letrasNormales"
             android:hint="@string/hint_correo"
             android:inputType="textPersonName"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
             android:fontFamily="@font/robotolight"
+            android:drawableRight="@drawable/ic_mail_foreground"
             />
 
     </LinearLayout>

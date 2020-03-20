@@ -589,6 +589,7 @@ public class FirstActivity extends AppCompatActivity {
                     pie.data(data);
                     pie.animation(true);
                     pie.title("Estación más cercana: " + estacionCerca.getNombre()).padding(20d, 0d, 0d, 0d);
+
                     pie.labels().position("outside");
                     pie.legend().title().text("").padding(70d, 50d, 0d, 50d);
                     pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);

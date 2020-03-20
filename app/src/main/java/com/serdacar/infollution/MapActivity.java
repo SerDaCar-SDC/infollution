@@ -63,7 +63,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         getSupportActionBar().hide();
-        
+
         ivLugar = findViewById(R.id.ivLugar);
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_mapita_foreground_rojo);
@@ -81,7 +81,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
 
-        // METER SWYPE CARD
+        // METER SWIPE CARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
@@ -153,7 +153,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
         // COORDENADAS
-        LatLng est4 = new LatLng(40.4238823, -3.7122567);
+        //LatLng est4 = new LatLng(40.4238823, -3.7122567);
         LatLng est8 = new LatLng(40.4215533, -3.6823158);
         LatLng est11 = new LatLng(40.4514734, -3.6773491);
         LatLng est16 = new LatLng(40.4400457, -3.6392422);
@@ -182,7 +182,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // MARCADORES EN COORDENADAS
         // Marker markerMadrid = mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
-        mMap.addMarker(new MarkerOptions().position(est4).title("Pza. de España").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
+        //mMap.addMarker(new MarkerOptions().position(est4).title("Pza. de España").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
         mMap.addMarker(new MarkerOptions().position(est8).title("Escuelas Aguirre").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
         mMap.addMarker(new MarkerOptions().position(est11).title("Avda. Ramón y Cajal").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
         mMap.addMarker(new MarkerOptions().position(est16).title("Arturo Soria").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
@@ -220,6 +220,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                swipe.setVisibility(1);
+
                 swipe.setEnabled(true);
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();
