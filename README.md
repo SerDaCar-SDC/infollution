@@ -28,6 +28,8 @@ _Por otro lado, hay una sección de noticias, muestra las más actuales y se act
 ![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Map.jpeg)
 ![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/MapS.jpeg)
 ![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/News.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Chat.jpeg)
+
 
 
 ### Pre-requisitos 📋
