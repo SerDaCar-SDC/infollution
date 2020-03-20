@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ScrollingActivity"
     tools:showIn="@layout/activity_scrolling"
-    android:background="@color/colorBlancoNuestro">
+    android:background="@color/colorBlanco">
 
     //Aquí van los gases
 
@@ -31,9 +31,10 @@
                 android:layout_height="wrap_content"
                 android:text="Dióxido de Azufre (SO2)"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlancoNuestro"
-                android:textSize="24sp"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/colorAzul"
+                android:fontFamily="@font/robotolight"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -48,6 +49,7 @@
                     android:text="Leer más..."
                     android:layout_margin="10dp"
                     android:textColor="@color/colorBlancoNuestro"
+                    android:fontFamily="@font/robotolight"
                     android:onClick="leerMasDioxidoAzufre"/>
 
             </FrameLayout>
@@ -75,9 +77,10 @@
                 android:layout_height="wrap_content"
                 android:text="Monóxido de Carbono (CO)"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlancoNuestro"
-                android:textSize="24sp"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/colorAzul"
+                android:fontFamily="@font/robotolight"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -91,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="Leer más..."
                     android:layout_margin="10dp"
+                    android:fontFamily="@font/robotolight"
                     android:textColor="@color/colorBlancoNuestro"
                     android:onClick="leerMasMonoxidoCarbono"/>
 
@@ -123,9 +127,10 @@
                 android:layout_height="wrap_content"
                 android:text="Monóxido de Nitrógeno (NO)"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlancoNuestro"
-                android:textSize="24sp"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/colorAzul"
+                android:fontFamily="@font/robotolight"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -139,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:text="Leer más..."
                     android:layout_margin="10dp"
+                    android:fontFamily="@font/robotolight"
                     android:textColor="@color/colorBlancoNuestro"
                     android:onClick="leerMasMonoxidoNitrogeno"/>
 
@@ -168,9 +174,10 @@
                 android:layout_height="wrap_content"
                 android:text="Dióxido de Nitrógeno (NO2)"
                 android:textAlignment="center"
-                android:textColor="@color/colorBlancoNuestro"
-                android:textSize="24sp"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/colorAzul"
+                android:fontFamily="@font/robotolight"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -184,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:text="Leer más..."
                     android:layout_margin="10dp"
+                    android:fontFamily="@font/robotolight"
                     android:textColor="@color/colorBlancoNuestro"
                     android:onClick="leerMasDioxidoNitrogeno"/>
 

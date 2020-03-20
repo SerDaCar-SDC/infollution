@@ -25,7 +25,7 @@ public class ChatActivity extends AppCompatActivity {
 
         ivMenuLogo = findViewById(R.id.ivMenuLogo);
         ivMenuChat = findViewById(R.id.ivMenuChat);
-        ivMenuChat.setImageResource(R.drawable.ic_chat_foreground_rojo);
+        ivMenuChat.setImageResource(R.drawable.ic_chatteo_foreground_rojo);
         ivMenuChat.setEnabled(false);
 
         wv = (WebView) findViewById(R.id.wv);
