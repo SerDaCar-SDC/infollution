@@ -2,8 +2,12 @@ package com.serdacar.infollution;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPass;
     String email;
     String password;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
+
+        ivLogo = findViewById(R.id.ivLogo_AM);
 
         etEmail = findViewById(R.id.etEmailLogin);
         etPass = findViewById(R.id.etPasswordLogin);
@@ -61,12 +68,25 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+                                Animation rotarIcono = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.rotate_icon);
+                                ivLogo.startAnimation(rotarIcono);
+
                                 fbUser = fbAuth.getCurrentUser();
-                                Intent i = new Intent(LoginActivity.this, FirstActivity.class);
-                                i.putExtra(CLAVE_EMAIL, fbUser.getEmail());
-                                startActivity(i);
-                                finish();
-                                overridePendingTransition(R.anim.left_in, R.anim.left_out);
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(LoginActivity.this, FirstActivity.class);
+                                        i.putExtra(CLAVE_EMAIL, fbUser.getEmail());
+                                        startActivity(i);
+                                        finish();
+                                        overridePendingTransition(R.anim.left_in, R.anim.left_out);
+                                    }
+                                }, 2000);
+
+
 
                             } else {
                                 Toast.makeText(LoginActivity.this, getString(R.string.toast_error_acceso), Toast.LENGTH_LONG).show();
