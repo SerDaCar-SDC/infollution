@@ -43,6 +43,7 @@
             android:textSize="@dimen/letrasNormales"
             android:drawableRight="@drawable/ic_people_foreground"/>
 
+        
         <EditText
             android:id="@+id/etPasswordLogin"
             android:layout_width="200dp"
