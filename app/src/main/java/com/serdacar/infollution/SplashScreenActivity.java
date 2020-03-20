@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashScreenActivity extends AppCompatActivity {
-
     TextView tvMovimiento;
     ImageView ivFoto;
 
@@ -46,6 +45,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
                 finish();
             }
-        }, 2500);
+        }, 2750);
     }
 }

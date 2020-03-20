@@ -47,10 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void registrar(View view) {
-        // Comprobamos si los datos han sido introducidos
         if (validarDatos() == true) {
-            // Se crea el usuario en Firebase con el correo y la contraseña recuperados en el
-            // método validarDatos()
             fbAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(
                     this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -68,7 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean validarDatos() {
-        // Método para comprobar que los campos no estén vacíos
         user = etUser.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = etPass.getText().toString().trim();
@@ -84,14 +80,12 @@ public class RegisterActivity extends AppCompatActivity {
         return continuar;
     }
 
-
     public void accesoLoginActivity(View view) {
-        // Método que volverá al login desde registro colocando el correo en el editText
-        // etEmailLogin y así el usuario no tenga que volver a introducirlo
         email = etEmail.getText().toString().trim();
         Intent i = new Intent(this, LoginActivity.class);
         i.putExtra(CLAVE_EMAIL, email);
         startActivity(i);
+        finish();
         overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 }

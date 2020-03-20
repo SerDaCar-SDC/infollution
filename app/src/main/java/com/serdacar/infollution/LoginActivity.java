@@ -50,26 +50,22 @@ public class LoginActivity extends AppCompatActivity {
 
     public void accesoRegisterActivity(View view) {
         startActivity(new Intent(this, RegisterActivity.class));
+        finish();
         overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void acceder(View view) {
-        // Comprobamos si los datos han sido introducidos
         if (validarDatos() == true) {
-            // Nos logueamos en Firebase con el usuario y contraseña recuperados en el
-            // método validarDatos()
             fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
                     this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Si el login es correcto, se recupera los datos del usario
-                                // y se lanza el activity FirstActivity, con el correo del usuario
-                                // para mostrarlo en la bienvenida de dicho activity
                                 fbUser = fbAuth.getCurrentUser();
                                 Intent i = new Intent(LoginActivity.this, FirstActivity.class);
                                 i.putExtra(CLAVE_EMAIL, fbUser.getEmail());
                                 startActivity(i);
+                                finish();
                                 overridePendingTransition(R.anim.left_in, R.anim.left_out);
 
                             } else {
@@ -79,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
             );
         }
-
     }
 
     private boolean validarDatos() {

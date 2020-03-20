@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class ChatActivity extends AppCompatActivity {
-
     private WebView wv;
     ImageView ivMenuChat;
     ImageButton ivMenuLogo;
@@ -25,7 +23,7 @@ public class ChatActivity extends AppCompatActivity {
 
         ivMenuLogo = findViewById(R.id.ivMenuLogo);
         ivMenuChat = findViewById(R.id.ivMenuChat);
-        ivMenuChat.setImageResource(R.drawable.ic_chat_foreground_rojo);
+        ivMenuChat.setImageResource(R.drawable.ic_chatteo_foreground_rojo);
         ivMenuChat.setEnabled(false);
 
         wv = (WebView) findViewById(R.id.wv);
@@ -44,11 +42,13 @@ public class ChatActivity extends AppCompatActivity {
 
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
     }
 }

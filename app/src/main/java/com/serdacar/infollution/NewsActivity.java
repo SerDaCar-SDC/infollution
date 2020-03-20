@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.serdacar.infollution.model.Article;
 import com.serdacar.infollution.model.Headlines;
@@ -23,14 +24,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class NewsActivity extends AppCompatActivity {
-
     RecyclerView rv;
     NewsAdapter na;
     LinearLayoutManager llm;
 
+    ImageView ivLogoNoticias;
     String pais = "US";
-    static final String API_KEY = "45dde31099fb4edfb5fb6b622b80bff2";
 
+    static final String API_KEY = "45dde31099fb4edfb5fb6b622b80bff2";
     static final String CLAVE_URL = "URL";
 
     @Override
@@ -38,12 +39,15 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        rv = findViewById(R.id.rvNoticias);
+        getSupportActionBar().hide();
 
-        // pais = getCountry();
+        rv = findViewById(R.id.rvNoticias);
+        ivLogoNoticias = findViewById(R.id.ivMenuNews);
 
         cosumirWS();
 
+        ivLogoNoticias.setImageResource(R.drawable.ic_mundo_foreground_rojo);
+        ivLogoNoticias.setEnabled(false);
     }
 
     private void cosumirWS() {
@@ -51,7 +55,6 @@ public class NewsActivity extends AppCompatActivity {
         Retrofit r = RetrofitClient.getClient(APINews.BASE_URL);
         APINews ars = r.create(APINews.class);
         Call<Headlines> call = ars.getHeadlines(pais, API_KEY);
-        // Log.i("ANTES_ENQUEUE", "Antes del Enqueue" );
 
         call.enqueue(new Callback<Headlines>() {
             @Override
@@ -59,13 +62,11 @@ public class NewsActivity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     Log.i("onResponse", "Error" + response.code());
                 } else {
-                    Log.i("onResponse", "Exito" + response.code());
+                    Log.i("onResponse", "Éxito" + response.code());
                     Headlines r = (Headlines) response.body();
 
                     ArrayList<Article> listaNoticias = r.getArticles();
-
                     configurarRecyclerView(listaNoticias);
-
                 }
             }
 
@@ -74,7 +75,6 @@ public class NewsActivity extends AppCompatActivity {
                 Log.e("OnFailure", "Error" + t.getMessage());
             }
         });
-
     }
 
     private void configurarRecyclerView(final ArrayList<Article> listaNoticias) {
@@ -95,5 +95,24 @@ public class NewsActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setAdapter(na);
     }
+
+
+    public void accesoFirst(View v) {
+        startActivity(new Intent(this, FirstActivity.class));
+    }
+
+    public void accesoMapa(View view) {
+        startActivity(new Intent(this, MapActivity.class));
+    }
+
+    public void accederChat(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
+    }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+    }
+
+
 
 }

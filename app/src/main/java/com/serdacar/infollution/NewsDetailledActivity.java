@@ -9,13 +9,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class NewsDetailledActivity extends AppCompatActivity {
-
     WebView webArticle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detailled);
+        getSupportActionBar().hide();
 
         webArticle = findViewById(R.id.wvArticle);
 

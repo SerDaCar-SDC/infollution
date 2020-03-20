@@ -1,13 +1,8 @@
 package com.serdacar.infollution.retrofit.model;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Text;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 @Root(name="Datos")
