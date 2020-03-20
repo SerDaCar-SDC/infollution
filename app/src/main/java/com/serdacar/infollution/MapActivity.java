@@ -51,7 +51,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
-    //TextView tvNombreEstacion;
+
     TextView tvDioxidoAzufre;
     TextView tvMonoxidoCarbono;
     TextView tvMonoxidoNitrogeno;
@@ -77,8 +77,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
         tvMonoxidoNitrogeno = findViewById(R.id.tvMonoxidoNitrogeno);
         tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
-
-
 
         swipe = findViewById(R.id.swipecard);
 
