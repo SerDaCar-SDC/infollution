@@ -55,21 +55,7 @@ public class NewsActivity extends AppCompatActivity {
 
     }
 
-    public void accesoFirst(View v) {
-        startActivity(new Intent(this, FirstActivity.class));
-    }
 
-    public void accesoMapa(View view) {
-        startActivity(new Intent(this, MapActivity.class));
-    }
-
-    public void accederChat(View view) {
-        startActivity(new Intent(this, ChatActivity.class));
-    }
-
-    public void accederScrolling(View view) {
-        startActivity(new Intent(this, ScrollingActivity.class));
-    }
 
     private void cosumirWS() {
 
@@ -120,5 +106,24 @@ public class NewsActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setAdapter(na);
     }
+
+
+    public void accesoFirst(View v) {
+        startActivity(new Intent(this, FirstActivity.class));
+    }
+
+    public void accesoMapa(View view) {
+        startActivity(new Intent(this, MapActivity.class));
+    }
+
+    public void accederChat(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
+    }
+
+    public void accederScrolling(View view) {
+        startActivity(new Intent(this, ScrollingActivity.class));
+    }
+
+
 
 }

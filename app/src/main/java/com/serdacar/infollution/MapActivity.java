@@ -42,9 +42,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     ImageView ivMapa;
+    //EditText etEmail;
+    // LAYOUT
+    private ImageButton btnSatelite;
+    private ImageButton btnTerrain;
+    private ImageButton btnNormal;
+    private ImageButton btnHybrid;
 
     // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
+    //TextView tvNombreEstacion;
     TextView tvDioxidoAzufre;
     TextView tvMonoxidoCarbono;
     TextView tvMonoxidoNitrogeno;
@@ -65,10 +72,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ivMapa.setImageResource(R.drawable.ic_pin_rojo);
         ivMapa.setEnabled(false);
 
+        //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
         tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
         tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
         tvMonoxidoNitrogeno = findViewById(R.id.tvMonoxidoNitrogeno);
         tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
+
+
 
         swipe = findViewById(R.id.swipecard);
 
@@ -77,7 +87,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
 
-        // METER EXPANDABLE CARD
+        // METER SWYPE CARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
@@ -207,6 +217,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
         mMap.getUiSettings().setZoomControlsEnabled(false);
         mMap.getUiSettings().setCompassEnabled(false);
 
@@ -722,7 +733,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             }
         });
     }
-
 
 
     public void accederNoticias(View view) {
