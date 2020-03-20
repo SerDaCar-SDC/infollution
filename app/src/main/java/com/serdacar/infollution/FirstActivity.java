@@ -862,12 +862,10 @@ public class FirstActivity extends AppCompatActivity {
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
-        overridePendingTransition(R.anim.right_in, R.anim.right_out);
     }
 
     public void accesoMapa(View view) {
         startActivity(new Intent(this, MapActivity.class));
-        //overridePendingTransition(R.anim.left_in, R.anim.left_out);
     }
 
     public void accederChat(View view) {
