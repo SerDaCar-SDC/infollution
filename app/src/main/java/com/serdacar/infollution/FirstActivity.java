@@ -558,7 +558,6 @@ public class FirstActivity extends AppCompatActivity {
                                     } else if (horaActual == 0) {
                                         no2 = (listaEstaciones.get(i).getH23());
                                     }
-
                                 }
                             }
                             if (so2.equals("")) {
