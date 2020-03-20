@@ -21,12 +21,12 @@ _Por otro lado, hay una sección de noticias, muestra las más actuales y se act
 
 ## Comenzando 🚀
 
-!(https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
-!(https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
-!()
-!()
-!()
-!()
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
 
 
 ### Pre-requisitos 📋
