@@ -2,6 +2,7 @@ package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -63,10 +65,10 @@ public class FirstActivity extends AppCompatActivity {
 
     // GRAFICAS
 
-    String da;
-    String le;
-    String mc;
-    String dn;
+    String so2;
+    String co;
+    String no;
+    String no2;
 
 
     private LocationManager miLocalizacion;
@@ -115,7 +117,7 @@ public class FirstActivity extends AppCompatActivity {
         EstacionDataSource eds = new EstacionDataSource(this);
 
         ArrayList<Estacion> listaEstaciones = eds.leerEstacionLista();
-        Estacion estacionCerca = encontrarEstMasCerca(listaEstaciones, miLatitud, miLongitud);
+        final Estacion estacionCerca = encontrarEstMasCerca(listaEstaciones, miLatitud, miLongitud);
 
         estacionCerca.getLatitud();
         estacionCerca.getLongitud();
@@ -128,28 +130,487 @@ public class FirstActivity extends AppCompatActivity {
         APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
         Call<Datos> call  = apiEstaciones.obtenerDatos();
 
-        call.enqueue(new Callback<Datos>() {
+        /*call.enqueue(new Callback<Datos>() {
             @Override
             public void onResponse(Call<Datos> call, Response<Datos> response) {
                 if(response.isSuccessful()) {
                     Datos d = response.body();
                     List<DatoHorario> listaEstaciones = d.getDatoHorario();
 
+                    String codigoEstacion;
+                    int numeroEstacion;
+                    String codigoRecuperado;
 
+                    int horaActual = comprobarHora();
 
-                    // for(int i = 0; i < listaEstaciones.size(); i++) {
+                    for(int i = 0; i < listaEstaciones.size(); i++) {
+                        codigoEstacion = listaEstaciones.get(i).getEstacion();
 
-                        da = listaEstaciones.get(0).getH01();
-                        le = listaEstaciones.get(0).getH02();
-                        mc = listaEstaciones.get(0).getH03();
-                        dn = listaEstaciones.get(0).getH04();
+                        if (codigoEstacion.substring(0, 1).equals("0")
 
-                    // }
+                                //estacionSeleccionada
+                                && estacionCerca.getCodigoCorto() == Integer.parseInt(listaEstaciones.get(i).getEstacion())) {
+                            codigoRecuperado = codigoEstacion.substring(1, 3);
+                            numeroEstacion = Integer.parseInt(codigoRecuperado);
 
+                            // estacionSeleccionada
+                            if (estacionCerca.getCodigoCorto() == numeroEstacion) {
+                                if (listaEstaciones.get(i).getMagnitud().equals("1")) {
+                                    if (horaActual == 1) {
+                                        so2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        so2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        so2 = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        so2 = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        so2 = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        so2 = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        so2 = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        so2 = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        so2 = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        so2 = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        so2 = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        so2 = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        so2 = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        so2 = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        so2 = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        so2 = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        so2 = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        so2 = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        so2 = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        so2 = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        so2 = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        so2 = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        so2 = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        so2 = (listaEstaciones.get(i).getH23());
+                                    }
 
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("6")) {
+                                    if (horaActual == 1) {
+                                        co = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        co = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        co = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        co = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        co = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        co = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        co = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        co = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        co = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        co = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        co = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        co = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        co = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        co = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        co = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        co = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        co = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        co = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        co = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        co = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        co = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        co = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        co = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        co = (listaEstaciones.get(i).getH23());
+                                    }
+
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("7")) {
+                                    if (horaActual == 1) {
+                                        no = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        no = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        no = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        no = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        no = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        no = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        no = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        no = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        no = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        no = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        no = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        no = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        no = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        no = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        no = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        no = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        no = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        no = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        no = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        no = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        no = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        no = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        no = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        no = (listaEstaciones.get(i).getH23());
+                                    }
+
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("8")) {
+                                    if (horaActual == 1) {
+                                        no2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        no2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        no2 = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        no2 = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        no2 = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        no2 = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        no2 = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        no2 = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        no2 = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        no2 = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        no2 = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        no2 = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        no2 = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        no2 = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        no2 = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        no2 = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        no2 = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        no2 = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        no2 = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        no2 = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        no2 = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        no2 = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        no2 = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        no2 = (listaEstaciones.get(i).getH23());
+                                    }
+                                }
+                                if (so2.equals("")) {
+                                    so2 = "0";
+                                }else if (co.equals("")) {
+                                    co = "0";
+                                }else if (no.equals("")) {
+                                    no = "0";
+                                }else if (no2.equals("")) {
+                                    no2 = "0";
+                                }
+                            }
+                        } else if (codigoEstacion.substring(0,2).equals("00")
+                                // estacionSeleccionada
+                                && estacionCerca.getCodigoCorto() == Integer.parseInt(listaEstaciones.get(i).getEstacion())){
+                            codigoRecuperado = codigoEstacion.substring(2, 3);
+                            numeroEstacion = Integer.parseInt(codigoRecuperado);
+
+                            // estacionSeleccionada
+                            if (estacionCerca.getCodigoCorto() == numeroEstacion) {
+                                if (listaEstaciones.get(i).getMagnitud().equals("1")) {
+                                    if (horaActual == 1) {
+                                        so2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        so2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        so2 = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        so2 = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        so2 = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        so2 = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        so2 = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        so2 = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        so2 = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        so2 = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        so2 = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        so2 = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        so2 = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        so2 = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        so2 = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        so2 = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        so2 = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        so2 = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        so2 = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        so2 = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        so2 = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        so2 = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        so2 = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        so2 = (listaEstaciones.get(i).getH23());
+                                    }
+
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("6")) {
+                                    if (horaActual == 1) {
+                                        co = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        co = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        co = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        co = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        co = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        co = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        co = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        co = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        co = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        co = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        co = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        co = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        co = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        co = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        co = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        co = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        co = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        co = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        co = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        co = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        co = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        co = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        co = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        co = (listaEstaciones.get(i).getH23());
+                                    }
+
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("7")) {
+                                    if (horaActual == 1) {
+                                        no = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        no = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        no = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        no = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        no = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        no = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        no = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        no = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        no = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        no = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        no = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        no = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        no = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        no = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        no = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        no = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        no = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        no = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        no = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        no = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        no = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        no = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        no = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        no = (listaEstaciones.get(i).getH23());
+                                    }
+                                }
+                                if (listaEstaciones.get(i).getMagnitud().equals("8")) {
+                                    if (horaActual == 1) {
+                                        no2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 2) {
+                                        no2 = (listaEstaciones.get(i).getH01());
+                                    } else if (horaActual == 3) {
+                                        no2 = (listaEstaciones.get(i).getH02());
+                                    } else if (horaActual == 4) {
+                                        no2 = (listaEstaciones.get(i).getH03());
+                                    } else if (horaActual == 5) {
+                                        no2 = (listaEstaciones.get(i).getH04());
+                                    } else if (horaActual == 6) {
+                                        no2 = (listaEstaciones.get(i).getH05());
+                                    } else if (horaActual == 7) {
+                                        no2 = (listaEstaciones.get(i).getH06());
+                                    } else if (horaActual == 8) {
+                                        no2 = (listaEstaciones.get(i).getH07());
+                                    } else if (horaActual == 9) {
+                                        no2 = (listaEstaciones.get(i).getH08());
+                                    } else if (horaActual == 10) {
+                                        no2 = (listaEstaciones.get(i).getH09());
+                                    } else if (horaActual == 11) {
+                                        no2 = (listaEstaciones.get(i).getH10());
+                                    } else if (horaActual == 12) {
+                                        no2 = (listaEstaciones.get(i).getH11());
+                                    } else if (horaActual == 13) {
+                                        no2 = (listaEstaciones.get(i).getH12());
+                                    } else if (horaActual == 14) {
+                                        no2 = (listaEstaciones.get(i).getH13());
+                                    } else if (horaActual == 15) {
+                                        no2 = (listaEstaciones.get(i).getH14());
+                                    } else if (horaActual == 16) {
+                                        no2 = (listaEstaciones.get(i).getH15());
+                                    } else if (horaActual == 17) {
+                                        no2 = (listaEstaciones.get(i).getH16());
+                                    } else if (horaActual == 18) {
+                                        no2 = (listaEstaciones.get(i).getH17());
+                                    } else if (horaActual == 19) {
+                                        no2 = (listaEstaciones.get(i).getH18());
+                                    } else if (horaActual == 20) {
+                                        no2 = (listaEstaciones.get(i).getH19());
+                                    } else if (horaActual == 21) {
+                                        no2 = (listaEstaciones.get(i).getH20());
+                                    } else if (horaActual == 22) {
+                                        no2 = (listaEstaciones.get(i).getH21());
+                                    } else if (horaActual == 23) {
+                                        no2 = (listaEstaciones.get(i).getH22());
+                                    } else if (horaActual == 0) {
+                                        no2 = (listaEstaciones.get(i).getH23());
+                                    }
+
+                                }
+                            }
+                            if (so2.equals("")) {
+                                so2 = "0";
+                            }else if (co.equals("")) {
+                                co = "0";
+                            }else if (no.equals("")) {
+                                no = "0";
+                            }else if (no2.equals("")) {
+                                no2 = "0";
+                            }
+                        }
+                    }
                 } else {
                     Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
                 }
+            }
+
+            public int comprobarHora() {
+                Date hora;
+                Calendar gregorian = new GregorianCalendar();
+                hora = gregorian.getTime();
+                int horaActual = hora.getHours();
+
+                return horaActual;
             }
 
             @Override
@@ -157,7 +618,7 @@ public class FirstActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                 Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
             }
-        });
+        });*/
 
         // TODO: Toast.makeText(this, "DA: " + da + ", LE: " + le + ", MC: " + mc + ", DN: " + dn, Toast.LENGTH_LONG).show();
 
@@ -278,27 +739,34 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        /*int dioxidoAzufre = Integer.parseInt(da);*/
-        /*int monoxidoNitrogeno = Integer.parseInt(le);*/
-        /*int monoxidoCarbono = Integer.parseInt(mc);*/
-        /*int dioxidoNitrogeno = Integer.parseInt(dn);*/
+        /*int dioxidoAzufre = Integer.parseInt(so2);
+        int monoxidoNitrogeno = Integer.parseInt(co);
+        int monoxidoCarbono = Integer.parseInt(no);
+        int dioxidoNitrogeno = Integer.parseInt(no2);*/
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Dioxido de Azufre", 10/*dioxidoAzufre*/));
-        data.add(new ValueDataEntry("Monoxido de Nitrogeno", 20/*monoxidoNitrogeno*/));
-        data.add(new ValueDataEntry("Monoxido de Carbono", 12/*monoxidoCarbono*/));
-        data.add(new ValueDataEntry("Dioxido de Nitrogeno", 18/*dioxidoNitrogeno*/));
+        data.add(new ValueDataEntry("Dioxido de Azufre (SO2)", 0.2));
+        data.add(new ValueDataEntry("Monoxido de Nitrogeno (CO)", 16.2));
+        data.add(new ValueDataEntry("Monoxido de Carbono (NO)", 10.0));
+        data.add(new ValueDataEntry("Dioxido de Nitrogeno (NO2", 23.2));
 
         pie.data(data);
 
-        pie.title("Estacion mas cerca" + estacionCerca.getNombre()).margin(50d, 50d, 50d, 50d);
+        // pie.palette("#DE3655");
+        // pie.hatchFill(Html.);
+        // pie.palette(String.valueOf(getColor(R.color.colorAzulOscuro)));
+        // pie.hatchFillPalette(getColor(R.color.colorAzulOscuro), getColor(R.color.colorVerde))
+
+        pie.animation(true);
+
+        pie.title("Estacion más cerca " + estacionCerca.getNombre()).padding(50d, 50d, 0d, 50d);
 
         pie.labels().position("outside");
 
         pie.legend().title().enabled(true);
-        pie.legend().title().text("Leyenda").padding(0d, 0d, 10d, 0d);
-
+        pie.legend().title().text("Leyenda").padding(50d, 0d, 0d, 50d);
         pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
+
         anyChartView.setChart(pie);
 
 

@@ -19,6 +19,7 @@
         android:layout_margin="16dp"
         android:onClick="createSimpleDialog"/>
 
+
     <com.anychart.AnyChartView
         android:id="@+id/acGrafica"
         android:layout_width="match_parent"

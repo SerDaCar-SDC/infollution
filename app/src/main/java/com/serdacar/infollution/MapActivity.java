@@ -79,11 +79,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         tvDioxidoNitrogeno = findViewById(R.id.tvDioxidoNitrogeno);
 
 
-        // LAYOUT
-        btnSatelite = findViewById(R.id.btnTipoMapaSatelite);
-        btnTerrain = findViewById(R.id.btnTipoMapaTerrain);
-        btnNormal = findViewById(R.id.btnTipoMapaNormal);
-        btnHybrid = findViewById(R.id.btnTipoMapaHybrid);
 
         swipe = findViewById(R.id.swipecard);
 
@@ -739,26 +734,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
-    // TIPOS DE MAPAS CON BOTONES DE COLORES
-    public void onClickTipoSatelite(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        pulsado(true, false, false, false);
-    }
-
-    public void onClickTipoTerrain(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        pulsado(false, false, false, true);
-    }
-
-    public void onClickTipoNormal(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        pulsado(false, false, true, false);
-    }
-
-    public void onClickTipoHybrid(View view) {
-        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        pulsado(false, true, false, false);
-    }
 
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
