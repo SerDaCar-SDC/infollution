@@ -95,7 +95,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
         persistencia = new EstacionDataSource(this);
-
     }
 
     private void seleccionarFoto(int id) {

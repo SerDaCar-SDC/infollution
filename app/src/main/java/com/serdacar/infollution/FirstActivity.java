@@ -581,14 +581,13 @@ public class FirstActivity extends AppCompatActivity {
 
                     AnyChartView anyChartView = findViewById(R.id.acGrafica);
 
-                    Pie pie = AnyChart.pie();
-
                     List<DataEntry> data = new ArrayList<>();
                     data.add(new ValueDataEntry("Dióxido de Azufre (SO2)", dioxidoAzufre));
                     data.add(new ValueDataEntry("Monóxido de Nitrógeno (CO)", monoxidoNitrogeno));
                     data.add(new ValueDataEntry("Monóxido de Carbono (NO)", monoxidoCarbono));
                     data.add(new ValueDataEntry("Dióxido de Nitrógeno (NO2)", dioxidoNitrogeno));
 
+                    Pie pie = AnyChart.pie();
                     pie.data(data);
                     pie.animation(true);
                     pie.title("Estación más cercana: " + estacionCerca.getNombre()).padding(20d, 0d, 0d, 0d);
