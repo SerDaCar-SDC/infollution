@@ -21,7 +21,8 @@ _Por otro lado, hay una sección de noticias que
 
 ## Comenzando 🚀
 
-![Splash Screen](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
 
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
