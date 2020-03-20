@@ -17,67 +17,41 @@ _Tranquilo, en nuestra aplicación te expliacamos que significan esos elementos 
 _La aplicación también dispone de un mapa que muestra donde están ubicadas las estaciones. También te permite ver el nivel de contaminación_
 _que hay registrado en las diferentes estaciones.
 
-_Por otro lado, hay una sección de noticias que 
+_Por otro lado, hay una sección de noticias, muestra las más actuales y se actualizan automáticamente._
 
 ## Comenzando 🚀
 
 ![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Login.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/First.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Gas.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Map.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/MapS.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/News.jpeg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Chat.jpeg)
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
 
 
 ### Pre-requisitos 📋
 
-_Qué cosas necesitas para instalar el software y cómo instalarlas_
+_Permisos de ubicación_
 
 ```
-Da un ejemplo
+Para poder disfrutar de la aplicación al 100% es recomendable que el usuario le de permisos de ubicación a la aplicación y activar la ubicación GPS del dispositivo móvil.
+```
+
+_Conexión a internet_
+
+```
+Es necesario que el dispositivo móvil esté conectado a una conexión de internet para poder acceder a las bases de datos de las estaciones, para poder interactuar con el chatbot y para poder visualizar el apartado de noticias
 ```
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutándose_
+_La aplicación se puede encontrar desde la [Play Store]._
 
-_Di cómo será ese paso_
+_También proporcionamos un [enlace directo de la APK](https://github.com/2DAMUE/pi1920v-serdacar/tree/master/app/release)_
 
-```
-Da un ejemplo
-```
-
-_Y repite_
-
-```
-hasta finalizar
-```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica qué verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica qué verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre cómo hacer deploy_
 
 ## Construido con 🛠️
 
@@ -92,17 +66,14 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Picasso](https://square.github.io/picasso/) - Librería para visualizar imagenes de un enlace.
 
 
-## Contribuyendo 🖇️
+## Promoción 🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+_La idea de repartir información pública que recoge la COmunidad de Madrid ha sido de la [Universidad Europea de Madrid](https://universidadeuropea.es/) con el fin de poner a prueba nuestros conocimientos de programación en el 2º año de grado superior de Desarrollo de Aplicaciones Multiplataforma y evaluarnos en la segunda evaluación de dicho curso._
 
 ## Versionado 📌
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
+Version 1.
+
 
 ## Desarrolladores de Infollution ✒️
 
@@ -111,14 +82,3 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 * **Sergio González Martín** - *DAM* - [porteroFitness](https://github.com/porteroFitness)
 
 Lista de contribuyentes [Contributors](https://github.com/2DAMUE/pi1920v-serdacar/graphs/contributors).
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
