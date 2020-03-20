@@ -64,8 +64,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         getSupportActionBar().hide();
 
-
-        
         ivLugar = findViewById(R.id.ivLugar);
         ivMapa = findViewById(R.id.ivMenuMapa);
         ivMapa.setImageResource(R.drawable.ic_mapita_foreground_rojo);
@@ -83,7 +81,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.fragmentMap);
         mapFragment.getMapAsync(this);
 
-        // METER SWYPE CARD
+        // METER SWIPE CARD
         ExpandableCardView card = findViewById(R.id.swipecard);
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
@@ -222,6 +220,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                swipe.setVisibility(1);
+
                 swipe.setEnabled(true);
                 swipe.setTitle(marker.getTitle());
                 String tituloMarcador = marker.getTitle();

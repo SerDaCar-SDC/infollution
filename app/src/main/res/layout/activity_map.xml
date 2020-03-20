@@ -32,7 +32,8 @@
         app:inner_view="@layout/cardview_information"
         app:expandOnClick="true"
         app:animationDuration="300"
-        app:startExpanded="false"/>
+        app:startExpanded="false"
+        android:visibility="invisible"/>
     <!-- *-*-*-*-*-*-*-*-*-*-*-* -->
 
     <FrameLayout
