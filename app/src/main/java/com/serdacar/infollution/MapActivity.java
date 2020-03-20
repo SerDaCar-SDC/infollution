@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.widget.ImageView;
 
 import com.alespero.expandablecardview.ExpandableCardView;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -175,6 +176,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
 
         // COORDENADAS
+        LatLng madrid = new LatLng(40.416775, -3.703789);
         LatLng est4 = new LatLng(40.4238823, -3.7122567);
         LatLng est8 = new LatLng(40.4215533, -3.6823158);
         LatLng est11 = new LatLng(40.4514734, -3.6773491);
@@ -228,7 +230,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(est60).title("Tres Olivos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
 
         // POSICIÓN DE CÁMARA
-        // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(est4, 20));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(madrid, 14));
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
