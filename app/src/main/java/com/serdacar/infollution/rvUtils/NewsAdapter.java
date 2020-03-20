@@ -18,12 +18,10 @@ import java.util.ArrayList;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NoticiasViewHolder> implements View.OnClickListener {
     View.OnClickListener naListener;
     ArrayList<Article> listaNoticias;
-    Article art;
 
     public NewsAdapter(ArrayList<Article> listaNoticias) {
         this.listaNoticias = listaNoticias;
     }
-
     @NonNull
     @Override
     public NoticiasViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,8 +32,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NoticiasViewHo
 
     @Override
     public void onBindViewHolder(@NonNull NoticiasViewHolder holder, int position) {
-        /*Enlazamos el contenedor del contenido del elemento de la posición position
-        * de pokemonVH con el VH*/
         holder.bindNews(listaNoticias.get(position));
     }
 
@@ -44,8 +40,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NoticiasViewHo
         /*Crea tantas cajas como listaNoticias haya*/
         return listaNoticias.size();
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -56,39 +50,28 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NoticiasViewHo
 
     public static class NoticiasViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitulo;
-        TextView tvURL;
+        TextView tvDescripcion;
         ImageView imagenHeadLine;
+        TextView tvAutor;
 
         public NoticiasViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvTitulo = itemView.findViewById(R.id.tvNombre);
-            tvURL = itemView.findViewById(R.id.tvURL);
+            tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
             imagenHeadLine = itemView.findViewById(R.id.ivImage);
+            tvAutor = itemView.findViewById(R.id.tvAutor);
+
         }
         /*para volcar la info del tipo articulo en los componentes del layaut que hayamos llamado */
         public void bindNews(Article articulo) {
-
             tvTitulo.setText(articulo.getTitle());
-            tvURL.setText(articulo.getUrl());
-
-            String url = articulo.getUrl();
-
-            // obtenerUrl(url);
+            tvDescripcion.setText(articulo.getDescription());
+            tvAutor.setText(articulo.getAuthor());
 
             String imagenUrl = articulo.getUrlToImage();
             Picasso.get().load(imagenUrl).into(imagenHeadLine);
-
-
         }
-
-        /*
-        public String obtenerUrl(String urlRecogida) {
-
-            String urlNoticia = urlRecogida;
-
-            return urlNoticia;
-        }*/
     }
 
     public void setListener(View.OnClickListener naListener) {
