@@ -595,6 +595,7 @@ public class FirstActivity extends AppCompatActivity {
                     pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
                     anyChartView.setChart(pie);
+                    pie.background().stroke();
 
                 } else {
                     Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
