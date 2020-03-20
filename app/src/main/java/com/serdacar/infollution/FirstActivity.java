@@ -12,27 +12,22 @@ import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
-import com.anychart.chart.common.listener.Event;
-import com.anychart.chart.common.listener.ListenersInterface;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
 
-import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.serdacar.infollution.database.EstacionDataSource;
 import com.serdacar.infollution.model.Estacion;
@@ -48,9 +43,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import com.serdacar.infollution.model.Estacion;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -69,7 +62,6 @@ public class FirstActivity extends AppCompatActivity {
     private double miLatitud;
     private double miLongitud;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,9 +78,7 @@ public class FirstActivity extends AppCompatActivity {
 
         fbAuth = FirebaseAuth.getInstance();
 
-
         /* * * *  ENCONTRAR UBICACION * * * * * * * * * * * * * * * * * */
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Es necesario que active la localización GPS", Toast.LENGTH_LONG).show();
             return;
@@ -101,8 +91,6 @@ public class FirstActivity extends AppCompatActivity {
         miLatitud = loc.getLatitude();
         miLongitud = loc.getLongitude();
 
-        //Toast.makeText(this, miLatitud + " " + miLongitud, Toast.LENGTH_LONG).show();
-
         EstacionDataSource persistencia = new EstacionDataSource(this);
 
         ArrayList<Estacion> listaEstaciones = persistencia.leerEstacionLista();
@@ -110,9 +98,6 @@ public class FirstActivity extends AppCompatActivity {
 
         estacionCerca.getLatitud();
         estacionCerca.getLongitud();
-        //Toast.makeText(this, estacionCerca.getNombre(), Toast.LENGTH_LONG).show();
-
-        /* * * * * * * * * * * * * * * * * * * * * */
 
         Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
         APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
@@ -135,8 +120,6 @@ public class FirstActivity extends AppCompatActivity {
                     String codigoRecuperado;
 
                     int horaActual = comprobarHora();
-
-                    //Estacion encontrada = persistencia.leerEstacion(estacionCerca.getCodigoCorto());
 
                     for(int i = 0; i < listaEstaciones.size(); i++) {
                         codigoEstacion = listaEstaciones.get(i).getEstacion();
@@ -607,13 +590,9 @@ public class FirstActivity extends AppCompatActivity {
                     data.add(new ValueDataEntry("Dióxido de Nitrógeno (NO2)", dioxidoNitrogeno));
 
                     pie.data(data);
-
                     pie.animation(true);
-
                     pie.title("Estación más cercana: " + estacionCerca.getNombre()).padding(20d, 0d, 0d, 0d);
-
                     pie.labels().position("outside");
-
                     pie.legend().title().text("").padding(70d, 50d, 0d, 50d);
                     pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
 
@@ -623,8 +602,6 @@ public class FirstActivity extends AppCompatActivity {
                     Log.e("ERROR ON RESPONSE", "ERROR: " + response.code());
                 }
             }
-
-
 
             public int comprobarHora() {
                 Date hora;
@@ -641,43 +618,6 @@ public class FirstActivity extends AppCompatActivity {
                 Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
             }
         });
-
-        /*AnyChartView anyChartView = findViewById(R.id.acGrafica);
-
-        Pie pie = AnyChart.pie();
-
-        pie.setOnClickListener(new ListenersInterface.OnClickListener(new String[]{"x", "value"}) {
-            @Override
-            public void onClick(Event event) {
-                Toast.makeText(FirstActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Dioxido de Azufre (SO2)", dioxidoAzufre));
-        data.add(new ValueDataEntry("Monoxido de Nitrogeno (CO)", monoxidoNitrogeno));
-        data.add(new ValueDataEntry("Monoxido de Carbono (NO)", monoxidoCarbono));
-        data.add(new ValueDataEntry("Dioxido de Nitrogeno (NO2", dioxidoNitrogeno));*/
-
-        //pie.data(data);
-
-        // pie.palette("#DE3655");
-        // pie.hatchFill(Html.);
-        // pie.palette(String.valueOf(getColor(R.color.colorAzulOscuro)));
-        // pie.hatchFillPalette(getColor(R.color.colorAzulOscuro), getColor(R.color.colorVerde))
-
-       /* pie.animation(true);
-
-        pie.title("Estacion más cerca " + estacionCerca.getNombre()).padding(50d, 50d, 0d, 50d);
-
-        pie.labels().position("outside");
-
-        pie.legend().title().enabled(true);
-        pie.legend().title().text("Leyenda").padding(50d, 0d, 0d, 50d);
-        pie.legend().position("center-bottom").itemsLayout(LegendLayout.HORIZONTAL).align(Align.CENTER);
-
-        anyChartView.setChart(pie);*/
-
     }
 
     public Estacion encontrarEstMasCerca(ArrayList<Estacion> lista, double posiX, double posiY) {
@@ -697,7 +637,6 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * ** * */
-
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
     }
@@ -747,6 +686,4 @@ public class FirstActivity extends AppCompatActivity {
         dialog = builder.create();
         dialog.show();
     }
-
-
 }
