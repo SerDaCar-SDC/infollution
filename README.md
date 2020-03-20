@@ -82,9 +82,14 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
+* [AnyChart Android](https://www.anychart.com/es/technical-integrations/samples/android-charts/) - Herramienta para insertar gráficas.
+* [News API](https://newsapi.org/) - Herramienta para mostrar las noticias a través de una API.
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Picasso](https://square.github.io/picasso/) - Librería para visualizar imagenes de un enlace.
+* [Retrofit](https://square.github.io/retrofit/) - Librería para convertir el XML a GSON.
+* [Picasso](https://square.github.io/picasso/) - Librería para visualizar imagenes de un enlace.
+* [Picasso](https://square.github.io/picasso/) - Librería para visualizar imagenes de un enlace.
+
 
 ## Contribuyendo 🖇️
 
@@ -98,15 +103,13 @@ Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](ht
 
 Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
-## Autores ✒️
+## Desarrolladores de Infollution ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+* **Carlos Fernández** - *DAM* - [carlosFDDV](https://github.com/carlosFDDV)
+* **Daniel Sánchez** - *DAM* - [danielSBPC](https://github.com/danielSBPC)
+* **Sergio González Martín** - *DAM* - [porteroFitness](https://github.com/porteroFitness)
 
-* **Carlos Fernández** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Daniel Sánchez** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-* **Sergio González Martín** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+Lista de contribuyentes [Contributors](https://github.com/2DAMUE/pi1920v-serdacar/graphs/contributors).
 
 ## Licencia 📄
 
