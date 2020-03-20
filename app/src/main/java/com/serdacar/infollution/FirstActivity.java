@@ -633,7 +633,6 @@ public class FirstActivity extends AppCompatActivity {
         return resMenosdistante;
     }
 
-    /* * * * * * * * * * * * * * * * * * * * * * * * * * ** * */
     public void accederNoticias(View view) {
         startActivity(new Intent(this, NewsActivity.class));
     }
