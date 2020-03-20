@@ -6,16 +6,16 @@ _Los datos principales que se encarga de mostrar es el nivel de:_
 
 +  _Dióxido de Azufre_
   
-+  _Dióxido de Nitrogeno_
++  _Dióxido de Nitrógeno_
   
-+  _Monóxido de Nitrogeno_ 
++  _Monóxido de Nitrógeno_ 
   
 +  _Monóxido de Carbono_ 
   
 _Tranquilo, en nuestra aplicación te expliacamos que significan esos elementos químicos y como pueden afectar en nuestras vidas_
 
 _La aplicación también dispone de un mapa que muestra donde están ubicadas las estaciones. También te permite ver el nivel de contaminación_
-_que hay registrado en las diferentes estaciones._
+_que hay registrado en las diferentes estaciones.
 
 _Por otro lado, hay una sección de noticias que 
 
@@ -31,7 +31,7 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Qué cosas necesitas para instalar el software y cómo instalarlas_
 
 ```
 Da un ejemplo
@@ -39,9 +39,9 @@ Da un ejemplo
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutándose_
 
-_Dí cómo será ese paso_
+_Di cómo será ese paso_
 
 ```
 Da un ejemplo
@@ -61,7 +61,7 @@ _Explica como ejecutar las pruebas automatizadas para este sistema_
 
 ### Analice las pruebas end-to-end 🔩
 
-_Explica que verifican estas pruebas y por qué_
+_Explica qué verifican estas pruebas y por qué_
 
 ```
 Da un ejemplo
@@ -69,7 +69,7 @@ Da un ejemplo
 
 ### Y las pruebas de estilo de codificación ⌨️
 
-_Explica que verifican estas pruebas y por qué_
+_Explica qué verifican estas pruebas y por qué_
 
 ```
 Da un ejemplo
@@ -77,7 +77,7 @@ Da un ejemplo
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+_Agrega notas adicionales sobre cómo hacer deploy_
 
 ## Construido con 🛠️
 
