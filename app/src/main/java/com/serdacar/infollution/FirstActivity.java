@@ -124,7 +124,6 @@ public class FirstActivity extends AppCompatActivity {
 
         /* * * * * * * * * * * * * * * * * * * * * */
 
-
         Retrofit retrofit = RetrofitClient.getClient(APIEstaciones.BASE_URL);
         APIEstaciones apiEstaciones = retrofit.create(APIEstaciones.class);
         Call<Datos> call  = apiEstaciones.obtenerDatos();
@@ -737,7 +736,7 @@ public class FirstActivity extends AppCompatActivity {
                 Toast.makeText(FirstActivity.this, event.getData().get("x") + ":" + event.getData().get("value"), Toast.LENGTH_SHORT).show();
             }
         });
-
+        // TODO: Parsear a double
         /*int dioxidoAzufre = Integer.parseInt(so2);
         int monoxidoNitrogeno = Integer.parseInt(co);
         int monoxidoCarbono = Integer.parseInt(no);

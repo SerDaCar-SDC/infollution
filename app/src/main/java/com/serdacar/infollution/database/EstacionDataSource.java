@@ -99,7 +99,7 @@ public class EstacionDataSource {
 
         return idEstacion;
     }
-    public ArrayList<Estacion> leerTodasEstaciones() {
+    /*public ArrayList<Estacion> leerTodasEstaciones() {
         ArrayList<Estacion> listaEstaciones = new ArrayList<Estacion>();
         SQLiteDatabase database = openReadable();
 
@@ -139,7 +139,7 @@ public class EstacionDataSource {
 
         close(database);
         return listaEstaciones;
-    }
+    }*/
 
 
     public ArrayList<Estacion> leerEstacionLista() {
