@@ -1224,7 +1224,6 @@ public class FirstActivity extends AppCompatActivity {
                                dialog.dismiss();
                             }
                         });
-
         dialog = builder.create();
         dialog.show();
     }
