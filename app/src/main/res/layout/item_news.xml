@@ -3,42 +3,55 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="16dp"
     android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview">
 
         <TextView
             android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:textSize="20sp"
-            android:textColor="@color/colorBlancoNuestro"
-            android:textStyle="bold"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"
+            android:fontFamily="@font/robotobold"
+            android:textColor="@color/colorAzul" />
 
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_margin="20dp"/>
-
-        <TextView
-            android:id="@+id/tvDescripcion"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:textColor="@color/colorAzul"
-            android:textSize="16sp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
         <TextView
             android:id="@+id/tvAutor"
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
             android:textColor="@color/colorAzul"
-            android:textSize="16sp"
+            android:fontFamily="@font/robotolight"
+            android:textSize="12sp"
             android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/tvDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorAzulOscuro"
+            android:fontFamily="@font/robotolight"
+            android:textSize="14sp"
+            android:maxLines="2"/>
+
+
 
 
 </LinearLayout>

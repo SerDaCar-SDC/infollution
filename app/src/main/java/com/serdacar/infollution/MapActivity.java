@@ -70,7 +70,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         
         ivLugar = findViewById(R.id.ivLugar);
         ivMapa = findViewById(R.id.ivMenuMapa);
-        ivMapa.setImageResource(R.drawable.ic_pin_rojo);
+        ivMapa.setImageResource(R.drawable.ic_mapita_foreground_rojo);
         ivMapa.setEnabled(false);
 
         //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
@@ -93,7 +93,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         card.setOnExpandedListener(new ExpandableCardView.OnExpandedListener() {
             @Override
             public void onExpandChanged(View v, boolean isExpanded) {
-                Toast.makeText(MapActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MapActivity.this, isExpanded ? "Expanded!" : "Collapsed!", Toast.LENGTH_SHORT).show();
             }
         });
 

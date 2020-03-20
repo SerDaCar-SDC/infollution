@@ -40,7 +40,8 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
-            android:textSize="@dimen/letrasNormales" />
+            android:textSize="@dimen/letrasNormales"
+            android:drawableLeft="@drawable/ic_people_foreground"/>
         <!-- robotolight para las letras -->
 
         <EditText
@@ -55,7 +56,8 @@
             android:inputType="textPassword"
             android:textColor="@color/colorAzulOscuro"
             android:textColorHint="@color/colorAzulOscuro"
-            android:textSize="@dimen/letrasNormales" />
+            android:textSize="@dimen/letrasNormales"
+            />
 
 
     </LinearLayout>
@@ -84,7 +86,7 @@
         android:textColor="@color/colorRojo"
         android:textSize="@dimen/letrasBotones"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/llLogin"/>
     //robotomedium para los botones
 
 

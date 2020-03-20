@@ -46,7 +46,7 @@ public class NewsActivity extends AppCompatActivity {
 
         cosumirWS();
 
-        ivLogoNoticias.setImageResource(R.drawable.ic_info_foreground_rojo);
+        ivLogoNoticias.setImageResource(R.drawable.ic_mundo_foreground_rojo);
         ivLogoNoticias.setEnabled(false);
     }
 

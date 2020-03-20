@@ -36,26 +36,20 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:onClick="accederScrolling">
 
-            <TextView
-                android:id="@+id/tvAzufreTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAzulOscuro"
-                android:text="@string/tv_azufre_titulo"
-                android:textSize="15sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"/>
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SO2"
                 android:layout_margin="5dp"
-                android:textSize="15sp"
+                android:textSize="22sp"
                 android:textAlignment="center"
-                android:fontFamily="@font/robotoitalic"/>
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -68,6 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
+                    android:textSize="18sp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"/>
 
@@ -76,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -89,26 +85,19 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:onClick="accederScrolling">
 
-            <TextView
-                android:id="@+id/tvCarbonoTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAzulOscuro"
-                android:text="@string/tv_carbono_titulo"
-                android:textSize="15sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CO"
                 android:layout_margin="5dp"
-                android:textSize="15sp"
+                android:textSize="22sp"
                 android:textAlignment="center"
-                android:fontFamily="@font/robotoitalic"/>
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -122,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -129,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -168,26 +159,20 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:onClick="accederScrolling">
 
-            <TextView
-                android:id="@+id/tvMNitroTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAzulOscuro"
-                android:text="@string/tv_mnitro_titulo"
-                android:textSize="15sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"/>
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="NO"
                 android:layout_margin="5dp"
-                android:textSize="15sp"
+                android:textSize="22sp"
                 android:textAlignment="center"
-                android:fontFamily="@font/robotoitalic"/>
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -201,6 +186,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -208,6 +194,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -221,26 +208,19 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:onClick="accederScrolling">
 
-            <TextView
-                android:id="@+id/tvDNitroTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorAzulOscuro"
-                android:textSize="15sp"
-                android:text="@string/tv_dnitro_titulo"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="NO2"
                 android:layout_margin="5dp"
-                android:textSize="15sp"
+                android:textSize="22sp"
                 android:textAlignment="center"
-                android:fontFamily="@font/robotoitalic"/>
+                android:fontFamily="@font/robotobold"
+                android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -254,6 +234,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -261,6 +242,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
+                    android:textSize="18sp"
                     android:layout_weight="1"/>
 
             </LinearLayout>
