@@ -53,10 +53,6 @@ _La aplicación se puede encontrar desde la [Play Store]._
 _También proporcionamos un [enlace directo de la APK](https://github.com/2DAMUE/pi1920v-serdacar/tree/master/app/release)_
 
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre cómo hacer deploy_
-
 ## Construido con 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
@@ -86,7 +82,3 @@ Version 1.
 * **Sergio González Martín** - *DAM* - [porteroFitness](https://github.com/porteroFitness)
 
 Lista de contribuyentes [Contributors](https://github.com/2DAMUE/pi1920v-serdacar/graphs/contributors).
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia () - mira el archivo [LICENSE.md](LICENSE.md) para detalles
