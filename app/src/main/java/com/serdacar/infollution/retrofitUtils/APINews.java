@@ -8,7 +8,6 @@ import retrofit2.http.Headers;
 import retrofit2.http.Query;
 
 public interface APINews {
-
     public static final String BASE_URL = "http://newsapi.org/v2/";
 
     @Headers({"Accept: application/json"})

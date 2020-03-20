@@ -51,7 +51,4 @@
             android:textSize="14sp"
             android:maxLines="2"/>
 
-
-
-
 </LinearLayout>

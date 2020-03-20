@@ -9,15 +9,11 @@
     tools:showIn="@layout/activity_scrolling"
     android:background="@color/colorBlanco">
 
-    //Aquí van los gases
-
     <LinearLayout
         android:id="@+id/llTodoDioxidoAzufre"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,14 +51,6 @@
             </FrameLayout>
 
         </LinearLayout>
-
-
-
-
-
-
-
-
 
 
         <LinearLayout
@@ -103,18 +91,6 @@
         </LinearLayout>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -151,14 +127,6 @@
             </FrameLayout>
 
         </LinearLayout>
-
-
-
-
-
-
-
-
 
 
         <LinearLayout
@@ -199,8 +167,6 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </androidx.core.widget.NestedScrollView>

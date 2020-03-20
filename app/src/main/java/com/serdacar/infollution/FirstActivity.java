@@ -129,7 +129,6 @@ public class FirstActivity extends AppCompatActivity {
                             codigoRecuperado = codigoEstacion.substring(1, 3);
                             numeroEstacion = Integer.parseInt(codigoRecuperado);
 
-                            // estacionSeleccionada
                             if (estacionCerca.getCodigoCorto() == numeroEstacion) {
                                 if (listaEstaciones.get(i).getMagnitud().equals("1")) {
                                     if (horaActual == 1) {
@@ -353,7 +352,6 @@ public class FirstActivity extends AppCompatActivity {
                             codigoRecuperado = codigoEstacion.substring(2, 3);
                             numeroEstacion = Integer.parseInt(codigoRecuperado);
 
-                            // estacionSeleccionada
                             if (estacionCerca.getCodigoCorto() == numeroEstacion) {
                                 if (listaEstaciones.get(i).getMagnitud().equals("1")) {
                                     if (horaActual == 1) {

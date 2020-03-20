@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class ChatActivity extends AppCompatActivity {
-
     private WebView wv;
     ImageView ivMenuChat;
     ImageButton ivMenuLogo;

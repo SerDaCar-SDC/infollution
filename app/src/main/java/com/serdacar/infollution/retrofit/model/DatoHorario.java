@@ -6,7 +6,6 @@ import org.simpleframework.xml.Root;
 @Root(name="DatoHorario")
 public class DatoHorario {
 
-
     @Element(name="punto_muestreo", required=false)
     String puntoMuestreo;
 
@@ -176,170 +175,67 @@ public class DatoHorario {
     String v19;
 
     public String getPuntoMuestreo() {return this.puntoMuestreo;}
-    public void setPuntoMuestreo(String value) {this.puntoMuestreo = value;}
 
     public String getH21() {return this.h21;}
-    public void setH21(String value) {this.h21 = value;}
 
     public String getH20() {return this.h20;}
-    public void setH20(String value) {this.h20 = value;}
 
     public String getH23() {return this.h23;}
-    public void setH23(String value) {this.h23 = value;}
 
     public String getH22() {return this.h22;}
-    public void setH22(String value) {this.h22 = value;}
 
     public String getH24() {return this.h24;}
-    public void setH24(String value) {this.h24 = value;}
-
-    public String getV21() {return this.v21;}
-    public void setV21(String value) {this.v21 = value;}
-
-    public String getV20() {return this.v20;}
-    public void setV20(String value) {this.v20 = value;}
-
-    public String getV23() {return this.v23;}
-    public void setV23(String value) {this.v23 = value;}
-
-    public String getV22() {return this.v22;}
-    public void setV22(String value) {this.v22 = value;}
-
-    public String getV24() {return this.v24;}
-    public void setV24(String value) {this.v24 = value;}
 
     public String getMunicipio() {return this.municipio;}
-    public void setMunicipio(String value) {this.municipio = value;}
 
     public String getH01() {return this.h01;}
-    public void setH01(String value) {this.h01 = value;}
 
     public String getH03() {return this.h03;}
-    public void setH03(String value) {this.h03 = value;}
 
     public String getH02() {return this.h02;}
-    public void setH02(String value) {this.h02 = value;}
 
     public String getProvincia() {return this.provincia;}
-    public void setProvincia(String value) {this.provincia = value;}
 
     public String getH05() {return this.h05;}
-    public void setH05(String value) {this.h05 = value;}
 
     public String getH04() {return this.h04;}
-    public void setH04(String value) {this.h04 = value;}
 
     public String getH07() {return this.h07;}
-    public void setH07(String value) {this.h07 = value;}
 
     public String getH06() {return this.h06;}
-    public void setH06(String value) {this.h06 = value;}
 
     public String getH09() {return this.h09;}
-    public void setH09(String value) {this.h09 = value;}
 
     public String getH08() {return this.h08;}
-    public void setH08(String value) {this.h08 = value;}
-
-    public String getV01() {return this.v01;}
-    public void setV01(String value) {this.v01 = value;}
-
-    public String getV03() {return this.v03;}
-    public void setV03(String value) {this.v03 = value;}
-
-    public String getV02() {return this.v02;}
-    public void setV02(String value) {this.v02 = value;}
 
     public String getEstacion() {return this.estacion;}
-    public void setEstacion(String value) {this.estacion = value;}
 
     public String getMes() {return this.mes;}
-    public void setMes(String value) {this.mes = value;}
-
-    public String getV05() {return this.v05;}
-    public void setV05(String value) {this.v05 = value;}
-
-    public String getV04() {return this.v04;}
-    public void setV04(String value) {this.v04 = value;}
-
-    public String getV07() {return this.v07;}
-    public void setV07(String value) {this.v07 = value;}
-
-    public String getV06() {return this.v06;}
-    public void setV06(String value) {this.v06 = value;}
-
-    public String getV09() {return this.v09;}
-    public void setV09(String value) {this.v09 = value;}
-
-    public String getV08() {return this.v08;}
-    public void setV08(String value) {this.v08 = value;}
 
     public String getAno() {return this.ano;}
-    public void setAno(String value) {this.ano = value;}
 
     public String getH10() {return this.h10;}
-    public void setH10(String value) {this.h10 = value;}
 
     public String getH12() {return this.h12;}
-    public void setH12(String value) {this.h12 = value;}
 
     public String getH11() {return this.h11;}
-    public void setH11(String value) {this.h11 = value;}
 
     public String getMagnitud() {return this.magnitud;}
-    public void setMagnitud(String value) {this.magnitud = value;}
 
     public String getH14() {return this.h14;}
-    public void setH14(String value) {this.h14 = value;}
 
     public String getH13() {return this.h13;}
-    public void setH13(String value) {this.h13 = value;}
 
     public String getH16() {return this.h16;}
-    public void setH16(String value) {this.h16 = value;}
 
     public String getH15() {return this.h15;}
-    public void setH15(String value) {this.h15 = value;}
 
     public String getH18() {return this.h18;}
-    public void setH18(String value) {this.h18 = value;}
 
     public String getH17() {return this.h17;}
-    public void setH17(String value) {this.h17 = value;}
 
     public String getH19() {return this.h19;}
-    public void setH19(String value) {this.h19 = value;}
-
-    public String getV10() {return this.v10;}
-    public void setV10(String value) {this.v10 = value;}
-
-    public String getV12() {return this.v12;}
-    public void setV12(String value) {this.v12 = value;}
-
-    public String getV11() {return this.v11;}
-    public void setV11(String value) {this.v11 = value;}
-
-    public String getV14() {return this.v14;}
-    public void setV14(String value) {this.v14 = value;}
-
-    public String getV13() {return this.v13;}
-    public void setV13(String value) {this.v13 = value;}
-
-    public String getV16() {return this.v16;}
-    public void setV16(String value) {this.v16 = value;}
-
-    public String getV15() {return this.v15;}
-    public void setV15(String value) {this.v15 = value;}
-
-    public String getV18() {return this.v18;}
-    public void setV18(String value) {this.v18 = value;}
 
     public String getDia() {return this.dia;}
-    public void setDia(String value) {this.dia = value;}
 
-    public String getV17() {return this.v17;}
-    public void setV17(String value) {this.v17 = value;}
-
-    public String getV19() {return this.v19;}
-    public void setV19(String value) {this.v19 = value;}
 }

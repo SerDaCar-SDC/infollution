@@ -1,11 +1,9 @@
 package com.serdacar.infollution;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -42,14 +40,13 @@ import retrofit2.Retrofit;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
     ImageView ivMapa;
-    //EditText etEmail;
+
     // LAYOUT
     private ImageButton btnSatelite;
     private ImageButton btnTerrain;
     private ImageButton btnNormal;
     private ImageButton btnHybrid;
 
-    // CARDVIEW INFORMATION
     EstacionDataSource persistencia;
 
     TextView tvDioxidoAzufre;
@@ -72,7 +69,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ivMapa.setImageResource(R.drawable.ic_mapita_foreground_rojo);
         ivMapa.setEnabled(false);
 
-        //tvNombreEstacion = findViewById(R.id.tvNombreEstacion);
         tvDioxidoAzufre = findViewById(R.id.tvDioxidoAzufre);
         tvMonoxidoCarbono = findViewById(R.id.tvMonoxidoCarbono);
         tvMonoxidoNitrogeno = findViewById(R.id.tvMonoxidoNitrogeno);
@@ -724,10 +720,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         Log.e("ERROR ON FAILURE", "ERROR: " + t.getMessage());
                     }
                 });
-
-
-
-
                 return false; // si ponemos true no se muestra el bocadillo
             }
         });

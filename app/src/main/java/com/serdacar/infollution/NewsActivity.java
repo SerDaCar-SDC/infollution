@@ -55,7 +55,6 @@ public class NewsActivity extends AppCompatActivity {
         Retrofit r = RetrofitClient.getClient(APINews.BASE_URL);
         APINews ars = r.create(APINews.class);
         Call<Headlines> call = ars.getHeadlines(pais, API_KEY);
-        // Log.i("ANTES_ENQUEUE", "Antes del Enqueue" );
 
         call.enqueue(new Callback<Headlines>() {
             @Override
@@ -63,13 +62,11 @@ public class NewsActivity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     Log.i("onResponse", "Error" + response.code());
                 } else {
-                    Log.i("onResponse", "Exito" + response.code());
+                    Log.i("onResponse", "Éxito" + response.code());
                     Headlines r = (Headlines) response.body();
 
                     ArrayList<Article> listaNoticias = r.getArticles();
-
                     configurarRecyclerView(listaNoticias);
-
                 }
             }
 
@@ -78,7 +75,6 @@ public class NewsActivity extends AppCompatActivity {
                 Log.e("OnFailure", "Error" + t.getMessage());
             }
         });
-
     }
 
     private void configurarRecyclerView(final ArrayList<Article> listaNoticias) {

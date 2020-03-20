@@ -3,27 +3,20 @@ package com.serdacar.infollution;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class ScrollingActivity extends AppCompatActivity {
-
     ImageView ivGas;
-
     TextView leerMasDioxidoAzufre;
     TextView leerMasMonoxidoCarbono;
     TextView leerMasMonoxidoNitrogeno;
     TextView leerMasDioxidoNitrogeno;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +24,6 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrolling);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         ivGas = findViewById(R.id.ivGas);
         ivGas.setImageResource(R.drawable.ic_molecule_foreground_rojo);
@@ -43,9 +34,6 @@ public class ScrollingActivity extends AppCompatActivity {
         leerMasMonoxidoNitrogeno = findViewById(R.id.LeerMasMonoxidoNitrogeno);
         leerMasDioxidoNitrogeno = findViewById(R.id.LeerMasDioxidoNitrogeno);
     }
-
-
-
 
     public void accesoFirst(View v) {
         startActivity(new Intent(this, FirstActivity.class));

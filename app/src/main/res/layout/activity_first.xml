@@ -33,46 +33,6 @@
 
     </com.anychart.AnyChartView>
 
-    <!--<com.anychart.AnyChartView
-        android:id="@+id/acGrafica2"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="250dp"/>-->
-
-    <!--</ScrollView>-->
-
-
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.anychart.anychart.AnyChartView
-            android:id="@+id/acGrafica"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>-->
-
-    <!--</ScrollView>-->
-
-    <!--<TextView
-        android:id="@+id/tvBienvenida"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tv_bienvenida_first"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
     <FrameLayout
         android:id="@+id/fl"
         android:layout_width="match_parent"

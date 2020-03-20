@@ -23,4 +23,5 @@
         app:layout_constraintStart_toStartOf="parent">
         <include layout="@layout/menu_navigation"/>
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

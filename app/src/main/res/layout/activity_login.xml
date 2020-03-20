@@ -42,7 +42,6 @@
             android:textColorHint="@color/colorAzulOscuro"
             android:textSize="@dimen/letrasNormales"
             android:drawableLeft="@drawable/ic_people_foreground"/>
-        <!-- robotolight para las letras -->
 
         <EditText
             android:id="@+id/etPasswordLogin"
@@ -58,7 +57,6 @@
             android:textColorHint="@color/colorAzulOscuro"
             android:textSize="@dimen/letrasNormales"
             />
-
 
     </LinearLayout>
 
@@ -87,7 +85,5 @@
         android:textSize="@dimen/letrasBotones"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llLogin"/>
-    //robotomedium para los botones
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
