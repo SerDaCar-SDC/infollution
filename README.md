@@ -21,6 +21,8 @@ _Por otro lado, hay una sección de noticias que
 
 ## Comenzando 🚀
 
+![](https://github.com/porteroFitness/LoginTransition/blob/masterr/Transition.jpg)
+
 _Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
 
 Mira **Deployment** para conocer como desplegar el proyecto.
