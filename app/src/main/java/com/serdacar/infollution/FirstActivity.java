@@ -113,7 +113,6 @@ public class FirstActivity extends AppCompatActivity {
 
         Toast.makeText(this, miLatitud + " " + miLongitud, Toast.LENGTH_LONG).show();
 
-
         EstacionDataSource eds = new EstacionDataSource(this);
 
         ArrayList<Estacion> listaEstaciones = eds.leerEstacionLista();
