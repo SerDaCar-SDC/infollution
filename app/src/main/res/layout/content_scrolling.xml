@@ -160,7 +160,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            >
 
             <TextView
                 android:layout_width="match_parent"

@@ -64,12 +64,10 @@ public class FirstActivity extends AppCompatActivity {
     String email;
 
     // GRAFICAS
-
     String so2;
     String co;
     String no;
     String no2;
-
 
     private LocationManager miLocalizacion;
     private Location loc;
@@ -757,7 +755,7 @@ public class FirstActivity extends AppCompatActivity {
 
         pie.animation(true);
 
-        pie.title("Estacion más cerca " + estacionCerca.getNombre()).padding(50d, 50d, 0d, 50d);
+        pie.title("Estacion más cerca " + estacionCerca.getNombre())/*.padding(50d, 50d, 0d, 50d)*/;
 
         pie.labels().position("outside");
 
