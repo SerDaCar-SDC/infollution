@@ -24,16 +24,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class NewsActivity extends AppCompatActivity {
-
     RecyclerView rv;
     NewsAdapter na;
     LinearLayoutManager llm;
 
     ImageView ivLogoNoticias;
-
     String pais = "US";
-    static final String API_KEY = "45dde31099fb4edfb5fb6b622b80bff2";
 
+    static final String API_KEY = "45dde31099fb4edfb5fb6b622b80bff2";
     static final String CLAVE_URL = "URL";
 
     @Override
@@ -46,16 +44,11 @@ public class NewsActivity extends AppCompatActivity {
         rv = findViewById(R.id.rvNoticias);
         ivLogoNoticias = findViewById(R.id.ivMenuNews);
 
-        // pais = getCountry();
-
         cosumirWS();
 
         ivLogoNoticias.setImageResource(R.drawable.ic_info_foreground_rojo);
         ivLogoNoticias.setEnabled(false);
-
     }
-
-
 
     private void cosumirWS() {
 

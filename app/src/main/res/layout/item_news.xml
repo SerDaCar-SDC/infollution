@@ -22,12 +22,23 @@
             android:layout_margin="20dp"/>
 
         <TextView
-            android:id="@+id/tvURL"
+            android:id="@+id/tvDescripcion"
             android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:textColor="@color/colorAzul"
             android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvAutor"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorAzul"
+            android:textSize="16sp"
+            android:maxLines="1"/>
+
 
 </LinearLayout>

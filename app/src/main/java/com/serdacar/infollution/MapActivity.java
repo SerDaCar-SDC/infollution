@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ImageView;
 
 import com.alespero.expandablecardview.ExpandableCardView;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -185,6 +186,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         LatLng est59 = new LatLng(40.4607255, -3.6163407);
         LatLng est60 = new LatLng(40.5005477, -3.6897308);
 
+        LatLng madrid = new LatLng(40.416775, -3.703789);
+
         // MARCADORES EN COORDENADAS
         // Marker markerMadrid = mMap.addMarker(new MarkerOptions().position(ubicacion).title("Marcador en tu ubicación"));
         mMap.addMarker(new MarkerOptions().position(est4).title("Pza. de España").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
@@ -213,7 +216,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(est60).title("Tres Olivos").icon(BitmapDescriptorFactory.fromResource(R.drawable.logo4)));
 
         // POSICIÓN DE CÁMARA
-        // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(est4, 20));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(madrid, 15));
 
         // TIPO DE VISUALIZACIÓN DE MAPA
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
