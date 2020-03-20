@@ -28,7 +28,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="40dp">
 
         <LinearLayout
             android:id="@+id/llAzufre"
@@ -39,32 +40,39 @@
             android:onClick="accederScrolling">
 
 
-
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="90dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SO"
-                    android:textStyle="italic"
                     android:layout_margin="5dp"
                     android:textSize="22sp"
-                    android:textAlignment="viewEnd"
-                    android:fontFamily="@font/robotobold"
+                    android:textAlignment="textEnd"
+                    android:fontFamily="@font/robotolightitalic"
                     android:textColor="@color/colorAzulOscuro"
-                    android:layout_weight="1"/>
+                    android:layout_weight="4"/>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textStyle="italic"
-                    android:fontFamily="@font/robotobold"
-                    android:textColor="@color/colorAzulOscuro"
-                    android:text="2"/>
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotolightitalic"
+                        android:textColor="@color/colorAzulOscuro"
+                        android:text="2"/>
+
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -80,8 +88,9 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="viewEnd"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:fontFamily="@font/robotobolditalic"
                     android:layout_marginRight="10dp"
+                    android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -90,7 +99,8 @@
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:fontFamily="@font/robotolightitalic"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -108,14 +118,14 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CO"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="90dp"
                 android:textSize="22sp"
                 android:textAlignment="center"
                 android:textStyle="italic"
-                android:fontFamily="@font/robotobold"
+                android:fontFamily="@font/robotolightitalic"
                 android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
@@ -131,7 +141,8 @@
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:fontFamily="@font/robotobolditalic"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -140,7 +151,8 @@
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:fontFamily="@font/robotolightitalic"
+                    android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
             </LinearLayout>
@@ -154,7 +166,9 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="18dp">
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:id="@+id/llMNitro"
@@ -167,21 +181,22 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NO"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="5dp"
                 android:textSize="22sp"
                 android:textAlignment="center"
                 android:textStyle="italic"
-                android:fontFamily="@font/robotobold"
+                android:fontFamily="@font/robotolightitalic"
                 android:textColor="@color/colorAzulOscuro"/>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp">
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/tvMonoxidoNitrogeno"
@@ -190,7 +205,8 @@
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:fontFamily="@font/robotobolditalic"
+                    android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -198,7 +214,8 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
-                    android:textStyle="italic"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:fontFamily="@font/robotolightitalic"
                     android:textSize="18sp"
                     android:layout_weight="1"/>
 
@@ -217,9 +234,10 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginLeft="85dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -228,19 +246,26 @@
                     android:layout_margin="5dp"
                     android:textSize="22sp"
                     android:textStyle="italic"
-                    android:textAlignment="viewEnd"
-                    android:fontFamily="@font/robotobold"
+                    android:textAlignment="textStart"
+                    android:fontFamily="@font/robotolightitalic"
                     android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:textStyle="italic"
-                    android:fontFamily="@font/robotobold"
-                    android:textColor="@color/colorAzulOscuro"
-                    android:text="2"/>
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/robotolightitalic"
+                        android:textColor="@color/colorAzulOscuro"
+                        android:text="2"/>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -257,7 +282,8 @@
                     android:textAlignment="viewEnd"
                     android:layout_marginRight="10dp"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:fontFamily="@font/robotobolditalic"
+                    android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
                 <TextView
@@ -266,7 +292,8 @@
                     android:textAlignment="textStart"
                     android:text="@string/medida_gas"
                     android:textSize="18sp"
-                    android:textStyle="italic"
+                    android:fontFamily="@font/robotolightitalic"
+                    android:textColor="@color/colorAzulOscuro"
                     android:layout_weight="1"/>
 
             </LinearLayout>
