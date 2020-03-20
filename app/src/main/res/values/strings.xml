@@ -22,7 +22,6 @@
     <string name="tv_mnitro_titulo">Monóxido de Nitrógeno</string>
     <string name="tv_dnitro_titulo">Dióxido de Nitrógeno</string>
     <string name="title_activity_scrolling_gases">ScrollingGases</string>
-
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">Gases nocivos</string>
     <string name="nombre_dioxidoAzufre">Dióxido de Azufre</string>

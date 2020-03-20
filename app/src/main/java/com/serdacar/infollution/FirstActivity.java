@@ -52,7 +52,6 @@ public class FirstActivity extends AppCompatActivity {
     static final String CLAVE_EMAIL = "EMAIL";
     FirebaseAuth fbAuth;
 
-    TextView tv;
     ImageView ivLogo;
     String email;
 
