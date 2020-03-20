@@ -40,15 +40,31 @@
 
 
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SO2"
-                android:layout_margin="5dp"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"
-                android:textColor="@color/colorAzulOscuro"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SO"
+                    android:layout_margin="5dp"
+                    android:textSize="22sp"
+                    android:textAlignment="viewEnd"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:text="2"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -192,15 +208,31 @@
             android:onClick="accederScrolling">
 
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="NO2"
-                android:layout_margin="5dp"
-                android:textSize="22sp"
-                android:textAlignment="center"
-                android:fontFamily="@font/robotobold"
-                android:textColor="@color/colorAzulOscuro"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NO"
+                    android:layout_margin="5dp"
+                    android:textSize="22sp"
+                    android:textAlignment="viewEnd"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:text="2"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"

@@ -22,15 +22,31 @@
             android:background="@drawable/esquinas_izquierdas_redondeadas_todas_cardview"
             android:layout_margin="10dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dióxido de Azufre (SO2)"
-                android:textAlignment="center"
-                android:textColor="@color/colorAzul"
-                android:fontFamily="@font/robotolight"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dióxido de Azufre  SO"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAzul"
+                    android:fontFamily="@font/robotolight"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:text="2"/>
+
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -63,7 +79,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Monóxido de Carbono (CO)"
+                android:text="Monóxido de Carbono  CO"
                 android:textAlignment="center"
                 android:textColor="@color/colorAzul"
                 android:fontFamily="@font/robotolight"
@@ -101,7 +117,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Monóxido de Nitrógeno (NO)"
+                android:text="Monóxido de Nitrógeno NO"
                 android:textAlignment="center"
                 android:textColor="@color/colorAzul"
                 android:fontFamily="@font/robotolight"
@@ -137,15 +153,31 @@
             android:layout_margin="10dp"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dióxido de Nitrógeno (NO2)"
-                android:textAlignment="center"
-                android:textColor="@color/colorAzul"
-                android:fontFamily="@font/robotolight"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dióxido de Nitrógeno  NO"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorAzul"
+                    android:fontFamily="@font/robotolight"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/robotolight"
+                    android:textColor="@color/colorAzulOscuro"
+                    android:text="2"/>
+
+            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
