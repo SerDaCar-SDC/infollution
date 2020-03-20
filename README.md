@@ -22,11 +22,12 @@ _Por otro lado, hay una sección de noticias, muestra las más actuales y se act
 ## Comenzando 🚀
 
 ![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Login.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/First.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Gas.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Map.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/MapS.jpg)
+![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/News.jpg)
 
 
 ### Pre-requisitos 📋
