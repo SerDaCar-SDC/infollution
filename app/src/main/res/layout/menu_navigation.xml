@@ -22,7 +22,7 @@
                 android:id="@+id/ivMenuNews"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:background="@color/colorBlancoNuestro"
                 app:srcCompat="@drawable/ic_mundo_foreground"
                 android:onClick="accederNoticias"/>
@@ -33,17 +33,17 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:background="@color/colorBlancoNuestro"
                 android:onClick="accederChat"
                 app:srcCompat="@drawable/ic_chatteo_foreground" />
 
             <ImageButton
                 android:id="@+id/ivMenuLogo"
-                android:layout_width="40dp"
+                android:layout_width="75dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:background="@color/colorBlancoNuestro"
                 android:onClick="accesoFirst"
                 android:scaleType="centerInside"
@@ -54,7 +54,7 @@
                 android:layout_width="35dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:onClick="accederScrolling"
                 android:background="@color/colorBlancoNuestro"
                 app:srcCompat="@drawable/ic_molecule_foreground" />

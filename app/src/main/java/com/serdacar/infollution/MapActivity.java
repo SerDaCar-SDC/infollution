@@ -63,6 +63,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         getSupportActionBar().hide();
+
+
         
         ivLugar = findViewById(R.id.ivLugar);
         ivMapa = findViewById(R.id.ivMenuMapa);
