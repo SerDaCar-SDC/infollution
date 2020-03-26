@@ -21,14 +21,14 @@ _Por otro lado, hay una sección de noticias, muestra las más actuales y se act
 
 ## Comenzando 🚀
 
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/splashscreen.jpg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Login.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/First.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Gas.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Map.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/MapS.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/News.jpeg)
-![](https://github.com/2DAMUE/pi1920v-serdacar/blob/master/Chat.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/splashscreen.jpg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/Login.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/First.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/Gas.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/Map.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/MapS.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/News.jpeg)
+![](https://github.com/SerDaCar-SDC/infollution/blob/master/Chat.jpeg)
 
 
 
