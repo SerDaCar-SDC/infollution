@@ -50,7 +50,7 @@ Es necesario que el dispositivo móvil esté conectado a una conexión de intern
 
 _La aplicación se puede encontrar desde la [Play Store]._
 
-_También proporcionamos un [enlace directo de la APK](https://github.com/2DAMUE/pi1920v-serdacar/tree/master/app/release)_
+_También proporcionamos un [enlace directo de la APK](https://github.com/SerDaCar-SDC/infollution/blob/master/app/release/app-release.apk)_
 
 
 ## Construido con 🛠️
